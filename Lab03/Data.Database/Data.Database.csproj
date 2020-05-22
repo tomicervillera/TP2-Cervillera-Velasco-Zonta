@@ -55,6 +55,14 @@
       <Project>{2ae1e2aa-37b3-44c7-ae64-c79353dbfb9e}</Project>
       <Name>Business.Logic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UI.Desktop\UI.Desktop.csproj">
+      <Project>{c4a5ce45-b22b-48d8-a634-3deecd693b1c}</Project>
+      <Name>UI.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UI.Web\UI.Web.csproj">
+      <Project>{a1d5a226-645d-43c4-a4af-5c67819ad129}</Project>
+      <Name>UI.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
