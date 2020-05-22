@@ -51,18 +51,6 @@
       <Project>{20e1c756-0081-4605-9ad9-ad91405189ad}</Project>
       <Name>Business.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Business.Logic\Business.Logic.csproj">
-      <Project>{2ae1e2aa-37b3-44c7-ae64-c79353dbfb9e}</Project>
-      <Name>Business.Logic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UI.Desktop\UI.Desktop.csproj">
-      <Project>{c4a5ce45-b22b-48d8-a634-3deecd693b1c}</Project>
-      <Name>UI.Desktop</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UI.Web\UI.Web.csproj">
-      <Project>{a1d5a226-645d-43c4-a4af-5c67819ad129}</Project>
-      <Name>UI.Web</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
