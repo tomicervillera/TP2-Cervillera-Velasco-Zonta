@@ -18,7 +18,7 @@ namespace UI.Consola
         {
             UsuarioNegocio = new Business.Logic.UsuarioLogic();
         }
-        static public void Menu()
+        public void Menu()
         {
             char opcion;
             Console.WriteLine("Ingrese opción: \n1– Listado General \n2– Consulta \n3– Agregar \n4- Modificar \n5- Eliminar \n6- Salir");
@@ -52,16 +52,15 @@ namespace UI.Consola
                     }
             }
         }
-        static public void ListadoGeneral()
+        public void ListadoGeneral()
         {
-            Usuarios pepe = new Usuarios();
             Console.Clear();
-            foreach (Usuario usr in pepe.UsuarioNegocio.GetAll())
+            foreach (Usuario usr in UsuarioNegocio.GetAll())
             {
                 MostrarDatos(usr);
             }
         }
-        static public void MostrarDatos(Usuario usr)
+        public void MostrarDatos(Usuario usr)
         {
             Console.WriteLine("Usuario: {0}", usr.ID);
             Console.WriteLine("\t\tNombre: {0}", usr.Nombre);

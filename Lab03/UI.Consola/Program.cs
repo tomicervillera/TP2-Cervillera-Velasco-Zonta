@@ -10,7 +10,7 @@ namespace UI.Consola
     {
         static void Main(string[] args)
         {
-            Usuarios.Menu();
+            new Usuarios().Menu();
         }
 
 
