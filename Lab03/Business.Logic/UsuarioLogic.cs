@@ -7,7 +7,7 @@ using Business.Entities;
 
 namespace Business.Logic
 {
-    class UsuarioLogic:BusinessLogic
+    public class UsuarioLogic : BusinessLogic
     {
         private Data.Database.UsuarioAdapter _UsuarioData;
 
@@ -23,14 +23,14 @@ namespace Business.Logic
             return(UsuarioData.GetAll());
         }
 
-        public void Save()
+        public void Save(Business.Entities.Usuario user)
         {
-            throw new System.NotImplementedException();
+            UsuarioData.Save(user);
         }
 
-        public void Delete()
+        public void Delete(int ID)
         {
-            throw new System.NotImplementedException();
+            UsuarioData.Delete(ID);
         }
 
         public UsuarioLogic()
