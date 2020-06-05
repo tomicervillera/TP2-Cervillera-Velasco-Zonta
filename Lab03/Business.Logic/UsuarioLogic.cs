@@ -37,5 +37,7 @@ namespace Business.Logic
         {
             UsuarioData = new Data.Database.UsuarioAdapter();
         }
+
+
     }
 }

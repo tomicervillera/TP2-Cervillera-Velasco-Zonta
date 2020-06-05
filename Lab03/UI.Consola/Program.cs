@@ -19,6 +19,7 @@ namespace UI.Consola
             {
                 case '1':
                     {
+                        ListadoGeneral();
                         break;
                     }
                 case '2':
@@ -43,10 +44,29 @@ namespace UI.Consola
                     }
             }
 
-
         }
 
-        
+        static public void ListadoGeneral()
+        {
+            Usuarios pepe = new Usuarios();
+
+            Console.Clear();
+            foreach (Usuario usr in pepe.UsuarioNegocio.GetAll())
+            {
+                MostrarDatos(usr);
+            }
+        }
+        static public void MostrarDatos(Usuario usr)
+        {
+            Console.WriteLine("Usuario: {0}", usr.ID);
+            Console.WriteLine("\t\tNombre: {0}", usr.Nombre);
+            Console.WriteLine("\t\tApellido: {0}", usr.Apellido);
+            Console.WriteLine("\t\tNombre de Usuario: {0}", usr.NombreUsuario);
+            Console.WriteLine("\t\tClave: {0}", usr.Clave);
+            Console.WriteLine("\t\tEmail: {0}", usr.Email);
+            Console.WriteLine("\t\tHabilitado: {0}", usr.Habilitado);
+            Console.WriteLine();
+        }
 
 
 

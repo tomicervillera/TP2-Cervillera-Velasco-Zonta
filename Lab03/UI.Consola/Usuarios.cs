@@ -11,12 +11,14 @@ namespace UI.Consola
     public class Usuarios
     {
         private Business.Logic.UsuarioLogic _usuarioNegocio;
-        public UsuarioLogic UsuarioNegocio { get => _usuarioNegocio; set => _usuarioNegocio = value; }
+        public Business.Logic.UsuarioLogic UsuarioNegocio { get => _usuarioNegocio; set => _usuarioNegocio = value; }
 
         public Usuarios()
         {
             UsuarioNegocio = new Business.Logic.UsuarioLogic();
         }
+
+
     }
     
 }
