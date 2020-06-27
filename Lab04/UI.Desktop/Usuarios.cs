@@ -20,20 +20,6 @@ namespace UI.Desktop
             InitializeComponent();
         }
 
-        //Eventos
-        private void Usuarios_Load(object sender, EventArgs e)
-        {
-            Listar();
-        }
-        private void btnActualizar_Click(object sender, EventArgs e)
-        {
-            Listar();
-        }
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         //Métodos
         private void GenerarColumnas()
         {
@@ -86,5 +72,21 @@ namespace UI.Desktop
             GenerarColumnas();
             this.dgvUsuarios.DataSource = ul.GetAll();
         }
+
+        //Eventos
+        private void Usuarios_Load(object sender, EventArgs e)
+        {
+            Listar();
+        }
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            Listar();
+        }
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        
     }
 }

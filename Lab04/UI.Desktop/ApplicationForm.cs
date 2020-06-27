@@ -12,6 +12,7 @@ namespace UI.Desktop
 {
     public partial class ApplicationForm : Form
     {   
+        //Propiedades
         public enum ModoForm
         {   
             Alta,
@@ -19,6 +20,15 @@ namespace UI.Desktop
             Modificacion,
             Consulta,
         }
+        public ModoForm Modo;
+
+        //Constructor
+        public ApplicationForm()
+        {
+            InitializeComponent();
+        }
+
+        //Métodos
         public virtual void MapearDeDatos() 
         { 
 
@@ -39,12 +49,8 @@ namespace UI.Desktop
         {
             this.Notificar(this.Text, mensaje, botones, icono);
         }
-
         public virtual bool Validar() { return false; }
-        public ModoForm Modo;
-        public ApplicationForm()
-        {
-            InitializeComponent();
-        }
+        
+        
     }
 }

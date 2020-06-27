@@ -14,10 +14,28 @@ namespace UI.Desktop
 {
     public partial class UsuarioDesktop : ApplicationForm
     {
+        //Propiedades
         private Business.Entities.Usuario _UsuarioActual;
-
         public Business.Entities.Usuario UsuarioActual { get => _UsuarioActual; set => _UsuarioActual = value; }
 
+        
+        //Constructores
+        public UsuarioDesktop()
+        {
+            InitializeComponent();
+        }
+        public UsuarioDesktop(ModoForm modo) : this()
+        {
+            Modo = modo;
+        }
+        public UsuarioDesktop(int ID, ModoForm modo) : this()
+        {
+            Modo = modo;
+            UsuarioActual = new UsuarioLogic().GetOne(ID);
+            MapearDeDatos();
+        }
+
+        //Métodos
         public override void MapearDeDatos()
         {
             this.txtID.Text = this.UsuarioActual.ID.ToString();
@@ -28,7 +46,7 @@ namespace UI.Desktop
             this.txtApellido.Text = this.UsuarioActual.Apellido;
             this.txtUsuario.Text = this.UsuarioActual.NombreUsuario;
             this.txtConfirmarClave.Text = this.UsuarioActual.Clave;
-            
+
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 this.btnAceptar.Text = "Guardar";
@@ -45,12 +63,12 @@ namespace UI.Desktop
         }
         public override void MapearADatos()
         {
-            
+
             if (Modo == ModoForm.Alta)
             {
                 UsuarioActual = new Usuario();
             }
-            if(Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
+            if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 UsuarioActual.Nombre = txtNombre.Text;
                 UsuarioActual.Apellido = txtApellido.Text;
@@ -121,32 +139,18 @@ namespace UI.Desktop
                 Notificar("La clave ingresada debe ser al menos de 8 carateres de longitud.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return (false);
             }
-            
+
             if (!((txtEmail.Text.Contains("@")) && (txtEmail.Text.Contains(".com"))))
             {
                 Notificar("El email ingresado no es válido. ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return (false);
             }
-             
+
             return (true);
 
         }
 
-        public UsuarioDesktop()
-        {
-            InitializeComponent();
-        }
-        public UsuarioDesktop(ModoForm modo) : this()
-        {
-            Modo = modo;
-        }
-        public UsuarioDesktop(int ID, ModoForm modo) : this()
-        {
-            Modo = modo;
-            UsuarioActual = new UsuarioLogic().GetOne(ID);
-            MapearDeDatos();
-        }
-
+        //Eventos
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (Validar())
@@ -155,7 +159,6 @@ namespace UI.Desktop
                 Close();
             }
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
