@@ -132,22 +132,18 @@ namespace UI.Desktop
 
         }
 
-
-
-
-
         public UsuarioDesktop()
         {
             InitializeComponent();
         }
         public UsuarioDesktop(ModoForm modo) : this()
         {
-
+            Modo = modo;
         }
         public UsuarioDesktop(int ID, ModoForm modo) : this()
         {
-            UsuarioActual = new UsuarioLogic().GetOne(ID);
             Modo = modo;
+            UsuarioActual = new UsuarioLogic().GetOne(ID);
             MapearDeDatos();
         }
 

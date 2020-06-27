@@ -32,7 +32,6 @@
             this.tscUsuarios = new System.Windows.Forms.ToolStripContainer();
             this.tlUsuarios = new System.Windows.Forms.TableLayoutPanel();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.tsUsuarios = new System.Windows.Forms.ToolStrip();
@@ -51,7 +50,7 @@
             // tscUsuarios.ContentPanel
             // 
             this.tscUsuarios.ContentPanel.Controls.Add(this.tlUsuarios);
-            this.tscUsuarios.ContentPanel.Size = new System.Drawing.Size(800, 412);
+            this.tscUsuarios.ContentPanel.Size = new System.Drawing.Size(800, 419);
             this.tscUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tscUsuarios.Location = new System.Drawing.Point(0, 0);
             this.tscUsuarios.Name = "tscUsuarios";
@@ -77,7 +76,7 @@
             this.tlUsuarios.RowCount = 2;
             this.tlUsuarios.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlUsuarios.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlUsuarios.Size = new System.Drawing.Size(800, 412);
+            this.tlUsuarios.Size = new System.Drawing.Size(800, 419);
             this.tlUsuarios.TabIndex = 0;
             // 
             // dgvUsuarios
@@ -85,28 +84,18 @@
             this.dgvUsuarios.AllowUserToAddRows = false;
             this.dgvUsuarios.AllowUserToDeleteRows = false;
             this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id});
             this.tlUsuarios.SetColumnSpan(this.dgvUsuarios, 2);
             this.dgvUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUsuarios.Location = new System.Drawing.Point(3, 3);
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.ReadOnly = true;
             this.dgvUsuarios.RowHeadersWidth = 62;
-            this.dgvUsuarios.Size = new System.Drawing.Size(794, 377);
+            this.dgvUsuarios.Size = new System.Drawing.Size(794, 384);
             this.dgvUsuarios.TabIndex = 0;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.MinimumWidth = 8;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Width = 150;
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(722, 386);
+            this.btnSalir.Location = new System.Drawing.Point(722, 393);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 2;
@@ -117,7 +106,7 @@
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(641, 386);
+            this.btnActualizar.Location = new System.Drawing.Point(641, 393);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 1;
@@ -133,7 +122,7 @@
             this.toolStripButton1});
             this.tsUsuarios.Location = new System.Drawing.Point(4, 0);
             this.tsUsuarios.Name = "tsUsuarios";
-            this.tsUsuarios.Size = new System.Drawing.Size(52, 33);
+            this.tsUsuarios.Size = new System.Drawing.Size(40, 31);
             this.tsUsuarios.TabIndex = 0;
             // 
             // toolStripButton1
@@ -142,7 +131,7 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(34, 28);
+            this.toolStripButton1.Size = new System.Drawing.Size(28, 28);
             this.toolStripButton1.Text = "toolStripButton1";
             // 
             // Usuarios
@@ -176,7 +165,6 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
     }
 }
 
