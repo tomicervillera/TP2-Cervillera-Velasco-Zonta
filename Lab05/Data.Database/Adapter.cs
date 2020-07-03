@@ -18,8 +18,8 @@ namespace Data.Database
         protected void OpenConnection()
         {
             string temp;
-            temp=ConfigurationManager.ConnectionStrings[consKeyDefaultCnnString].ConnectionString;
-            SqlConn = new SqlConnection(temp);
+            //temp=ConfigurationManager.ConnectionStrings[consKeyDefaultCnnString].ConnectionString;
+            SqlConn = new SqlConnection( @"Data Source = localhost\SqlExpress; Initial Catalog = academia; Integrated Security = true; ");
             SqlConn.Open();
         }
 
@@ -36,12 +36,12 @@ namespace Data.Database
         }
 
         //Clave por defecto a utlizar para la cadena de conexion
-        const string consKeyDefaultCnnString = "ConnStringExpress";
+        // const string consKeyDefaultCnnString = "ConnStringExpress";
 
-        
-    
 
-    
+
+
+
     }
 
 
