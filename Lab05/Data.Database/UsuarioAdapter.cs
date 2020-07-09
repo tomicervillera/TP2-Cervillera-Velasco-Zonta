@@ -68,34 +68,17 @@ namespace Data.Database
             //abrimos la conexión a la base de datos con el método que creamos antes
             try { 
                 this.OpenConnection();
-                /*
-                 * creamos un objeto SqlComand que será la sentencia SQL
-                 * que vamos a ejecutar contra la base de datos
-                 * (los datos dela BD usuario, contraseña, servidor, etc.
-                 * estan en el connection string)
-                 */
+                //creamos un objeto SqlComand que será la sentencia SQL que vamos a ejecutar contra la base de datos (los datos dela BD usuario, contraseña, servidor, etc.
+                //estan en el connection string)
                 SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios", SqlConn);
-                /*
-                 * instanciamos un objeto DataReader que será
-                 * el que recuperará los datos de la DB
-                 */
+                //instanciamos un objeto DataReader que será el que recuperará los datos de la DB
                 SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
-
-                /*
-                 * Read() lee una fila de las devueltas por el comando sql
-                 * carga los datos en drUsuarios para poder accederlos,
-                 * devuelve verdadero mientras haya podido leer datos
-                 * y avanza a la fila siguiente para el proximo read
-                 */
-
+                //Read() lee una fila de las devueltas por el comando sql carga los datos en drUsuarios para poder accederlos, devuelve verdadero mientras haya podido leer datos
+                //y avanza a la fila siguiente para el proximo read
                 while(drUsuarios.Read())
                 {
-                    /*
-                     * creamos un objeto Usuario de la capa de entidades parta copiar
-                     * los datos de la fila del DataReader al objeto entidades
-                     */
+                    //creamos un objeto Usuario de la capa de entidades parta copiar los datos de la fila del DataReader al objeto entidades
                     Usuario usr = new Usuario();
-
                     // ahora copiamos los datos de la fila al objeto
                     usr.ID = (int)drUsuarios["id_usuario"];
                     usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
@@ -104,7 +87,6 @@ namespace Data.Database
                     usr.Nombre = (string)drUsuarios["nombre"];
                     usr.Apellido = (string)drUsuarios["apellido"];
                     usr.Email = (string)drUsuarios["email"];
-
                     //agregamos el objeto con datos a la lista que devolveremos
                     usuarios.Add(usr);
                 }
@@ -113,8 +95,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada =
-               new Exception("Error al recuperar lista de usuarios", Ex);
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de usuarios", Ex);
                 throw ExcepcionManejada;
             }
             finally

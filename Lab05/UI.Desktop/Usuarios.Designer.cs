@@ -128,7 +128,7 @@
             this.tsbEliminar});
             this.tsUsuarios.Location = new System.Drawing.Point(4, 0);
             this.tsUsuarios.Name = "tsUsuarios";
-            this.tsUsuarios.Size = new System.Drawing.Size(112, 25);
+            this.tsUsuarios.Size = new System.Drawing.Size(81, 25);
             this.tsUsuarios.TabIndex = 0;
             // 
             // tsbNuevo
