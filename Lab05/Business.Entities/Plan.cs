@@ -8,6 +8,8 @@ namespace Business.Entities
     public class Plan: BusinessEntity
     {
         private string _Descripcion;
+        private int _IdEspecialidad;
+
         public string Descripcion
         {
             get
@@ -17,6 +19,14 @@ namespace Business.Entities
             set
             {
                 _Descripcion = value;
+            }
+        }
+
+        public int IdEspecialidad
+        {
+            get => default;
+            set
+            {
             }
         }
     }
