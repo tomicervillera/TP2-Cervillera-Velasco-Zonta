@@ -18,7 +18,6 @@ namespace UI.Desktop
         private Business.Entities.Especialidad _EspecialidadActual;
         public Business.Entities.Especialidad EspecialidadActual { get => _EspecialidadActual; set => _EspecialidadActual = value; }
 
-
         //Constructores
         public EspecialidadDesktop()
         {
@@ -65,7 +64,6 @@ namespace UI.Desktop
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 EspecialidadActual.Descripcion = txtDescripcion.Text;
-                //UsuarioActual.Clave = txtConfirmarClave.Text;
 
                 switch (Modo)
                 {
@@ -96,46 +94,24 @@ namespace UI.Desktop
         {
             MapearADatos();
             new EspecialidadLogic().Save(EspecialidadActual);
-
         }
-        /*
         public override bool Validar()
         {
-            foreach (Control oControls in this.Controls) // Buscamos en cada TextBox de nuestro Formulario.
+            foreach (Control oControls in this.tableLayoutPanel1.Controls) // Buscamos en cada TextBox de nuestro Formulario.
             {
-                if (oControls is TextBox & oControls.Text == String.Empty) // Verificamos que no este vacio.
+                if (oControls is TextBox & oControls.Text == String.Empty & oControls.Name != "txtID") // Verificamos que no este vacio exceptuando al txtID porque se asigna automáticamente.
                 {
                     Notificar("Hay al menos un campo vacío. Por favor, completelo/s. ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return (false);
                 }
             }
-
-            if (txtClave.Text != txtConfirmarClave.Text)
-            {
-                Notificar("La clave ingresada no coincide con la clave de confirmación. ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return (false);
-            }
-            else if (txtClave.Text.Length < 8)
-            {
-                Notificar("La clave ingresada debe ser al menos de 8 carateres de longitud.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return (false);
-            }
-
-            if (!((txtEmail.Text.Contains("@")) && (txtEmail.Text.Contains(".com"))))
-            {
-                Notificar("El email ingresado no es válido. ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return (false);
-            }
-
             return (true);
-
         }
-        */
         
         //Eventos
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (true /*Validar()*/) //TERMINAR VALIDACION 
+            if (Validar()) 
             {
                 GuardarCambios();
                 Close();

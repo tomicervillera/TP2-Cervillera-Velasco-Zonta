@@ -120,9 +120,9 @@ namespace UI.Desktop
         }*/
         public override bool Validar()
         {
-            foreach (Control oControls in this.Controls) // Buscamos en cada TextBox de nuestro Formulario.
+            foreach (Control oControls in this.tableLayoutPanel1.Controls) // Buscamos en cada TextBox de nuestro Formulario.
             {
-                if (oControls is TextBox & oControls.Text == String.Empty) // Verificamos que no este vacio.
+                if (oControls is TextBox & oControls.Text == String.Empty & oControls.Name != "txtID") // Verificamos que no este vacio exceptuando al txtID porque se asigna automáticamente.
                 {
                     Notificar("Hay al menos un campo vacío. Por favor, completelo/s. ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return (false);
@@ -153,7 +153,7 @@ namespace UI.Desktop
         //Eventos
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (Validar())
+            if (Validar() == true)
             {
                 GuardarCambios();
                 Close();
