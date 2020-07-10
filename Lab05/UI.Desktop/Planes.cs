@@ -40,11 +40,18 @@ namespace UI.Desktop
             colDescripcion.DisplayIndex = 1;
             this.dgvPlanes.Columns.Add(colDescripcion);
 
+            DataGridViewTextBoxColumn colIdEspecialidad = new DataGridViewTextBoxColumn();
+            colIdEspecialidad.Name = "idEspecialidad";
+            colIdEspecialidad.HeaderText = "ID Especialidad";
+            colIdEspecialidad.DataPropertyName = "idEspecialidad";
+            colIdEspecialidad.DisplayIndex = 2;
+            this.dgvPlanes.Columns.Add(colIdEspecialidad);
+
         }
         public void Listar()
         {
-            PlanLogic el = new PlanLogic();
-            this.dgvPlanes.DataSource = el.GetAll();
+            PlanLogic pl = new PlanLogic();
+            this.dgvPlanes.DataSource = pl.GetAll();
         }
 
         //Eventos

@@ -38,7 +38,8 @@ namespace UI.Desktop
         public override void MapearDeDatos()
         {
             this.txtID.Text = this.PlanActual.ID.ToString();          
-            this.txtDescripcion.Text = this.PlanActual.Descripcion;          
+            this.txtDescripcion.Text = this.PlanActual.Descripcion;
+            this.txtIDEspecialidad.Text = this.PlanActual.IdEspecialidad.ToString();
 
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
@@ -64,6 +65,7 @@ namespace UI.Desktop
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 PlanActual.Descripcion = txtDescripcion.Text;
+                PlanActual.IdEspecialidad = Convert.ToInt32(txtIDEspecialidad.Text);
 
                 switch (Modo)
                 {
@@ -121,9 +123,5 @@ namespace UI.Desktop
         {
             Close();
         }
-
-
-
-
     }
 }

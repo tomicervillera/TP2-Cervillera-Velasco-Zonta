@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtIDEspecialidad = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.lbNombre = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
@@ -36,6 +37,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.lbIDEspecialidd = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -51,11 +53,13 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.Controls.Add(this.txtIDEspecialidad, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtDescripcion, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.lbNombre, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtID, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lbDescripcion, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lbIDEspecialidd, 0, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -63,6 +67,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(671, 85);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // txtIDEspecialidad
+            // 
+            this.txtIDEspecialidad.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtIDEspecialidad.Location = new System.Drawing.Point(140, 55);
+            this.txtIDEspecialidad.Name = "txtIDEspecialidad";
+            this.txtIDEspecialidad.Size = new System.Drawing.Size(188, 20);
+            this.txtIDEspecialidad.TabIndex = 19;
             // 
             // txtDescripcion
             // 
@@ -87,6 +99,7 @@
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtID.Location = new System.Drawing.Point(140, 12);
             this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(188, 20);
             this.txtID.TabIndex = 5;
             // 
@@ -137,6 +150,16 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // lbIDEspecialidd
+            // 
+            this.lbIDEspecialidd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbIDEspecialidd.AutoSize = true;
+            this.lbIDEspecialidd.Location = new System.Drawing.Point(26, 58);
+            this.lbIDEspecialidd.Name = "lbIDEspecialidd";
+            this.lbIDEspecialidd.Size = new System.Drawing.Size(81, 13);
+            this.lbIDEspecialidd.TabIndex = 18;
+            this.lbIDEspecialidd.Text = "ID Especialidad";
+            // 
             // PlanDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -145,7 +168,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "PlanDesktop";
-            this.Text = "PlanDesktop";
+            this.Text = "Plan";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -164,5 +187,7 @@
         private System.Windows.Forms.Label lbNombre;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label lbDescripcion;
+        private System.Windows.Forms.Label lbIDEspecialidd;
+        private System.Windows.Forms.TextBox txtIDEspecialidad;
     }
 }

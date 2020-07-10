@@ -21,12 +21,15 @@ namespace Business.Entities
                 _Descripcion = value;
             }
         }
-
         public int IdEspecialidad
         {
-            get => default;
+            get
+            {
+                return (_IdEspecialidad);
+            }
             set
             {
+                _IdEspecialidad = value;
             }
         }
     }
