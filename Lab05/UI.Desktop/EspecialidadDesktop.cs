@@ -131,6 +131,7 @@ namespace UI.Desktop
 
         }
         */
+        
         //Eventos
         private void btnAceptar_Click(object sender, EventArgs e)
         {
