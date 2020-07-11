@@ -10,33 +10,24 @@ namespace Data.Database
 {
     public class EspecialidadAdapter : Adapter
     {
-        
         public List<Especialidad> GetAll()
         {
-            //instanciamos el objeto lista a retornar
             List<Especialidad> especialidades = new List<Especialidad>();
-            //abrimos la conexión a la base de datos con el método que creamos antes
+            
             try
             {
                 this.OpenConnection();
-                //creamos un objeto SqlComand que será la sentencia SQL que vamos a ejecutar contra la base de datos (los datos dela BD usuario, contraseña, servidor, etc.
-                //estan en el connection string)
+
                 SqlCommand cmdEspecialidades = new SqlCommand("select * from especialidades", SqlConn);
-                //instanciamos un objeto DataReader que será el que recuperará los datos de la DB
+
                 SqlDataReader drEspecialidades = cmdEspecialidades.ExecuteReader();
-                //Read() lee una fila de las devueltas por el comando sql carga los datos en drUsuarios para poder accederlos, devuelve verdadero mientras haya podido leer datos
-                //y avanza a la fila siguiente para el proximo read
                 while (drEspecialidades.Read())
                 {
-                    //creamos un objeto Usuario de la capa de entidades parta copiar los datos de la fila del DataReader al objeto entidades
                     Especialidad esp = new Especialidad();
-                    // ahora copiamos los datos de la fila al objeto
                     esp.ID = (int)drEspecialidades["id_especialidad"];
                     esp.Descripcion = (string)drEspecialidades["desc_especialidad"];
-                    //agregamos el objeto con datos a la lista que devolveremos
                     especialidades.Add(esp);
                 }
-                //cerramos la el DataReader y la conexión a la DB
                 drEspecialidades.Close();
             }
             catch (Exception Ex)
@@ -48,7 +39,6 @@ namespace Data.Database
             {
                 this.CloseConnection();
             }
-            //devolvemos el objeto
             return especialidades;
         }
         public Especialidad GetOne(int ID)
@@ -84,7 +74,7 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("UPDATE usuarios SET desc_especialidad = @desc_especialidad " +
+                SqlCommand cmdSave = new SqlCommand("UPDATE especialidades SET desc_especialidad = @desc_especialidad " +
                 "WHERE id_especialidad = @id", SqlConn);
 
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = especialidad.ID;
@@ -129,14 +119,10 @@ namespace Data.Database
         {
             try
             {
-                //abrimos la conexión
                 this.OpenConnection();
 
-                //creamos la sentencia sql y asignamos un valor al parámetro
                 SqlCommand cmdDelete = new SqlCommand("delete especialidades where id_especialidad=@id", SqlConn);
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
-
-                //ejecutamos la sentencia sql
                 cmdDelete.ExecuteNonQuery();
             }
             catch (Exception Ex)

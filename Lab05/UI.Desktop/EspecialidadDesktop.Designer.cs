@@ -87,6 +87,7 @@
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtID.Location = new System.Drawing.Point(140, 12);
             this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(188, 20);
             this.txtID.TabIndex = 5;
             // 
