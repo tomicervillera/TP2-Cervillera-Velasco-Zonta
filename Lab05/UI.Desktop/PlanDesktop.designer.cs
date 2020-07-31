@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtIDEspecialidad = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.lbNombre = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
@@ -38,6 +37,7 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lbIDEspecialidd = new System.Windows.Forms.Label();
+            this.cboxEspecialidad = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -53,13 +53,13 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.Controls.Add(this.txtIDEspecialidad, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtDescripcion, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.lbNombre, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtID, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lbDescripcion, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.lbIDEspecialidd, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cboxEspecialidad, 1, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -67,14 +67,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(671, 85);
             this.tableLayoutPanel1.TabIndex = 1;
-            // 
-            // txtIDEspecialidad
-            // 
-            this.txtIDEspecialidad.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtIDEspecialidad.Location = new System.Drawing.Point(140, 55);
-            this.txtIDEspecialidad.Name = "txtIDEspecialidad";
-            this.txtIDEspecialidad.Size = new System.Drawing.Size(188, 20);
-            this.txtIDEspecialidad.TabIndex = 19;
             // 
             // txtDescripcion
             // 
@@ -154,11 +146,20 @@
             // 
             this.lbIDEspecialidd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbIDEspecialidd.AutoSize = true;
-            this.lbIDEspecialidd.Location = new System.Drawing.Point(26, 58);
+            this.lbIDEspecialidd.Location = new System.Drawing.Point(33, 58);
             this.lbIDEspecialidd.Name = "lbIDEspecialidd";
-            this.lbIDEspecialidd.Size = new System.Drawing.Size(81, 13);
+            this.lbIDEspecialidd.Size = new System.Drawing.Size(67, 13);
             this.lbIDEspecialidd.TabIndex = 18;
-            this.lbIDEspecialidd.Text = "ID Especialidad";
+            this.lbIDEspecialidd.Text = "Especialidad";
+            // 
+            // cboxEspecialidad
+            // 
+            this.cboxEspecialidad.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cboxEspecialidad.FormattingEnabled = true;
+            this.cboxEspecialidad.Location = new System.Drawing.Point(140, 55);
+            this.cboxEspecialidad.Name = "cboxEspecialidad";
+            this.cboxEspecialidad.Size = new System.Drawing.Size(188, 21);
+            this.cboxEspecialidad.TabIndex = 19;
             // 
             // PlanDesktop
             // 
@@ -188,6 +189,6 @@
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label lbDescripcion;
         private System.Windows.Forms.Label lbIDEspecialidd;
-        private System.Windows.Forms.TextBox txtIDEspecialidad;
+        private System.Windows.Forms.ComboBox cboxEspecialidad;
     }
 }

@@ -26,6 +26,10 @@ namespace UI.Desktop
         public PlanDesktop(ModoForm modo) : this()
         {
             Modo = modo;
+            EspecialidadLogic el = new EspecialidadLogic(); 
+            cboxEspecialidad.DataSource = el.GetAll();
+            cboxEspecialidad.ValueMember = "ID";
+            cboxEspecialidad.DisplayMember = "Descripcion";
         }
         public PlanDesktop(int ID, ModoForm modo) : this()
         {
@@ -39,7 +43,13 @@ namespace UI.Desktop
         {
             this.txtID.Text = this.PlanActual.ID.ToString();          
             this.txtDescripcion.Text = this.PlanActual.Descripcion;
-            this.txtIDEspecialidad.Text = this.PlanActual.IdEspecialidad.ToString();
+            EspecialidadLogic el = new EspecialidadLogic();
+            cboxEspecialidad.DataSource = el.GetAll();
+            cboxEspecialidad.ValueMember = "ID";
+            cboxEspecialidad.DisplayMember = "Descripcion";
+            cboxEspecialidad.SelectedIndex = 2;
+            //cboxEspecialidad.SelectedIndex = el.GetOne(PlanActual.IdEspecialidad);
+
 
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
@@ -65,7 +75,7 @@ namespace UI.Desktop
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 PlanActual.Descripcion = txtDescripcion.Text;
-                PlanActual.IdEspecialidad = Convert.ToInt32(txtIDEspecialidad.Text);
+                PlanActual.IdEspecialidad = Convert.ToInt32(((Especialidad)cboxEspecialidad.SelectedItem).ID);
 
                 switch (Modo)
                 {
