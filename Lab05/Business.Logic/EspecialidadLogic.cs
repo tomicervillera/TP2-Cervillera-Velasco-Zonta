@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Business.Entities;
@@ -26,7 +27,15 @@ namespace Business.Logic
         }
         public List<Especialidad> GetAll()
         {
-            return (EspecialidadData.GetAll());
+            try
+            {
+                return (EspecialidadData.GetAll());
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de excepciones.", Ex);
+                throw ExcepcionManejada;
+            }
         }
         public void Save(Business.Entities.Especialidad esp)
         {

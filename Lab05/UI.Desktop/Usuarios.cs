@@ -77,8 +77,9 @@ namespace UI.Desktop
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar lista de usuarios", Ex);
-                MessageBox.Show(Ex.Message);
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de usuarios.", Ex);
+                MessageBox.Show(Ex.Message, "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
             }
         }
 

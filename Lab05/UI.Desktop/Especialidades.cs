@@ -44,7 +44,16 @@ namespace UI.Desktop
         public void Listar()
         {
             EspecialidadLogic el = new EspecialidadLogic();
-            this.dgvEspecialidades.DataSource = el.GetAll();
+            try
+            {
+                this.dgvEspecialidades.DataSource = el.GetAll();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de especialidades.", Ex);
+                MessageBox.Show(Ex.Message, "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
         }
 
         //Eventos

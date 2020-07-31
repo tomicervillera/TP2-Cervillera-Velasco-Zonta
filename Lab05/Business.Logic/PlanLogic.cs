@@ -26,7 +26,16 @@ namespace Business.Logic
         }
         public List<Plan> GetAll()
         {
-            return (PlanData.GetAll());
+            try
+            {
+                return (PlanData.GetAll());
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de planes.", Ex);
+                throw ExcepcionManejada;
+            }
+            
         }
         public void Save(Business.Entities.Plan pla)
         {

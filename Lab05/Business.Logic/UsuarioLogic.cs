@@ -26,12 +26,13 @@ namespace Business.Logic
         }
         public List<Usuario> GetAll()
         {
-            try { 
+            try 
+            { 
                 return (UsuarioData.GetAll());
-                }
+            }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar lista de usuarios", Ex);
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de usuarios.", Ex);
                 throw ExcepcionManejada;
             }
         }

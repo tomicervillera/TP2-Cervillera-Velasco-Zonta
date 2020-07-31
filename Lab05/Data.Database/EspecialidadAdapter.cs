@@ -32,7 +32,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar lista de especialidades", Ex);
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de especialidades.", Ex);
                 throw ExcepcionManejada;
             }
             finally
