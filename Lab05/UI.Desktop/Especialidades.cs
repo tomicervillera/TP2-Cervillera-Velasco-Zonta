@@ -87,9 +87,17 @@ namespace UI.Desktop
             
             if (MessageBox.Show("Está seguro de que desea eliminar esta especialidad? ", "Atención", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                int ID = ((Business.Entities.Especialidad)this.dgvEspecialidades.SelectedRows[0].DataBoundItem).ID;
-                new EspecialidadLogic().Delete(ID);
-                this.Listar();
+                try
+                {
+                    int ID = ((Business.Entities.Especialidad)this.dgvEspecialidades.SelectedRows[0].DataBoundItem).ID;
+                    new EspecialidadLogic().Delete(ID);
+                    this.Listar();
+                }
+                catch (Exception Ex)
+                {
+                    Exception ExcepcionManejada = new Exception("Error al eliminar especialidad.", Ex);
+                    MessageBox.Show(Ex.Message, "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

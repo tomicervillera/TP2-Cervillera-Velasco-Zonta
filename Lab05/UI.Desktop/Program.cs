@@ -18,7 +18,7 @@ namespace UI.Desktop
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Especialidades());
             //Application.Run(new UsuarioDesktop(1, ApplicationForm.ModoForm.Consulta));
-            Application.Run(new formMain());
+            //Application.Run(new formMain());
         }
     }
 }

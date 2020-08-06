@@ -43,7 +43,16 @@ namespace Business.Logic
         }
         public void Delete(int ID)
         {
-            EspecialidadData.Delete(ID);
+            try
+            {
+                EspecialidadData.Delete(ID);
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al eliminar especialidad.", Ex);
+                throw ExcepcionManejada;
+            }
+
         }
 
 
