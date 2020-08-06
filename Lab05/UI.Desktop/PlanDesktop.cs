@@ -41,15 +41,13 @@ namespace UI.Desktop
         //Métodos
         public override void MapearDeDatos()
         {
-            this.txtID.Text = this.PlanActual.ID.ToString();          
+            this.txtID.Text = this.PlanActual.ID.ToString();
             this.txtDescripcion.Text = this.PlanActual.Descripcion;
             EspecialidadLogic el = new EspecialidadLogic();
             cboxEspecialidad.DataSource = el.GetAll();
             cboxEspecialidad.ValueMember = "ID";
             cboxEspecialidad.DisplayMember = "Descripcion";
-            cboxEspecialidad.SelectedIndex = 2;
-            //cboxEspecialidad.SelectedIndex = el.GetOne(PlanActual.IdEspecialidad);
-
+            cboxEspecialidad.SelectedValue = el.GetOne(PlanActual.IdEspecialidad).ID;
 
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
