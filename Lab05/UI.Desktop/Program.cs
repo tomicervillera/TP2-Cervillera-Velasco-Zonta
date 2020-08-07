@@ -16,7 +16,7 @@ namespace UI.Desktop
         { 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Especialidades());
+            Application.Run(new Modulos());
             //Application.Run(new UsuarioDesktop(1, ApplicationForm.ModoForm.Consulta));
             //Application.Run(new formMain());
         }
