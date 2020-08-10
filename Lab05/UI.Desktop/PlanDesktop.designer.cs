@@ -156,7 +156,7 @@
             // 
             this.cboxEspecialidad.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cboxEspecialidad.FormattingEnabled = true;
-            this.cboxEspecialidad.Location = new System.Drawing.Point(140, 55);
+            this.cboxEspecialidad.Location = new System.Drawing.Point(140, 54);
             this.cboxEspecialidad.Name = "cboxEspecialidad";
             this.cboxEspecialidad.Size = new System.Drawing.Size(188, 21);
             this.cboxEspecialidad.TabIndex = 19;
