@@ -56,7 +56,7 @@
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Diagrama\ClassDiagram1.cd" />
+    <Folder Include="Diagrama\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

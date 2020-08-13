@@ -33,6 +33,7 @@ namespace UI.Desktop
             cboxPlan.ValueMember = "ID";
             cboxPlan.DisplayMember = "Descripcion";
             cbTipoPersona.DataSource = Enum.GetNames(typeof (Persona.TipoPersonas));
+            
         }
         public PersonaDesktop(int ID, ModoForm modo) : this()
         {
@@ -91,18 +92,18 @@ namespace UI.Desktop
             }
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
-                this.PersonaActual.ID = Convert.ToInt32( this.txtID.Text);
+               // this.PersonaActual.ID = Convert.ToInt32( this.txtID.Text);
                 this.PersonaActual.Nombre = this.txtNombre.Text;
-                PlanLogic pl = new PlanLogic();
-                cboxPlan.DataSource = pl.GetAll();
-                PersonaActual.IDPlan = Convert.ToInt32(cboxPlan.SelectedItem);
-                this.txtApellido.Text = this.PersonaActual.Apellido;
-                this.txtDireccion.Text = this.PersonaActual.Direccion;
-                this.txtEmail.Text = this.PersonaActual.Email;
-                this.dtFechaNacimiento.Value = this.PersonaActual.FechaNacimiento;
-                this.txtLegajo.Text = this.PersonaActual.Legajo.ToString();
-                this.txtTelefono.Text = this.PersonaActual.Telefono;
-                cbTipoPersona.DataSource = this.PersonaActual.TipoPersona;
+                PersonaActual.IDPlan = Convert.ToInt32(((Plan)cboxPlan.SelectedItem).ID);
+                this.PersonaActual.Apellido = this.txtApellido.Text;
+                this.PersonaActual.Direccion= this.txtDireccion.Text;
+                this.PersonaActual.Email = this.txtEmail.Text; 
+                this.PersonaActual.FechaNacimiento = this.dtFechaNacimiento.Value;
+                this.PersonaActual.Legajo = Convert.ToInt32(this.txtLegajo.Text);
+                this.PersonaActual.Telefono = this.txtTelefono.Text;
+                this.PersonaActual.TipoPersona = ((Persona.TipoPersonas)cbTipoPersona.SelectedIndex);
+               
+                
                 switch (Modo)
                 {
                     case ModoForm.Alta:
