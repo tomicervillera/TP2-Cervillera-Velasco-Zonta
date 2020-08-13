@@ -180,18 +180,19 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
-                    "insert into personas (nombre, apellido, direccion, email, fecha_nac, id_plan, legajo, telefono) " +
-                    "values (@nombre, @apellido, @direccion, @email, @fecha_nac, @id_plan, @legajo, @telefono) " +
+                    "insert into personas (nombre, apellido, direccion, email, fecha_nac, id_plan, legajo, telefono, tipo_persona) " +
+                    "values (@nombre, @apellido, @direccion, @email, @fecha_nac, @id_plan, @legajo, @telefono, @tipo_persona) " +
                     "select @@identity", //esta línea es para recuperar el ID que asignó el sql automáticamente
                     SqlConn);
                 cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = persona.Nombre;
                 cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = persona.Apellido;
-                cmdSave.Parameters.Add("@direccion", SqlDbType.Bit).Value = persona.Direccion;
+                cmdSave.Parameters.Add("@direccion", SqlDbType.VarChar, 50).Value = persona.Direccion;
                 cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = persona.Email;
-                cmdSave.Parameters.Add("@fecha_nac", SqlDbType.VarChar, 50).Value = persona.FechaNacimiento;
-                cmdSave.Parameters.Add("@id_plan", SqlDbType.VarChar, 50).Value = persona.IDPlan;
-                cmdSave.Parameters.Add("@legajo", SqlDbType.VarChar, 50).Value = persona.Legajo;
+                cmdSave.Parameters.Add("@fecha_nac", SqlDbType.DateTime).Value = persona.FechaNacimiento;
+                cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = persona.IDPlan;
+                cmdSave.Parameters.Add("@legajo", SqlDbType.Int).Value = persona.Legajo;
                 cmdSave.Parameters.Add("@telefono", SqlDbType.VarChar, 50).Value = persona.Telefono;
+                cmdSave.Parameters.Add("@tipo_persona", SqlDbType.Int).Value = Convert.ToInt32(persona.TipoPersona);
                 persona.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
                 //Así se obtiene el ID que asignó al BD automáticamente
             }

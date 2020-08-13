@@ -47,6 +47,54 @@ namespace UI.Desktop
             colApellido.DisplayIndex = 2;
             this.dgvPersonas.Columns.Add(colApellido);
 
+            DataGridViewTextBoxColumn colDireccion = new DataGridViewTextBoxColumn();
+            colDireccion.Name = "direccion";
+            colDireccion.HeaderText = "Dirección";
+            colDireccion.DataPropertyName = "Direccion";
+            colDireccion.DisplayIndex = 3;
+            this.dgvPersonas.Columns.Add(colDireccion);
+
+            DataGridViewTextBoxColumn colEmail = new DataGridViewTextBoxColumn();
+            colEmail.Name = "email";
+            colEmail.HeaderText = "E-mail";
+            colEmail.DataPropertyName = "Email";
+            colEmail.DisplayIndex = 4;
+            this.dgvPersonas.Columns.Add(colEmail);
+
+            DataGridViewTextBoxColumn colTelefono = new DataGridViewTextBoxColumn();
+            colTelefono.Name = "telefono";
+            colTelefono.HeaderText = "Teléfono";
+            colTelefono.DataPropertyName = "Telefono";
+            colTelefono.DisplayIndex = 5;
+            this.dgvPersonas.Columns.Add(colTelefono);
+
+            DataGridViewTextBoxColumn colFechaNacimiento = new DataGridViewTextBoxColumn();
+            colFechaNacimiento.Name = "fecha_nac";
+            colFechaNacimiento.HeaderText = "Fecha de nacimiento";
+            colFechaNacimiento.DataPropertyName = "FechaNacimiento";
+            colFechaNacimiento.DisplayIndex = 6;
+            this.dgvPersonas.Columns.Add(colFechaNacimiento);
+
+            DataGridViewTextBoxColumn colLegajo = new DataGridViewTextBoxColumn();
+            colLegajo.Name = "legajo";
+            colLegajo.HeaderText = "Legajo";
+            colLegajo.DataPropertyName = "Legajo";
+            colLegajo.DisplayIndex = 7;
+            this.dgvPersonas.Columns.Add(colLegajo);
+
+            DataGridViewTextBoxColumn colTipoPersona = new DataGridViewTextBoxColumn();
+            colTipoPersona.Name = "tipo_persona";
+            colTipoPersona.HeaderText = "TipoPersona";
+            colTipoPersona.DataPropertyName = "TipoPersona";
+            colTipoPersona.DisplayIndex = 8;
+            this.dgvPersonas.Columns.Add(colTipoPersona);
+
+            DataGridViewTextBoxColumn colIdPlan = new DataGridViewTextBoxColumn();
+            colIdPlan.Name = "id_plan";
+            colIdPlan.HeaderText = "ID Plan";
+            colIdPlan.DataPropertyName = "IDPlan";
+            colIdPlan.DisplayIndex = 9;
+            this.dgvPersonas.Columns.Add(colIdPlan);
         }
 
         public void Listar()
