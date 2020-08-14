@@ -39,10 +39,9 @@ namespace UI.Desktop
         {
             Modo = modo;
             PersonaActual = new PersonaLogic().GetOne(ID);
+           // MessageBox.Show(PersonaActual.TipoPersona.ToString());
             MapearDeDatos();
         }
-
-        public enum hola { hola1, hola2 };
 
         //METODOS
         public override void MapearDeDatos()
@@ -50,10 +49,10 @@ namespace UI.Desktop
             this.txtID.Text = this.PersonaActual.ID.ToString();
             this.txtNombre.Text = this.PersonaActual.Nombre;
             PlanLogic pl = new PlanLogic();
-          /*  cboxPlan.DataSource = pl.GetAll();
-            cboxPlan.ValueMember = "ID";
-            cboxPlan.DisplayMember = "Descripcion";
-            cboxPlan.SelectedValue = pl.GetOne(PersonaActual.IDPlan).ID;*/
+            /*  cboxPlan.DataSource = pl.GetAll();
+              cboxPlan.ValueMember = "ID";
+              cboxPlan.DisplayMember = "Descripcion";
+              cboxPlan.SelectedValue = pl.GetOne(PersonaActual.IDPlan).ID;*/
             this.txtApellido.Text = this.PersonaActual.Apellido;
             this.txtDireccion.Text = this.PersonaActual.Direccion;
             this.txtEmail.Text = this.PersonaActual.Email;
@@ -61,10 +60,18 @@ namespace UI.Desktop
             this.txtLegajo.Text = this.PersonaActual.Legajo.ToString();
             this.txtTelefono.Text = this.PersonaActual.Telefono;
             cboxPlan.Items.Clear();
-            cboxPlan.DataSource =  new string []{ "hola","holo"};
+            cbTipoPersona.DataSource = Enum.GetNames(typeof(Persona.TipoPersonas));          
+            cboxPlan.DataSource = pl.GetAll();
+            cboxPlan.ValueMember = "ID";
+            cboxPlan.DisplayMember = "Descripcion";
+            cboxPlan.SelectedValue = this.PersonaActual.IDPlan;
+            int aux = Convert.ToInt32(this.PersonaActual.TipoPersona);
+            cbTipoPersona.SelectedItem = aux;
+            //
+                
 
 
-            
+
 
 
 
@@ -101,9 +108,20 @@ namespace UI.Desktop
                 this.PersonaActual.FechaNacimiento = this.dtFechaNacimiento.Value;
                 this.PersonaActual.Legajo = Convert.ToInt32(this.txtLegajo.Text);
                 this.PersonaActual.Telefono = this.txtTelefono.Text;
-                this.PersonaActual.TipoPersona = ((Persona.TipoPersonas)cbTipoPersona.SelectedIndex);
-               
-                
+                //this.PersonaActual.TipoPersona = ((Persona.TipoPersonas)cbTipoPersona.SelectedIndex);
+                switch (this.cbTipoPersona.SelectedIndex)
+                {
+                    case 0:
+                        this.PersonaActual.TipoPersona = Persona.TipoPersonas.Alumno;
+                        break;
+
+                    case 1:
+                        this.PersonaActual.TipoPersona = Persona.TipoPersonas.Docente;
+                        //MessageBox.Show(this.PersonaActual.TipoPersona.ToString()); ;
+                        break;
+                }
+
+
                 switch (Modo)
                 {
                     case ModoForm.Alta:

@@ -190,11 +190,11 @@
             // 
             this.lbTipoPersona.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbTipoPersona.AutoSize = true;
-            this.lbTipoPersona.Location = new System.Drawing.Point(349, 302);
+            this.lbTipoPersona.Location = new System.Drawing.Point(359, 308);
             this.lbTipoPersona.Name = "lbTipoPersona";
-            this.lbTipoPersona.Size = new System.Drawing.Size(105, 26);
+            this.lbTipoPersona.Size = new System.Drawing.Size(85, 13);
             this.lbTipoPersona.TabIndex = 9;
-            this.lbTipoPersona.Text = "Tipo de Persona\"combobox\"";
+            this.lbTipoPersona.Text = "Tipo de Persona";
             // 
             // txtID
             // 
