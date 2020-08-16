@@ -43,10 +43,10 @@ namespace UI.Desktop
         }
         public void Listar()
         {
-            ModuloLogic el = new ModuloLogic();
+            ModuloLogic ml = new ModuloLogic();
             try
             {
-                this.dgvModulos.DataSource = el.GetAll();
+                this.dgvModulos.DataSource = ml.GetAll();
             }
             catch (Exception Ex)
             {
