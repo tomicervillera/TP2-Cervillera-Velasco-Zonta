@@ -60,48 +60,53 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.lbIDEspecialidd, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.cboxEspecialidad, 1, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(16, 15);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(671, 85);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(895, 105);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // txtDescripcion
             // 
             this.txtDescripcion.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtDescripcion.Location = new System.Drawing.Point(474, 12);
+            this.txtDescripcion.Location = new System.Drawing.Point(634, 17);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(191, 20);
+            this.txtDescripcion.Size = new System.Drawing.Size(253, 22);
             this.txtDescripcion.TabIndex = 12;
             // 
             // lbNombre
             // 
             this.lbNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbNombre.AutoSize = true;
-            this.lbNombre.Location = new System.Drawing.Point(58, 16);
+            this.lbNombre.Location = new System.Drawing.Point(79, 19);
+            this.lbNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbNombre.Name = "lbNombre";
-            this.lbNombre.Size = new System.Drawing.Size(18, 13);
+            this.lbNombre.Size = new System.Drawing.Size(21, 17);
             this.lbNombre.TabIndex = 0;
             this.lbNombre.Text = "ID";
             // 
             // txtID
             // 
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtID.Location = new System.Drawing.Point(140, 12);
+            this.txtID.Location = new System.Drawing.Point(188, 17);
+            this.txtID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
-            this.txtID.Size = new System.Drawing.Size(188, 20);
+            this.txtID.Size = new System.Drawing.Size(249, 22);
             this.txtID.TabIndex = 5;
             // 
             // lbDescripcion
             // 
             this.lbDescripcion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbDescripcion.AutoSize = true;
-            this.lbDescripcion.Location = new System.Drawing.Point(370, 16);
+            this.lbDescripcion.Location = new System.Drawing.Point(495, 19);
+            this.lbDescripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbDescripcion.Name = "lbDescripcion";
-            this.lbDescripcion.Size = new System.Drawing.Size(63, 13);
+            this.lbDescripcion.Size = new System.Drawing.Size(82, 17);
             this.lbDescripcion.TabIndex = 8;
             this.lbDescripcion.Text = "Descripcion";
             // 
@@ -112,20 +117,22 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.btnAceptar, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnCancelar, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(472, 48);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(630, 60);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(191, 26);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(255, 32);
             this.tableLayoutPanel2.TabIndex = 17;
             // 
             // btnAceptar
             // 
             this.btnAceptar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAceptar.Location = new System.Drawing.Point(10, 3);
+            this.btnAceptar.Location = new System.Drawing.Point(13, 4);
+            this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 20);
+            this.btnAceptar.Size = new System.Drawing.Size(100, 24);
             this.btnAceptar.TabIndex = 15;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
@@ -134,9 +141,10 @@
             // btnCancelar
             // 
             this.btnCancelar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCancelar.Location = new System.Drawing.Point(105, 3);
+            this.btnCancelar.Location = new System.Drawing.Point(141, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 20);
+            this.btnCancelar.Size = new System.Drawing.Size(100, 24);
             this.btnCancelar.TabIndex = 16;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -146,9 +154,10 @@
             // 
             this.lbIDEspecialidd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbIDEspecialidd.AutoSize = true;
-            this.lbIDEspecialidd.Location = new System.Drawing.Point(33, 58);
+            this.lbIDEspecialidd.Location = new System.Drawing.Point(45, 72);
+            this.lbIDEspecialidd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbIDEspecialidd.Name = "lbIDEspecialidd";
-            this.lbIDEspecialidd.Size = new System.Drawing.Size(67, 13);
+            this.lbIDEspecialidd.Size = new System.Drawing.Size(88, 17);
             this.lbIDEspecialidd.TabIndex = 18;
             this.lbIDEspecialidd.Text = "Especialidad";
             // 
@@ -156,18 +165,21 @@
             // 
             this.cboxEspecialidad.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cboxEspecialidad.FormattingEnabled = true;
-            this.cboxEspecialidad.Location = new System.Drawing.Point(140, 54);
+            this.cboxEspecialidad.Location = new System.Drawing.Point(188, 68);
+            this.cboxEspecialidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboxEspecialidad.Name = "cboxEspecialidad";
-            this.cboxEspecialidad.Size = new System.Drawing.Size(188, 21);
+            this.cboxEspecialidad.Size = new System.Drawing.Size(249, 24);
             this.cboxEspecialidad.TabIndex = 19;
+            this.cboxEspecialidad.SelectedIndexChanged += new System.EventHandler(this.cboxEspecialidad_SelectedIndexChanged);
             // 
             // PlanDesktop
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 109);
+            this.ClientSize = new System.Drawing.Size(927, 134);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "PlanDesktop";
             this.Text = "Plan";
             this.tableLayoutPanel1.ResumeLayout(false);
