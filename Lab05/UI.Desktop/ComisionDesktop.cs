@@ -12,42 +12,48 @@ using Business.Entities;
 
 namespace UI.Desktop
 {
-    public partial class PlanDesktop : ApplicationForm
+    public partial class ComisionDesktop : ApplicationForm
     {
         //Propiedades
-        private Business.Entities.Plan _PlanActual;
-        public Business.Entities.Plan PlanActual { get => _PlanActual; set => _PlanActual = value; }
+        private Business.Entities.Comision _ComisionActual;
+        public Business.Entities.Comision ComisionActual { get => _ComisionActual; set => _ComisionActual = value; }
 
         //Constructores
-        public PlanDesktop()
+        public ComisionDesktop()
         {
             InitializeComponent();
         }
-        public PlanDesktop(ModoForm modo) : this()
+        public ComisionDesktop(ModoForm modo) : this()
         {
             Modo = modo;
-            EspecialidadLogic el = new EspecialidadLogic(); 
-            cboxEspecialidad.DataSource = el.GetAll();
-            cboxEspecialidad.ValueMember = "ID";
-            cboxEspecialidad.DisplayMember = "Descripcion";
+            PlanLogic cl =new PlanLogic();
+            cmbIDPlan.DataSource = cl.GetAll();
+            cmbIDPlan.ValueMember = "ID";
+            cmbIDPlan.DisplayMember = "Descripcion";
+            
+
+
         }
-        public PlanDesktop(int ID, ModoForm modo) : this()
+        public ComisionDesktop(int ID, ModoForm modo) : this()
         {
             Modo = modo;
-            PlanActual = new PlanLogic().GetOne(ID);
+            ComisionActual = new ComisionLogic().GetOne(ID);
             MapearDeDatos();
         }
 
         //Métodos
         public override void MapearDeDatos()
         {
-            this.txtID.Text = this.PlanActual.ID.ToString();
-            this.txtDescripcion.Text = this.PlanActual.Descripcion;
-            EspecialidadLogic el = new EspecialidadLogic();
-            cboxEspecialidad.DataSource = el.GetAll();
-            cboxEspecialidad.ValueMember = "ID";
-            cboxEspecialidad.DisplayMember = "Descripcion";
-            cboxEspecialidad.SelectedValue = el.GetOne(PlanActual.IdEspecialidad).ID;
+            //this.txtID.Text = this.ComisionActual.ID.ToString();
+            this.txtDescripcion.Text = this.ComisionActual.Descripcion;
+            this.txtAñoEspecialidad.Text = this.ComisionActual.AnioEspecialidad.ToString();
+           
+            PlanLogic el = new PlanLogic();
+            cmbIDPlan.DataSource = el.GetAll();
+            cmbIDPlan.ValueMember = "ID";
+            cmbIDPlan.DisplayMember = "Descripcion";
+            cmbIDPlan.SelectedValue = el.GetOne(ComisionActual.ID).ID;
+             
 
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
@@ -68,33 +74,35 @@ namespace UI.Desktop
 
             if (Modo == ModoForm.Alta)
             {
-                PlanActual = new Business.Entities.Plan();
+                ComisionActual = new Business.Entities.Comision();
             }
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
-                PlanActual.Descripcion = txtDescripcion.Text;
-                PlanActual.IdEspecialidad = Convert.ToInt32(((Especialidad)cboxEspecialidad.SelectedItem).ID);
+                
+                ComisionActual.AnioEspecialidad = Convert.ToInt32(txtAñoEspecialidad.Text);
+                ComisionActual.Descripcion = txtDescripcion.Text;
+                ComisionActual.IDPlan = Convert.ToInt32(((Business.Entities.Plan)cmbIDPlan.SelectedItem).ID);
 
                 switch (Modo)
                 {
                     case ModoForm.Alta:
                         {
-                            PlanActual.State = BusinessEntity.States.New;
+                            ComisionActual.State = BusinessEntity.States.New;
                             break;
                         }
                     case ModoForm.Modificacion:
                         {
-                            PlanActual.State = BusinessEntity.States.Modified;
+                            ComisionActual.State = BusinessEntity.States.Modified;
                             break;
                         }
                     case ModoForm.Consulta:
                         {
-                            PlanActual.State = BusinessEntity.States.Unmodified;
+                            ComisionActual.State = BusinessEntity.States.Unmodified;
                             break;
                         }
                     case ModoForm.Baja:
                         {
-                            PlanActual.State = BusinessEntity.States.Deleted;
+                            ComisionActual.State = BusinessEntity.States.Deleted;
                             break;
                         }
                 }
@@ -103,7 +111,7 @@ namespace UI.Desktop
         public override void GuardarCambios()
         {
             MapearADatos();
-            new PlanLogic().Save(PlanActual);
+            new ComisionLogic().Save(ComisionActual);
         }
         public override bool Validar()
         {
@@ -117,11 +125,11 @@ namespace UI.Desktop
             }
             return (true);
         }
-        
+
         //Eventos
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (Validar()) 
+            if (Validar())
             {
                 GuardarCambios();
                 Close();
@@ -132,9 +140,18 @@ namespace UI.Desktop
             Close();
         }
 
-        private void cboxEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbIDEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAceptar_Click_1(object sender, EventArgs e)
+        {
+            if (Validar())
+            {
+                GuardarCambios();
+                Close();
+            }
         }
     }
 }
