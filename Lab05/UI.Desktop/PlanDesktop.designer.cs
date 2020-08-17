@@ -30,7 +30,7 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.lbNombre = new System.Windows.Forms.Label();
+            this.lbID = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.lbDescripcion = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -54,7 +54,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.Controls.Add(this.txtDescripcion, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lbNombre, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lbID, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtID, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lbDescripcion, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 3, 1);
@@ -76,15 +76,15 @@
             this.txtDescripcion.Size = new System.Drawing.Size(191, 20);
             this.txtDescripcion.TabIndex = 12;
             // 
-            // lbNombre
+            // lbID
             // 
-            this.lbNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbNombre.AutoSize = true;
-            this.lbNombre.Location = new System.Drawing.Point(58, 16);
-            this.lbNombre.Name = "lbNombre";
-            this.lbNombre.Size = new System.Drawing.Size(18, 13);
-            this.lbNombre.TabIndex = 0;
-            this.lbNombre.Text = "ID";
+            this.lbID.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbID.AutoSize = true;
+            this.lbID.Location = new System.Drawing.Point(58, 16);
+            this.lbID.Name = "lbID";
+            this.lbID.Size = new System.Drawing.Size(18, 13);
+            this.lbID.TabIndex = 0;
+            this.lbID.Text = "ID";
             // 
             // txtID
             // 
@@ -107,12 +107,13 @@
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.btnAceptar, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnCancelar, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(472, 48);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(474, 52);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -185,7 +186,7 @@
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.TextBox txtDescripcion;
-        private System.Windows.Forms.Label lbNombre;
+        private System.Windows.Forms.Label lbID;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label lbDescripcion;
         private System.Windows.Forms.Label lbIDEspecialidd;
