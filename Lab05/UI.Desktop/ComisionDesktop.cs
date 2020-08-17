@@ -27,11 +27,12 @@ namespace UI.Desktop
         {
             Modo = modo;
             PlanLogic cl =new PlanLogic();
-            /*cmbIDPlan.DataSource = cl.GetAll();
+            cmbIDPlan.DataSource = cl.GetAll();
             cmbIDPlan.ValueMember = "ID";
             cmbIDPlan.DisplayMember = "Descripcion";
-            */
-            cmbIDPlan.DataSource = new int[] { 1,2 };
+            
+
+
         }
         public ComisionDesktop(int ID, ModoForm modo) : this()
         {
@@ -46,12 +47,13 @@ namespace UI.Desktop
             //this.txtID.Text = this.ComisionActual.ID.ToString();
             this.txtDescripcion.Text = this.ComisionActual.Descripcion;
             this.txtAñoEspecialidad.Text = this.ComisionActual.AnioEspecialidad.ToString();
-            ComisionLogic el = new ComisionLogic();
-            /*cmbIDPlan.DataSource = el.GetAll();
+           
+            PlanLogic el = new PlanLogic();
+            cmbIDPlan.DataSource = el.GetAll();
             cmbIDPlan.ValueMember = "ID";
             cmbIDPlan.DisplayMember = "Descripcion";
             cmbIDPlan.SelectedValue = el.GetOne(ComisionActual.ID).ID;
-            */
+             
 
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
@@ -79,7 +81,7 @@ namespace UI.Desktop
                 
                 ComisionActual.AnioEspecialidad = Convert.ToInt32(txtAñoEspecialidad.Text);
                 ComisionActual.Descripcion = txtDescripcion.Text;
-                ComisionActual.IDPlan = Convert.ToInt32(((Comision)cmbIDPlan.SelectedItem).ID);
+                ComisionActual.IDPlan = Convert.ToInt32(((Business.Entities.Plan)cmbIDPlan.SelectedItem).ID);
 
                 switch (Modo)
                 {

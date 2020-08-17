@@ -27,6 +27,8 @@ namespace Data.Database
                     Comision esp = new Comision();
                     esp.ID = (int)drComisiones["id_comision"];
                     esp.Descripcion = (string)drComisiones["desc_comision"];
+                    esp.AnioEspecialidad = (int)drComisiones["anio_especialidad"];
+                    esp.IDPlan = (int)drComisiones["id_plan"];
                     comisiones.Add(esp);
                 }
                 drComisiones.Close();
@@ -55,6 +57,8 @@ namespace Data.Database
                 {
                     esp.ID = (int)drComisiones["id_comision"];
                     esp.Descripcion = (string)drComisiones["desc_comision"];
+                    esp.AnioEspecialidad = (int)drComisiones["anio_especialidad"];
+                    esp.IDPlan = (int)drComisiones["id_plan"];
 
                 }
                 drComisiones.Close();
@@ -75,11 +79,12 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("UPDATE comisiones SET desc_comision = @desc_comision " +
+                SqlCommand cmdSave = new SqlCommand("UPDATE comisiones SET desc_comision = @desc_comision, anio_especialidad= @anio_especialidad " +
                 "WHERE id_comision = @id", SqlConn);
 
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = comision.ID;
                 cmdSave.Parameters.Add("@desc_comision", SqlDbType.VarChar, 50).Value = comision.Descripcion;
+                cmdSave.Parameters.Add("@anio_especialidad", SqlDbType.Int).Value = comision.AnioEspecialidad;
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -98,11 +103,13 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
-                    "insert into comisiones (desc_comision) " +
-                    "values (@desc_comision) " +
+                    "insert into comisiones (desc_comision,anio_especialidad,id_plan) " +
+                    "values (@desc_comision,@anio_especialidad,@id_plan) " +
                     "select @@identity", //esta línea es para recuperar el ID que asignó el sql automáticamente
                     SqlConn);
                 cmdSave.Parameters.Add("@desc_comision", SqlDbType.VarChar, 50).Value = comision.Descripcion;
+                cmdSave.Parameters.Add("@anio_especialidad", SqlDbType.Int).Value = comision.AnioEspecialidad;
+                cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = comision.IDPlan;
                 comision.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
                 //Así se obtiene el ID que asignó al BD automáticamente
             }

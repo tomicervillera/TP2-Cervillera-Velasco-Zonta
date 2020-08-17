@@ -19,6 +19,7 @@
             {
                 InitializeComponent();
                 GenerarColumnas();
+                Listar();
             }
 
             //Métodos
@@ -40,12 +41,19 @@
                 colDescripcion.DisplayIndex = 1;
                 this.dgvComisiones.Columns.Add(colDescripcion);
 
-                DataGridViewTextBoxColumn colIdEspecialidad = new DataGridViewTextBoxColumn();
-                colIdEspecialidad.Name = "idEspecialidad";
-                colIdEspecialidad.HeaderText = "ID Especialidad";
-                colIdEspecialidad.DataPropertyName = "idEspecialidad";
-                colIdEspecialidad.DisplayIndex = 2;
-                this.dgvComisiones.Columns.Add(colIdEspecialidad);
+                DataGridViewTextBoxColumn colAnio_Especialidad = new DataGridViewTextBoxColumn();
+                colAnio_Especialidad.Name = "anio_especialidad";
+                colAnio_Especialidad.HeaderText = "Año de Especialidad";
+                colAnio_Especialidad.DataPropertyName = "anio_especialidad";
+                colAnio_Especialidad.DisplayIndex = 2;
+                this.dgvComisiones.Columns.Add(colAnio_Especialidad);
+
+                DataGridViewTextBoxColumn colIdPlan = new DataGridViewTextBoxColumn();
+                colIdPlan.Name = "idPlan";
+                colIdPlan.HeaderText = "ID Plan";
+                colIdPlan.DataPropertyName = "idPlan";
+                colIdPlan.DisplayIndex = 3;
+                this.dgvComisiones.Columns.Add(colIdPlan);
 
             }
             public void Listar()

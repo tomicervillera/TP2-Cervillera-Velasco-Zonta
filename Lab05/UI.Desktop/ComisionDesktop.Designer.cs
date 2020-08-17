@@ -50,7 +50,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.16374F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.83626F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 116F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 270F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 271F));
             this.tableLayoutPanel1.Controls.Add(this.lbID, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtID, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lbDescripcion, 2, 0);
@@ -83,7 +83,7 @@
             // txtID
             // 
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtID.Location = new System.Drawing.Point(132, 19);
+            this.txtID.Location = new System.Drawing.Point(131, 19);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(250, 22);
@@ -93,7 +93,7 @@
             // 
             this.lbDescripcion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbDescripcion.AutoSize = true;
-            this.lbDescripcion.Location = new System.Drawing.Point(406, 21);
+            this.lbDescripcion.Location = new System.Drawing.Point(405, 21);
             this.lbDescripcion.Name = "lbDescripcion";
             this.lbDescripcion.Size = new System.Drawing.Size(82, 17);
             this.lbDescripcion.TabIndex = 2;
@@ -102,7 +102,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtDescripcion.Location = new System.Drawing.Point(516, 19);
+            this.txtDescripcion.Location = new System.Drawing.Point(515, 19);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(249, 22);
             this.txtDescripcion.TabIndex = 3;
@@ -120,7 +120,7 @@
             // txtAñoEspecialidad
             // 
             this.txtAñoEspecialidad.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtAñoEspecialidad.Location = new System.Drawing.Point(130, 74);
+            this.txtAñoEspecialidad.Location = new System.Drawing.Point(129, 74);
             this.txtAñoEspecialidad.Name = "txtAñoEspecialidad";
             this.txtAñoEspecialidad.Size = new System.Drawing.Size(254, 22);
             this.txtAñoEspecialidad.TabIndex = 5;
@@ -129,11 +129,11 @@
             // 
             this.lbIDPlan.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbIDPlan.AutoSize = true;
-            this.lbIDPlan.Location = new System.Drawing.Point(420, 77);
+            this.lbIDPlan.Location = new System.Drawing.Point(428, 77);
             this.lbIDPlan.Name = "lbIDPlan";
-            this.lbIDPlan.Size = new System.Drawing.Size(53, 17);
+            this.lbIDPlan.Size = new System.Drawing.Size(36, 17);
             this.lbIDPlan.TabIndex = 7;
-            this.lbIDPlan.Text = "ID Plan";
+            this.lbIDPlan.Text = "Plan";
             // 
             // cmbIDPlan
             // 
@@ -151,7 +151,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.btnAceptar, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnCancelar, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(508, 114);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(507, 114);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
