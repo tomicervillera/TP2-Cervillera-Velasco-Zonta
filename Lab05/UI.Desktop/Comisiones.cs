@@ -44,7 +44,7 @@
                 DataGridViewTextBoxColumn colAnio_Especialidad = new DataGridViewTextBoxColumn();
                 colAnio_Especialidad.Name = "anio_especialidad";
                 colAnio_Especialidad.HeaderText = "Año de Especialidad";
-                colAnio_Especialidad.DataPropertyName = "anio_especialidad";
+                colAnio_Especialidad.DataPropertyName = "AnioEspecialidad";
                 colAnio_Especialidad.DisplayIndex = 2;
                 this.dgvComisiones.Columns.Add(colAnio_Especialidad);
 

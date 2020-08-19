@@ -52,7 +52,7 @@ namespace UI.Desktop
             cmbIDPlan.DataSource = el.GetAll();
             cmbIDPlan.ValueMember = "ID";
             cmbIDPlan.DisplayMember = "Descripcion";
-            cmbIDPlan.SelectedValue = el.GetOne(ComisionActual.ID).ID;
+            cmbIDPlan.SelectedValue = this.ComisionActual.IDPlan;
              
 
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
@@ -152,6 +152,11 @@ namespace UI.Desktop
                 GuardarCambios();
                 Close();
             }
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
