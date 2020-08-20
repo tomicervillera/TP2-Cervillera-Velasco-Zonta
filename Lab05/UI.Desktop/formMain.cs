@@ -78,5 +78,11 @@ namespace UI.Desktop
             Usuarios formUsuarios = new Usuarios();
             formUsuarios.ShowDialog();
         }
+
+        private void cursosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cursos formCursos = new Cursos();
+            formCursos.ShowDialog();
+        }
     }
 }
