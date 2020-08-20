@@ -91,18 +91,6 @@ namespace UI.Desktop
                 CursoActual.IDComision = Convert.ToInt32(((Comision)cboxComision.SelectedItem).ID);
                 CursoActual.IDMateria = Convert.ToInt32(((Materia)cboxMateria.SelectedItem).ID);
 
-                ComisionLogic cl = new ComisionLogic();
-                cboxComision.DataSource = cl.GetAll();
-                cboxComision.ValueMember = "ID";
-                cboxComision.DisplayMember = "Descripcion";
-                cboxComision.SelectedValue = cl.GetOne(CursoActual.IDComision).ID;
-
-                MateriaLogic ml = new MateriaLogic();
-                cboxMateria.DataSource = ml.GetAll();
-                cboxMateria.ValueMember = "ID";
-                cboxMateria.DisplayMember = "Descripcion";
-                cboxMateria.SelectedValue = ml.GetOne(CursoActual.IDMateria).ID;
-
 
                 switch (Modo)
                 {

@@ -39,7 +39,7 @@ namespace UI.Desktop
         {
             Modo = modo;
             PersonaActual = new PersonaLogic().GetOne(ID);
-           // MessageBox.Show(PersonaActual.TipoPersona.ToString());
+
             MapearDeDatos();
         }
 

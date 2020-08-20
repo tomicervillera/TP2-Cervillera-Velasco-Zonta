@@ -10,57 +10,6 @@ namespace Data.Database
 {
     public class PersonaAdapter:Adapter
     {
-       /*#region DatosEnMemoria
-        // Esta región solo se usa en esta etapa donde los datos se mantienen en memoria.
-        // Al modificar este proyecto para que acceda a la base de datos esta será eliminada
-        private static List<Persona> _Personas;
-
-        private static List<Persona> Personas
-        {
-            get
-            {
-                if (_Personas == null)
-                {
-                    _Personas = new List<Business.Entities.Persona>();
-                    Business.Entities.Persona per;
-                    per = new Business.Entities.Persona();
-                    per.ID = 1;
-                    per.State = Business.Entities.BusinessEntity.States.Unmodified;
-                    per.Nombre = "Casimiro";
-                    per.Apellido = "Cegado";
-                    per.NombrePersona = "casicegado";
-                    per.Clave = "miro";
-                    per.Email = "casimirocegado@gmail.com";
-                    per.Habilitado = true;
-                    _Personas.Add(per);
-
-                    per = new Business.Entities.Persona();
-                    per.ID = 2;
-                    per.State = Business.Entities.BusinessEntity.States.Unmodified;
-                    per.Nombre = "Armando Esteban";
-                    per.Apellido = "Quito";
-                    per.NombrePersona = "aequito";
-                    per.Clave = "carpintero";
-                    per.Email = "armandoquito@gmail.com";
-                    per.Habilitado = true;
-                    _Personas.Add(per);
-
-                    per = new Business.Entities.Persona();
-                    per.ID = 3;
-                    per.State = Business.Entities.BusinessEntity.States.Unmodified;
-                    per.Nombre = "Alan";
-                    per.Apellido = "Brado";
-                    per.NombrePersona = "alanbrado";
-                    per.Clave = "abrete sesamo";
-                    per.Email = "alanbrado@gmail.com";
-                    per.Habilitado = true;
-                    _Personas.Add(per);
-
-                }
-                return _Personas;
-            }
-        }
-        #endregion */
         public List<Persona> GetAll()
         {
             //instanciamos el objeto lista a retornar
