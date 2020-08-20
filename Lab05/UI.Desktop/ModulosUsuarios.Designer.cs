@@ -127,23 +127,25 @@
             this.tsbEliminar});
             this.tsModulosUsuarios.Location = new System.Drawing.Point(4, 0);
             this.tsModulosUsuarios.Name = "tsModulosUsuarios";
-            this.tsModulosUsuarios.Size = new System.Drawing.Size(81, 25);
+            this.tsModulosUsuarios.Size = new System.Drawing.Size(112, 25);
             this.tsModulosUsuarios.TabIndex = 0;
             // 
             // tsbNuevo
             // 
             this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbNuevo.Image = global::UI.Desktop.Properties.Resources.plus;
             this.tsbNuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNuevo.Name = "tsbNuevo";
             this.tsbNuevo.Size = new System.Drawing.Size(23, 22);
-            this.tsbNuevo.Text = "toolStripButton1";
+            this.tsbNuevo.Text = "Nuevo";
             this.tsbNuevo.ToolTipText = "Nuevo";
             this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
             // tsbEditar
             // 
             this.tsbEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbEditar.Image = global::UI.Desktop.Properties.Resources.pencil;
             this.tsbEditar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEditar.Name = "tsbEditar";
@@ -154,6 +156,7 @@
             // tsbEliminar
             // 
             this.tsbEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbEliminar.Image = global::UI.Desktop.Properties.Resources.cancel;
             this.tsbEliminar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEliminar.Name = "tsbEliminar";

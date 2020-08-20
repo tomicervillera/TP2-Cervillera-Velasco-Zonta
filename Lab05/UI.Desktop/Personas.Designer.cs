@@ -28,179 +28,176 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Personas));
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tscPersonas = new System.Windows.Forms.ToolStripContainer();
+            this.tlPersonas = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvPersonas = new System.Windows.Forms.DataGridView();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.tsPersonas = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvPersonas = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnActualizar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.toolStrip1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tscPersonas.ContentPanel.SuspendLayout();
+            this.tscPersonas.TopToolStripPanel.SuspendLayout();
+            this.tscPersonas.SuspendLayout();
+            this.tlPersonas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonas)).BeginInit();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.tsPersonas.SuspendLayout();
             this.SuspendLayout();
             // 
-            // toolStrip1
+            // tscPersonas
             // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbNuevo,
-            this.tsbEditar,
-            this.tsbEliminar,
-            this.toolStripSeparator1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1067, 25);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
             // 
-            // tsbNuevo
+            // tscPersonas.ContentPanel
             // 
-            this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNuevo.Image = ((System.Drawing.Image)(resources.GetObject("tsbNuevo.Image")));
-            this.tsbNuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNuevo.Name = "tsbNuevo";
-            this.tsbNuevo.Size = new System.Drawing.Size(29, 22);
-            this.tsbNuevo.Text = "toolStripButton1";
-            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
+            this.tscPersonas.ContentPanel.Controls.Add(this.tlPersonas);
+            this.tscPersonas.ContentPanel.Size = new System.Drawing.Size(1099, 425);
+            this.tscPersonas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tscPersonas.Location = new System.Drawing.Point(0, 0);
+            this.tscPersonas.Name = "tscPersonas";
+            this.tscPersonas.Size = new System.Drawing.Size(1099, 450);
+            this.tscPersonas.TabIndex = 0;
+            this.tscPersonas.Text = "toolStripContainer1";
             // 
-            // tsbEditar
+            // tscPersonas.TopToolStripPanel
             // 
-            this.tsbEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEditar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEditar.Image")));
-            this.tsbEditar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEditar.Name = "tsbEditar";
-            this.tsbEditar.Size = new System.Drawing.Size(29, 28);
-            this.tsbEditar.Text = "toolStripButton2";
-            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
+            this.tscPersonas.TopToolStripPanel.Controls.Add(this.tsPersonas);
             // 
-            // tsbEliminar
+            // tlPersonas
             // 
-            this.tsbEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEliminar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEliminar.Image")));
-            this.tsbEliminar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEliminar.Name = "tsbEliminar";
-            this.tsbEliminar.Size = new System.Drawing.Size(29, 28);
-            this.tsbEliminar.Text = "toolStripButton3";
-            this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dgvPersonas, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(16, 34);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.70731F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.292683F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1035, 505);
-            this.tableLayoutPanel1.TabIndex = 1;
+            this.tlPersonas.ColumnCount = 2;
+            this.tlPersonas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlPersonas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlPersonas.Controls.Add(this.dgvPersonas, 0, 0);
+            this.tlPersonas.Controls.Add(this.btnSalir, 1, 1);
+            this.tlPersonas.Controls.Add(this.btnActualizar, 0, 1);
+            this.tlPersonas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlPersonas.Location = new System.Drawing.Point(0, 0);
+            this.tlPersonas.Name = "tlPersonas";
+            this.tlPersonas.RowCount = 2;
+            this.tlPersonas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlPersonas.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlPersonas.Size = new System.Drawing.Size(1099, 425);
+            this.tlPersonas.TabIndex = 0;
             // 
             // dgvPersonas
             // 
             this.dgvPersonas.AllowUserToAddRows = false;
             this.dgvPersonas.AllowUserToDeleteRows = false;
             this.dgvPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableLayoutPanel1.SetColumnSpan(this.dgvPersonas, 2);
+            this.tlPersonas.SetColumnSpan(this.dgvPersonas, 2);
             this.dgvPersonas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPersonas.Location = new System.Drawing.Point(4, 4);
-            this.dgvPersonas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvPersonas.Location = new System.Drawing.Point(3, 3);
             this.dgvPersonas.MultiSelect = false;
             this.dgvPersonas.Name = "dgvPersonas";
             this.dgvPersonas.ReadOnly = true;
-            this.dgvPersonas.RowHeadersWidth = 51;
+            this.dgvPersonas.RowHeadersWidth = 62;
             this.dgvPersonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPersonas.Size = new System.Drawing.Size(1027, 455);
+            this.dgvPersonas.Size = new System.Drawing.Size(1093, 390);
             this.dgvPersonas.TabIndex = 0;
             // 
-            // tableLayoutPanel2
+            // btnSalir
             // 
-            this.tableLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 89.35065F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.64935F));
-            this.tableLayoutPanel2.Controls.Add(this.btnActualizar, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnSalir, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 467);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1027, 34);
-            this.tableLayoutPanel2.TabIndex = 1;
+            this.btnSalir.Location = new System.Drawing.Point(1021, 399);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.TabIndex = 2;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnActualizar.Location = new System.Drawing.Point(813, 4);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnActualizar.Location = new System.Drawing.Point(940, 399);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(100, 26);
+            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 1;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
-            // btnSalir
+            // tsPersonas
             // 
-            this.btnSalir.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSalir.Location = new System.Drawing.Point(922, 4);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(100, 26);
-            this.btnSalir.TabIndex = 0;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            this.tsPersonas.Dock = System.Windows.Forms.DockStyle.None;
+            this.tsPersonas.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.tsPersonas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbNuevo,
+            this.tsbEditar,
+            this.tsbEliminar});
+            this.tsPersonas.Location = new System.Drawing.Point(4, 0);
+            this.tsPersonas.Name = "tsPersonas";
+            this.tsPersonas.Size = new System.Drawing.Size(112, 25);
+            this.tsPersonas.TabIndex = 0;
+            // 
+            // tsbNuevo
+            // 
+            this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbNuevo.Image = global::UI.Desktop.Properties.Resources.plus;
+            this.tsbNuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNuevo.Name = "tsbNuevo";
+            this.tsbNuevo.Size = new System.Drawing.Size(23, 22);
+            this.tsbNuevo.Text = "Nuevo";
+            this.tsbNuevo.ToolTipText = "Nuevo";
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
+            // 
+            // tsbEditar
+            // 
+            this.tsbEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbEditar.Image = global::UI.Desktop.Properties.Resources.pencil;
+            this.tsbEditar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEditar.Name = "tsbEditar";
+            this.tsbEditar.Size = new System.Drawing.Size(23, 22);
+            this.tsbEditar.Text = "Editar";
+            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
+            // 
+            // tsbEliminar
+            // 
+            this.tsbEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbEliminar.Image = global::UI.Desktop.Properties.Resources.cancel;
+            this.tsbEliminar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEliminar.Name = "tsbEliminar";
+            this.tsbEliminar.Size = new System.Drawing.Size(23, 22);
+            this.tsbEliminar.Text = "Eliminar";
+            this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
             // Personas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.toolStrip1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ClientSize = new System.Drawing.Size(1099, 450);
+            this.Controls.Add(this.tscPersonas);
+            this.MinimumSize = new System.Drawing.Size(1115, 39);
             this.Name = "Personas";
             this.Text = "Personas";
             this.Load += new System.EventHandler(this.Personas_Load);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tscPersonas.ContentPanel.ResumeLayout(false);
+            this.tscPersonas.TopToolStripPanel.ResumeLayout(false);
+            this.tscPersonas.TopToolStripPanel.PerformLayout();
+            this.tscPersonas.ResumeLayout(false);
+            this.tscPersonas.PerformLayout();
+            this.tlPersonas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonas)).EndInit();
-            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tsPersonas.ResumeLayout(false);
+            this.tsPersonas.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripContainer tscPersonas;
+        private System.Windows.Forms.ToolStrip tsPersonas;
+        private System.Windows.Forms.TableLayoutPanel tlPersonas;
+        private System.Windows.Forms.DataGridView dgvPersonas;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.ToolStripButton tsbNuevo;
         private System.Windows.Forms.ToolStripButton tsbEditar;
         private System.Windows.Forms.ToolStripButton tsbEliminar;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DataGridView dgvPersonas;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button btnActualizar;
-        private System.Windows.Forms.Button btnSalir;
     }
 }
+

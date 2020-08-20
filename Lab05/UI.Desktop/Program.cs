@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,9 +17,9 @@ namespace UI.Desktop
         { 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Comisiones());
-            //Application.Run(new UsuarioDesktop(1, ApplicationForm.ModoForm.Consulta));
-            //Application.Run(new formMain());
+            
+            //Application.Run(new Usuarios());
+            Application.Run(new formMain());
         }
     }
 }

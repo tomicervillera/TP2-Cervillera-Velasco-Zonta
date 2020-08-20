@@ -189,6 +189,12 @@
     <EmbeddedResource Include="Materias.resx">
       <DependentUpon>Materias.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos.resx">
+      <DependentUpon>Modulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModulosUsuarios.resx">
+      <DependentUpon>ModulosUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloUsuarioDesktop.resx">
       <DependentUpon>ModuloUsuarioDesktop.cs</DependentUpon>
     </EmbeddedResource>
@@ -218,6 +224,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
@@ -239,6 +246,15 @@
       <Project>{2ae1e2aa-37b3-44c7-ae64-c79353dbfb9e}</Project>
       <Name>Business.Logic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

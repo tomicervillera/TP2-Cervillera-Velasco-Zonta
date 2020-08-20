@@ -105,7 +105,7 @@ namespace UI.Desktop
                 this.PersonaActual.Apellido = this.txtApellido.Text;
                 this.PersonaActual.Direccion= this.txtDireccion.Text;
                 this.PersonaActual.Email = this.txtEmail.Text; 
-                this.PersonaActual.FechaNacimiento = this.dtFechaNacimiento.Value;
+                this.PersonaActual.FechaNacimiento = this.dtFechaNacimiento.Value.Date;
                 this.PersonaActual.Legajo = Convert.ToInt32(this.txtLegajo.Text);
                 this.PersonaActual.Telefono = this.txtTelefono.Text;
                 //this.PersonaActual.TipoPersona = ((Persona.TipoPersonas)cbTipoPersona.SelectedIndex);
@@ -154,6 +154,16 @@ namespace UI.Desktop
         }
         public override bool Validar()
         {
+
+            foreach (ComboBox oControls in this.tableLayoutPanel1.Controls.OfType<ComboBox>()) // Buscamos en cada TextBox de nuestro Formulario.
+            {
+                if (oControls.SelectedItem == null) // Verificamos que no este vacio exceptuando al txtID porque se asigna automáticamente.
+                {
+                    Notificar("Hay al menos un campo vacío. Por favor, completelo/s. ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return (false);
+                }
+            }
+
             foreach (Control oControls in this.tableLayoutPanel1.Controls) // Buscamos en cada TextBox de nuestro Formulario.
             {
                 if (oControls is TextBox & oControls.Text == String.Empty & oControls.Name != "txtID") // Verificamos que no este vacio exceptuando al txtID porque se asigna automáticamente.
@@ -162,6 +172,13 @@ namespace UI.Desktop
                     return (false);
                 }
             }
+
+            if (!((txtEmail.Text.Contains("@")) && (txtEmail.Text.Contains(".com"))))
+            {
+                Notificar("El email ingresado no es válido. ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return (false);
+            }
+
             return (true);
         }
         

@@ -156,6 +156,7 @@
             // cboxEspecialidad
             // 
             this.cboxEspecialidad.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cboxEspecialidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxEspecialidad.FormattingEnabled = true;
             this.cboxEspecialidad.Location = new System.Drawing.Point(140, 54);
             this.cboxEspecialidad.Name = "cboxEspecialidad";
