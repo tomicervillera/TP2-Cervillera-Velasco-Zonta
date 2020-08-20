@@ -19,7 +19,7 @@ namespace UI.Desktop
             Application.SetCompatibleTextRenderingDefault(false);
 
 
-            Application.Run(new Cursos());
+            Application.Run(new Personas());
             Application.Run(new DocentesCursos());
             //Application.Run(new formMain());
         }

@@ -28,11 +28,13 @@ namespace UI.Desktop
         public PersonaDesktop(ModoForm modo) : this()
         {
             Modo = modo;
+            
             PlanLogic pl = new PlanLogic();
             cboxPlan.DataSource = pl.GetAll();
             cboxPlan.ValueMember = "ID";
             cboxPlan.DisplayMember = "Descripcion";
-            cbTipoPersona.DataSource = Enum.GetNames(typeof (Persona.TipoPersonas));
+            
+            cbTipoPersona.DataSource = Enum.GetNames(typeof(Persona.TipoPersonas));
             
         }
         public PersonaDesktop(int ID, ModoForm modo) : this()
@@ -48,33 +50,21 @@ namespace UI.Desktop
         {
             this.txtID.Text = this.PersonaActual.ID.ToString();
             this.txtNombre.Text = this.PersonaActual.Nombre;
-            PlanLogic pl = new PlanLogic();
-            /*  cboxPlan.DataSource = pl.GetAll();
-              cboxPlan.ValueMember = "ID";
-              cboxPlan.DisplayMember = "Descripcion";
-              cboxPlan.SelectedValue = pl.GetOne(PersonaActual.IDPlan).ID;*/
             this.txtApellido.Text = this.PersonaActual.Apellido;
             this.txtDireccion.Text = this.PersonaActual.Direccion;
             this.txtEmail.Text = this.PersonaActual.Email;
-            this.dtFechaNacimiento.Value = this.PersonaActual.FechaNacimiento;
             this.txtLegajo.Text = this.PersonaActual.Legajo.ToString();
             this.txtTelefono.Text = this.PersonaActual.Telefono;
-            cboxPlan.Items.Clear();
-            cbTipoPersona.DataSource = Enum.GetNames(typeof(Persona.TipoPersonas));          
+            this.dtFechaNacimiento.Value = this.PersonaActual.FechaNacimiento;
+            
+            PlanLogic pl = new PlanLogic();         
             cboxPlan.DataSource = pl.GetAll();
             cboxPlan.ValueMember = "ID";
             cboxPlan.DisplayMember = "Descripcion";
             cboxPlan.SelectedValue = this.PersonaActual.IDPlan;
-            int aux = Convert.ToInt32(this.PersonaActual.TipoPersona);
-            cbTipoPersona.SelectedItem = aux;
-            //
-                
-
-
-
-
-
-
+            
+            cbTipoPersona.DataSource = Enum.GetNames(typeof(Persona.TipoPersonas));
+            cbTipoPersona.SelectedIndex = (int)PersonaActual.TipoPersona;
 
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
@@ -99,28 +89,16 @@ namespace UI.Desktop
             }
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
-               // this.PersonaActual.ID = Convert.ToInt32( this.txtID.Text);
                 this.PersonaActual.Nombre = this.txtNombre.Text;
-                PersonaActual.IDPlan = Convert.ToInt32(((Plan)cboxPlan.SelectedItem).ID);
                 this.PersonaActual.Apellido = this.txtApellido.Text;
                 this.PersonaActual.Direccion= this.txtDireccion.Text;
                 this.PersonaActual.Email = this.txtEmail.Text; 
                 this.PersonaActual.FechaNacimiento = this.dtFechaNacimiento.Value.Date;
                 this.PersonaActual.Legajo = Convert.ToInt32(this.txtLegajo.Text);
                 this.PersonaActual.Telefono = this.txtTelefono.Text;
-                //this.PersonaActual.TipoPersona = ((Persona.TipoPersonas)cbTipoPersona.SelectedIndex);
-                switch (this.cbTipoPersona.SelectedIndex)
-                {
-                    case 0:
-                        this.PersonaActual.TipoPersona = Persona.TipoPersonas.Alumno;
-                        break;
-
-                    case 1:
-                        this.PersonaActual.TipoPersona = Persona.TipoPersonas.Docente;
-                        //MessageBox.Show(this.PersonaActual.TipoPersona.ToString()); ;
-                        break;
-                }
-
+                
+                PersonaActual.IDPlan = Convert.ToInt32(((Plan)cboxPlan.SelectedItem).ID);
+                PersonaActual.TipoPersona = (Persona.TipoPersonas)cbTipoPersona.SelectedIndex;
 
                 switch (Modo)
                 {
@@ -154,15 +132,6 @@ namespace UI.Desktop
         }
         public override bool Validar()
         {
-
-            foreach (ComboBox oControls in this.tableLayoutPanel1.Controls.OfType<ComboBox>()) // Buscamos en cada TextBox de nuestro Formulario.
-            {
-                if (oControls.SelectedItem == null) // Verificamos que no este vacio exceptuando al txtID porque se asigna automáticamente.
-                {
-                    Notificar("Hay al menos un campo vacío. Por favor, completelo/s. ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return (false);
-                }
-            }
 
             foreach (Control oControls in this.tableLayoutPanel1.Controls) // Buscamos en cada TextBox de nuestro Formulario.
             {
