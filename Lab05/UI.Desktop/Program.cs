@@ -14,13 +14,12 @@ namespace UI.Desktop
         /// </summary>
         [STAThread]
         static void Main()
-        { 
+        {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-
-            Application.Run(new Personas());
-            Application.Run(new DocentesCursos());
+            Application.Run(new Cursos());
+            Application.Run(new AlumnosInscripciones());
             //Application.Run(new formMain());
         }
     }
