@@ -11,7 +11,7 @@ namespace UI.Web
 {
     public partial class Usuarios : System.Web.UI.Page
     {
-        //Miembros
+        #region Miembros
         private UsuarioLogic _logic;
         private UsuarioLogic Logic
         {
@@ -69,8 +69,9 @@ namespace UI.Web
                 return (this.SelectedID != 0);
             }
         }
+        #endregion
 
-        //Métodos
+        #region Metodos
         private void LoadGrid()
         {
             gridView.DataSource = this.Logic.GetAll();
@@ -87,7 +88,6 @@ namespace UI.Web
         }
         private void LoadEntity(Usuario usuario)
         {
-
             usuario.Nombre = this.nombreTextBox.Text;
             usuario.Apellido= this.apellidoTextBox.Text;
             usuario.Email = this.emailTextBox.Text;
@@ -131,8 +131,9 @@ namespace UI.Web
             this.claveTextBox.Text = string.Empty;
             this.repetirClaveTextBox.Text = string.Empty;
         }
+        #endregion
 
-        //Eventos
+        #region Eventos
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Page.IsPostBack == false)
@@ -144,16 +145,39 @@ namespace UI.Web
         {
             this.SelectedID = (int)this.gridView.SelectedValue;
         }
+        
+        //GridActionsPanel
         protected void editarLinkButton_Click(object sender, EventArgs e)
         {
             if (this.IsEntitySelected)
             {
+                this.formActionsPanel.Visible = true;
                 this.formPanel.Visible = true;
                 this.FormMode = FormModes.Modificacion;
                 this.EnableForm(true);
                 this.LoadForm(this.SelectedID);
             }
         }
+        protected void eliminarLinkButton_Click(object sender, EventArgs e)
+        {
+            if (this.IsEntitySelected)
+            {
+                this.formPanel.Visible = true;
+                this.FormMode = FormModes.Baja;
+                this.EnableForm(false);
+                this.LoadForm(this.SelectedID);
+            }
+        }
+        protected void nuevoLinkButton_Click(object sender, EventArgs e)
+        {
+            this.formActionsPanel.Visible = true;
+            this.formPanel.Visible = true;
+            this.FormMode = FormModes.Alta;
+            this.ClearForm();
+            this.EnableForm(true);
+        }
+
+        //FormActionsPanel
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
             if (Page.IsValid == true)
@@ -184,30 +208,16 @@ namespace UI.Web
                         break;
                 }
                 this.formPanel.Visible = false;
+                this.formActionsPanel.Visible = false;
             }
-        }
-        protected void eliminarLinkButton_Click(object sender, EventArgs e)
-        {
-            if (this.IsEntitySelected)
-            {
-                this.formPanel.Visible = true;
-                this.FormMode = FormModes.Baja;
-                this.EnableForm(false);
-                this.LoadForm(this.SelectedID);
-            }
-        }
-        protected void nuevoLinkButton_Click(object sender, EventArgs e)
-        {
-            this.formPanel.Visible = true;
-            this.FormMode = FormModes.Alta;
-            this.ClearForm();
-            this.EnableForm(true);
         }
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
             this.ClearForm();
             this.EnableForm(false);
             this.formPanel.Visible = false;
+            this.formActionsPanel.Visible = false;
         }
+        #endregion
     }
 }

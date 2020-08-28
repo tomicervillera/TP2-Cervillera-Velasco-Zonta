@@ -13,13 +13,13 @@
             </Columns>
         </asp:GridView>
     </asp:Panel>
-    <asp:Panel ID="gridAcionsPanel" runat="server">
-                <asp:LinkButton ID="editarLinkButton" runat="server" Text="Editar" OnClick="editarLinkButton_Click"></asp:LinkButton>
-                <asp:LinkButton ID="eliminarLinkButton" runat="server" Text="Eliminar" OnClick="eliminarLinkButton_Click"></asp:LinkButton>
-                <asp:LinkButton ID="nuevoLinkButton" runat="server" Text="Nuevo" OnClick="nuevoLinkButton_Click"></asp:LinkButton>
+    <asp:Panel ID="gridActionsPanel" runat="server" Style="margin-top: 5px">
+                <asp:LinkButton ID="nuevoLinkButton" runat="server" Text="Nuevo" OnClick="nuevoLinkButton_Click" CausesValidation="False"></asp:LinkButton>
+                <asp:LinkButton ID="editarLinkButton" runat="server" Text="Editar" OnClick="editarLinkButton_Click" CausesValidation="False"></asp:LinkButton>
+                <asp:LinkButton ID="eliminarLinkButton" runat="server" Text="Eliminar" OnClick="eliminarLinkButton_Click" CausesValidation="False"></asp:LinkButton>
+                
             </asp:Panel>
     <br />
-
     <asp:Panel ID="formPanel" Visible="false" runat="server">
         <asp:Label ID="nombreLabel" runat="server" Text="Nombre:"></asp:Label>
         <asp:TextBox ID="nombreTextBox" runat="server"></asp:TextBox>
@@ -31,7 +31,8 @@
         <br />
         <asp:Label ID="emailLabel" runat="server" Text="E-mail:"></asp:Label>
         <asp:TextBox ID="emailTextBox" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="emailRequiredFieldValidator" runat="server" ControlToValidate="emailTextBox" ErrorMessage="El email no puede estar vacío." Text="*" ForeColor="Red"></asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="emailRequiredFieldValidator" runat="server" ControlToValidate="emailTextBox" ErrorMessage="El email no puede estar vacío." Text="*" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="emailRegularExpressionValidator" runat="server" ControlToValidate="emailTextBox" Text="*" ForeColor="Red" ErrorMessage="Email incorrecto." ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
         <br />
         <asp:Label ID="habilitadoLabel" runat="server" Text="Habilitado:"></asp:Label>
         <asp:CheckBox ID="habilitadoCheckBox" runat="server"></asp:CheckBox>
@@ -46,11 +47,12 @@
         <br />
         <asp:Label ID="repetirClaveLabel" runat="server" Text="Repetir clave:"></asp:Label>
         <asp:TextBox ID="repetirClaveTextBox" TextMode="Password" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="repetirClaveRequiredFieldValidator" runat="server" ControlToValidate="repetirClaveTextbox" ErrorMessage="La confirmación de clave no puede estar vacía." Text="*" ForeColor="Red"></asp:RequiredFieldValidator>
-        <br />
+        <asp:RequiredFieldValidator ID="repetirClaveRequiredFieldValidator" runat="server" ControlToValidate="repetirClaveTextbox" ErrorMessage="La confirmación de clave no puede estar vacía." Text="*" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+        <asp:CompareValidator ID="clavesCompareValidator" runat="server" ControlToValidate="repetirClaveTextBox" ControlToCompare="claveTextBox" Operator="Equal" Text="*" ForeColor="Red" ErrorMessage="Las claves ingresadas no coinciden."></asp:CompareValidator>
+        <asp:ValidationSummary ID="erroresValidationSummary" runat="server" DisplayMode="BulletList" ForeColor="Red" style="margin-bottom: 0px; margin-top: 0px; margin"/>
     </asp:Panel>
-    <asp:Panel ID="formActionsPanel" runat="server">
+    <asp:Panel ID="formActionsPanel" Visible="false" runat="server" Style="margin-top: 5px">
         <asp:LinkButton ID="aceptarLinkButton" runat="server" Text="Aceptar" OnClick="aceptarLinkButton_Click"></asp:LinkButton>
-        <asp:LinkButton ID="cancelarLinkButton" runat="server" Text="Cancelar" OnClick="cancelarLinkButton_Click"></asp:LinkButton>
+        <asp:LinkButton ID="cancelarLinkButton" runat="server" Text="Cancelar" OnClick="cancelarLinkButton_Click" CausesValidation="False"></asp:LinkButton>
     </asp:Panel>
 </asp:Content>
