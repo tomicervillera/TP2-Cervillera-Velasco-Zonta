@@ -267,15 +267,6 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.RequiredFieldValidator repetirClaveRequiredFieldValidator;
 
         /// <summary>
-        /// clavesCompareValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator clavesCompareValidator;
-
-        /// <summary>
         /// erroresValidationSummary control.
         /// </summary>
         /// <remarks>

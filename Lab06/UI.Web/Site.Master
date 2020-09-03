@@ -8,8 +8,9 @@
 </head>
 <body>
     <form id="bodyForm" runat="server">
-        <asp:Menu runat="server" ID="menu" DataSourceID="SiteMapDataSource">
+        <asp:Menu runat="server" ID="menu" DataSourceID="SiteMapDataSource" >
         </asp:Menu>
+        <br />
         <asp:SiteMapDataSource ID="SiteMapDataSource" runat="server" />
         <div>
             <asp:ContentPlaceHolder ID="bodyContentPlaceHolder1" runat="server">

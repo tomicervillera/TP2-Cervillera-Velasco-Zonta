@@ -100,6 +100,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Themes\Default\LinkButton.skin" />
+    <Content Include="App_Themes\Default\GridView.skin" />
+    <Content Include="App_Themes\Default\Label.skin" />
+    <Content Include="App_Themes\Default\CompareValidator.skin" />
+    <Content Include="App_Themes\Default\ValidationSummary.skin" />
+    <Content Include="App_Themes\Default\Menu.skin" />
+    <Content Include="App_Themes\Default\RequiredFieldValidator.skin" />
+    <Content Include="App_Themes\Default\RegularExpressionValidator.skin" />
     <None Include="packages.config" />
     <Content Include="Site.Master" />
     <None Include="Web.Debug.config">

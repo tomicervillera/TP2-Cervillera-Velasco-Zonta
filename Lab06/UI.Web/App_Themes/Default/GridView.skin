@@ -1,0 +1,3 @@
+﻿<asp:GridView runat="server" Font-Names="Calibri Light" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" CellPadding="3">
+    <HeaderStyle Font-Bold="True" Font-Names="Calibri"/>
+</asp:GridView>
