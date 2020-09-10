@@ -41,6 +41,10 @@ namespace UI.Desktop
             {
                 MessageBox.Show("Contraseña incorrecta.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else if (currentUser.Habilitado == false)
+            {
+                MessageBox.Show("Usuario no habilitado.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
             {
                 MessageBox.Show("Usted ha ingresado al sistema correctamente.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
