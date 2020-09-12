@@ -13,7 +13,8 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ((Site1)this.Master).HeaderText = "Login";
+            ((Site1)this.Master).TreeNav.Visible = false;
         }
 
         protected void btnIngresar_Click(object sender, EventArgs e)
@@ -44,7 +45,6 @@ namespace UI.Web
             }
             else
             {
-                Response.Write("<script>alert('Usted ha ingresado al sistema correctamente.');</script>");
                 Response.Redirect("/Default.aspx");
             }
         }

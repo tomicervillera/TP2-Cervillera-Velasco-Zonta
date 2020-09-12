@@ -11,7 +11,7 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ((Site1)this.Master).HeaderText = "Home";
         }
     }
 }

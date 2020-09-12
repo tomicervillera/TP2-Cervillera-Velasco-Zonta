@@ -136,6 +136,7 @@ namespace UI.Web
         #region Eventos
         protected void Page_Load(object sender, EventArgs e)
         {
+            ((Site1)this.Master).HeaderText = "Usuarios";
             if (Page.IsPostBack == false)
             {
                 LoadGrid();
