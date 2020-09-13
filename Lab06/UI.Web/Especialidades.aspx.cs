@@ -9,17 +9,17 @@ using Business.Logic;
 
 namespace UI.Web
 {
-    public partial class Usuarios : System.Web.UI.Page
+    public partial class Especialidades : System.Web.UI.Page
     {
         #region Miembros
-        private UsuarioLogic _logic;
-        private UsuarioLogic Logic
+        private EspecialidadLogic _logic;
+        private EspecialidadLogic Logic
         {
             get
             {
                 if (_logic == null)
                 {
-                    _logic = new UsuarioLogic();
+                    _logic = new EspecialidadLogic();
                 }
                 return _logic;
             }
@@ -39,7 +39,7 @@ namespace UI.Web
                 this.ViewState["FormMode"] = value;
             }
         }
-        private Usuario Entity
+        private Especialidad Entity
         {
             get;
             set;
@@ -80,24 +80,15 @@ namespace UI.Web
         private void LoadForm(int id)
         {
             this.Entity = this.Logic.GetOne(id);
-            this.nombreTextBox.Text = this.Entity.Nombre;
-            this.apellidoTextBox.Text = this.Entity.Apellido;
-            this.emailTextBox.Text = this.Entity.Email;
-            this.habilitadoCheckBox.Checked = this.Entity.Habilitado;
-            this.nombreUsuarioTextBox.Text = this.Entity.NombreUsuario;
+            this.descripcionTextBox.Text = this.Entity.Descripcion;
         }
-        private void LoadEntity(Usuario usuario)
+        private void LoadEntity(Especialidad especialidad)
         {
-            usuario.Nombre = this.nombreTextBox.Text;
-            usuario.Apellido= this.apellidoTextBox.Text;
-            usuario.Email = this.emailTextBox.Text;
-            usuario.NombreUsuario = this.nombreUsuarioTextBox.Text;
-            usuario.Clave= this.claveTextBox.Text;
-            usuario.Habilitado = this.habilitadoCheckBox.Checked;
+            this.Entity.Descripcion = this.descripcionTextBox.Text;
         }
-        private void SaveEntity(Usuario usuario)
+        private void SaveEntity(Especialidad especialidad)
         {
-            this.Logic.Save(usuario);
+            this.Logic.Save(especialidad);
         }
         private void DeleteEntity(int id)
         {
@@ -105,38 +96,18 @@ namespace UI.Web
         }
         private void EnableForm(bool enable)
         {
-            this.nombreTextBox.Enabled = enable;
-            
-            this.apellidoTextBox.Enabled = enable;
-            
-            this.emailTextBox.Enabled = enable;
-            
-            this.nombreUsuarioTextBox.Enabled = enable;
-            
-            this.claveTextBox.Visible = enable;
-            this.claveLabel.Visible = enable;
-
-            this.habilitadoCheckBox.Enabled = enable;
-
-            this.repetirClaveTextBox.Visible= enable;
-            this.repetirClaveLabel.Visible = enable;
+            this.descripcionTextBox.Enabled = enable;
         }
         private void ClearForm()
         {
-            this.nombreTextBox.Text = string.Empty;
-            this.apellidoTextBox.Text = string.Empty;
-            this.emailTextBox.Text = string.Empty;
-            this.habilitadoCheckBox.Checked = false;
-            this.nombreUsuarioTextBox.Text = string.Empty;
-            this.claveTextBox.Text = string.Empty;
-            this.repetirClaveTextBox.Text = string.Empty;
+            this.descripcionTextBox.Text = string.Empty;
         }
         #endregion
 
         #region Eventos
         protected void Page_Load(object sender, EventArgs e)
         {
-            ((Site1)this.Master).HeaderText = "Usuarios";
+            ((Site1)this.Master).HeaderText = "Especialidades";
             if (Page.IsPostBack == false)
             {
                 LoadGrid();
@@ -146,7 +117,7 @@ namespace UI.Web
         {
             this.SelectedID = (int)this.gridView.SelectedValue;
         }
-        
+
         //GridActionsPanel
         protected void editarLinkButton_Click(object sender, EventArgs e)
         {
@@ -168,6 +139,7 @@ namespace UI.Web
                 this.FormMode = FormModes.Baja;
                 this.EnableForm(false);
                 this.LoadForm(this.SelectedID);
+
             }
         }
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
@@ -191,7 +163,7 @@ namespace UI.Web
                         this.LoadGrid();
                         break;
                     case FormModes.Modificacion:
-                        this.Entity = new Usuario();
+                        this.Entity = new Especialidad();
                         this.Entity.ID = this.SelectedID;
                         this.Entity.State = BusinessEntity.States.Modified;
 
@@ -201,7 +173,7 @@ namespace UI.Web
 
                         break;
                     case FormModes.Alta:
-                        this.Entity = new Usuario();
+                        this.Entity = new Especialidad();
                         this.LoadEntity(this.Entity);
                         this.SaveEntity(this.Entity);
                         this.LoadGrid();
