@@ -4,6 +4,7 @@
     <asp:Panel ID="gridPanel" runat="server">
         <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="false" DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged">
             <Columns>
+                <asp:BoundField HeaderText="ID" DataField="ID"/>
                 <asp:BoundField HeaderText="Nombre" DataField="Nombre"/>
                 <asp:BoundField HeaderText="Apellido" DataField="Apellido"/>
                 <asp:BoundField HeaderText="E-mail" DataField="EMail"/>
