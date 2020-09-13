@@ -29,9 +29,9 @@
                                 <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
                                 <Nodes>
                                     <asp:TreeNode NavigateUrl="~/Default.aspx" Text="Home" Value="Home">
-                                        <asp:TreeNode NavigateUrl="~/Usuarios.aspx" Text="Usuarios" Value="Usuarios"></asp:TreeNode>
                                         <asp:TreeNode NavigateUrl="~/Especialidades.aspx" Text="Especialidades" Value="Especialidades"></asp:TreeNode>
                                         <asp:TreeNode NavigateUrl="~/Planes.aspx" Text="Planes" Value="Planes"></asp:TreeNode>
+                                        <asp:TreeNode NavigateUrl="~/Usuarios.aspx" Text="Usuarios" Value="Usuarios"></asp:TreeNode>
                                     </asp:TreeNode>
                                 </Nodes>
                                 <NodeStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
