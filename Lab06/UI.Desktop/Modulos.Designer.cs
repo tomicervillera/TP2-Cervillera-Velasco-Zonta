@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Modulos));
             this.tscModulos = new System.Windows.Forms.ToolStripContainer();
             this.tlModulos = new System.Windows.Forms.TableLayoutPanel();
             this.dgvModulos = new System.Windows.Forms.DataGridView();
@@ -127,7 +128,7 @@
             this.tsbEliminar});
             this.tsModulos.Location = new System.Drawing.Point(4, 0);
             this.tsModulos.Name = "tsModulos";
-            this.tsModulos.Size = new System.Drawing.Size(112, 25);
+            this.tsModulos.Size = new System.Drawing.Size(81, 25);
             this.tsModulos.TabIndex = 0;
             // 
             // tsbNuevo
@@ -170,6 +171,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tscModulos);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Modulos";
             this.Text = "Modulos";
             this.Load += new System.EventHandler(this.Modulos_Load);

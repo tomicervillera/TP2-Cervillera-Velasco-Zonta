@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DocentesCursos));
             this.tscDocentesCursos = new System.Windows.Forms.ToolStripContainer();
             this.tlDocentesCursos = new System.Windows.Forms.TableLayoutPanel();
             this.dgvDocentesCursos = new System.Windows.Forms.DataGridView();
@@ -170,6 +171,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tscDocentesCursos);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DocentesCursos";
             this.Text = "DocentesCursos";
             this.Load += new System.EventHandler(this.DocentesCursos_Load);

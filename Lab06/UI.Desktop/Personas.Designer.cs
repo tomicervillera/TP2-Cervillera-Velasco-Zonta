@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Personas));
             this.tscPersonas = new System.Windows.Forms.ToolStripContainer();
             this.tlPersonas = new System.Windows.Forms.TableLayoutPanel();
             this.dgvPersonas = new System.Windows.Forms.DataGridView();
@@ -127,7 +128,7 @@
             this.tsbEliminar});
             this.tsPersonas.Location = new System.Drawing.Point(4, 0);
             this.tsPersonas.Name = "tsPersonas";
-            this.tsPersonas.Size = new System.Drawing.Size(112, 25);
+            this.tsPersonas.Size = new System.Drawing.Size(81, 25);
             this.tsPersonas.TabIndex = 0;
             // 
             // tsbNuevo
@@ -170,6 +171,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1099, 450);
             this.Controls.Add(this.tscPersonas);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1115, 39);
             this.Name = "Personas";
             this.Text = "Personas";

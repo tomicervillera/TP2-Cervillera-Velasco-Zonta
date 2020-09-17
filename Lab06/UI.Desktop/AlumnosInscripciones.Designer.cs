@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlumnosInscripciones));
             this.tscAlumnosInscripciones = new System.Windows.Forms.ToolStripContainer();
             this.tlAlumnosInscripciones = new System.Windows.Forms.TableLayoutPanel();
             this.dgvAlumnosInscripciones = new System.Windows.Forms.DataGridView();
@@ -127,7 +128,7 @@
             this.tsbEliminar});
             this.tsAlumnosInscripciones.Location = new System.Drawing.Point(4, 0);
             this.tsAlumnosInscripciones.Name = "tsAlumnosInscripciones";
-            this.tsAlumnosInscripciones.Size = new System.Drawing.Size(112, 25);
+            this.tsAlumnosInscripciones.Size = new System.Drawing.Size(81, 25);
             this.tsAlumnosInscripciones.TabIndex = 0;
             // 
             // tsbNuevo
@@ -170,6 +171,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tscAlumnosInscripciones);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AlumnosInscripciones";
             this.Text = "AlumnosInscripciones";
             this.Load += new System.EventHandler(this.AlumnosInscripciones_Load);

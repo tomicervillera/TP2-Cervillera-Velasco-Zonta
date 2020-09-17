@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="/Site1.master" CodeBehind="Especialidades.aspx.cs" Inherits="UI.Web.Especialidades" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="/Site1.master" CodeBehind="Especialidades.aspx.cs" Inherits="UI.Web.Especialidades" Title="Especialidades - Sistema Académico" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder1" Runat="Server">
     <asp:Panel ID="gridPanel" runat="server">

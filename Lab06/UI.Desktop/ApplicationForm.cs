@@ -22,6 +22,7 @@ namespace UI.Desktop
         }
         public ModoForm Modo;
 
+
         //Constructor
         public ApplicationForm()
         {
