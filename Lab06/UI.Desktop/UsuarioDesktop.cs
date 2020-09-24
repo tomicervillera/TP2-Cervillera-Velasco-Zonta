@@ -75,6 +75,7 @@ namespace UI.Desktop
                 UsuarioActual.Email = txtEmail.Text;
                 UsuarioActual.NombreUsuario = txtUsuario.Text;
                 UsuarioActual.Clave = txtClave.Text;
+                UsuarioActual.Habilitado = chkHabilitado.Checked;
                 //UsuarioActual.Clave = txtConfirmarClave.Text;
 
                 switch (Modo)

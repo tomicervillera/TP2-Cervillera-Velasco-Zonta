@@ -56,7 +56,11 @@ namespace UI.Desktop
             this.txtLegajo.Text = this.PersonaActual.Legajo.ToString();
             this.txtTelefono.Text = this.PersonaActual.Telefono;
             this.dtFechaNacimiento.Value = this.PersonaActual.FechaNacimiento;
-            
+            this.chkHabilitado.Checked = this.PersonaActual.Habilitado;
+            this.txtUsuario.Text = this.PersonaActual.NombreUsuario;
+            this.txtClave.Text = this.PersonaActual.Clave;
+            this.txtConfirmarClave.Text = this.PersonaActual.Clave;
+
             PlanLogic pl = new PlanLogic();         
             cboxPlan.DataSource = pl.GetAll();
             cboxPlan.ValueMember = "ID";
@@ -96,9 +100,12 @@ namespace UI.Desktop
                 this.PersonaActual.FechaNacimiento = this.dtFechaNacimiento.Value.Date;
                 this.PersonaActual.Legajo = Convert.ToInt32(this.txtLegajo.Text);
                 this.PersonaActual.Telefono = this.txtTelefono.Text;
-                
-                PersonaActual.IDPlan = Convert.ToInt32(((Plan)cboxPlan.SelectedItem).ID);
-                PersonaActual.TipoPersona = (Persona.TipoPersonas)cbTipoPersona.SelectedIndex;
+                this.PersonaActual.NombreUsuario = txtUsuario.Text;
+                this.PersonaActual.Clave = txtClave.Text;
+                this.PersonaActual.Habilitado = chkHabilitado.Checked;
+
+                this.PersonaActual.IDPlan = Convert.ToInt32(((Plan)cboxPlan.SelectedItem).ID);
+                this.PersonaActual.TipoPersona = (Persona.TipoPersonas)cbTipoPersona.SelectedIndex;
 
                 switch (Modo)
                 {
@@ -140,6 +147,27 @@ namespace UI.Desktop
                     Notificar("Hay al menos un campo vacío. Por favor, completelo/s. ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return (false);
                 }
+            }
+
+            foreach (char c in txtLegajo.Text)
+            {
+                if (c < '0' || c > '9')
+                {
+                    Notificar("Legajo no válido. ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+            }
+
+                if (txtClave.Text != txtConfirmarClave.Text)
+            {
+                Notificar("La clave ingresada no coincide con la clave de confirmación. ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return (false);
+            }
+            else if (txtClave.Text.Length < 8)
+            {
+                Notificar("La clave ingresada debe ser al menos de 8 carateres de longitud.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return (false);
             }
 
             if (!((txtEmail.Text.Contains("@")) && (txtEmail.Text.Contains(".com"))))

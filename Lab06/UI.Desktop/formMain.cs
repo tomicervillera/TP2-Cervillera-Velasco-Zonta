@@ -31,6 +31,7 @@ namespace UI.Desktop
             }
         }
 
+        //Eventos menú
         private void comisionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Comisiones formComisiones = new Comisiones();
@@ -55,12 +56,6 @@ namespace UI.Desktop
             formModulos.ShowDialog();
         }
 
-        private void módulosUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ModulosUsuarios formModulosUsuarios = new ModulosUsuarios();
-            formModulosUsuarios.ShowDialog();
-        }
-
         private void personasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Personas formPersonas = new Personas();
@@ -71,12 +66,6 @@ namespace UI.Desktop
         {
             Planes formPlanes = new Planes();
             formPlanes.ShowDialog();
-        }
-
-        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Usuarios formUsuarios = new Usuarios();
-            formUsuarios.ShowDialog();
         }
 
         private void cursosToolStripMenuItem_Click(object sender, EventArgs e)

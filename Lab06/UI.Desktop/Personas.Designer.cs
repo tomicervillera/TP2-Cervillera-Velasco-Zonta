@@ -52,11 +52,11 @@
             // tscPersonas.ContentPanel
             // 
             this.tscPersonas.ContentPanel.Controls.Add(this.tlPersonas);
-            this.tscPersonas.ContentPanel.Size = new System.Drawing.Size(1099, 425);
+            this.tscPersonas.ContentPanel.Size = new System.Drawing.Size(1264, 425);
             this.tscPersonas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tscPersonas.Location = new System.Drawing.Point(0, 0);
             this.tscPersonas.Name = "tscPersonas";
-            this.tscPersonas.Size = new System.Drawing.Size(1099, 450);
+            this.tscPersonas.Size = new System.Drawing.Size(1264, 450);
             this.tscPersonas.TabIndex = 0;
             this.tscPersonas.Text = "toolStripContainer1";
             // 
@@ -78,28 +78,31 @@
             this.tlPersonas.RowCount = 2;
             this.tlPersonas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlPersonas.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlPersonas.Size = new System.Drawing.Size(1099, 425);
+            this.tlPersonas.Size = new System.Drawing.Size(1264, 425);
             this.tlPersonas.TabIndex = 0;
             // 
             // dgvPersonas
             // 
             this.dgvPersonas.AllowUserToAddRows = false;
             this.dgvPersonas.AllowUserToDeleteRows = false;
+            this.dgvPersonas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvPersonas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tlPersonas.SetColumnSpan(this.dgvPersonas, 2);
-            this.dgvPersonas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPersonas.Location = new System.Drawing.Point(3, 3);
             this.dgvPersonas.MultiSelect = false;
             this.dgvPersonas.Name = "dgvPersonas";
             this.dgvPersonas.ReadOnly = true;
             this.dgvPersonas.RowHeadersWidth = 62;
             this.dgvPersonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPersonas.Size = new System.Drawing.Size(1093, 390);
+            this.dgvPersonas.Size = new System.Drawing.Size(1258, 390);
             this.dgvPersonas.TabIndex = 0;
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(1021, 399);
+            this.btnSalir.Location = new System.Drawing.Point(1186, 399);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 2;
@@ -110,7 +113,7 @@
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(940, 399);
+            this.btnActualizar.Location = new System.Drawing.Point(1105, 399);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 1;
@@ -169,10 +172,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1099, 450);
+            this.ClientSize = new System.Drawing.Size(1264, 450);
             this.Controls.Add(this.tscPersonas);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1115, 39);
+            this.MinimumSize = new System.Drawing.Size(1280, 39);
             this.Name = "Personas";
             this.Text = "Personas";
             this.Load += new System.EventHandler(this.Personas_Load);

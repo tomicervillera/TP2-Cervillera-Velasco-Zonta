@@ -82,18 +82,33 @@ namespace UI.Desktop
             colLegajo.DisplayIndex = 7;
             this.dgvPersonas.Columns.Add(colLegajo);
 
+            DataGridViewTextBoxColumn colUsuario = new DataGridViewTextBoxColumn();
+            colUsuario.Name = "usuario";
+            colUsuario.HeaderText = "Usuario";
+            colUsuario.DataPropertyName = "NombreUsuario";
+            colUsuario.DisplayIndex = 8;
+            this.dgvPersonas.Columns.Add(colUsuario);
+
+
+            DataGridViewCheckBoxColumn colHabilitado = new DataGridViewCheckBoxColumn();
+            colHabilitado.Name = "habilitado";
+            colHabilitado.HeaderText = "Habilitado";
+            colHabilitado.DataPropertyName = "Habilitado";
+            colHabilitado.DisplayIndex = 9;
+            this.dgvPersonas.Columns.Add(colHabilitado);
+
             DataGridViewTextBoxColumn colTipoPersona = new DataGridViewTextBoxColumn();
             colTipoPersona.Name = "tipo_persona";
             colTipoPersona.HeaderText = "TipoPersona";
             colTipoPersona.DataPropertyName = "TipoPersona";
-            colTipoPersona.DisplayIndex = 8;
+            colTipoPersona.DisplayIndex = 10;
             this.dgvPersonas.Columns.Add(colTipoPersona);
 
             DataGridViewTextBoxColumn colIdPlan = new DataGridViewTextBoxColumn();
             colIdPlan.Name = "id_plan";
             colIdPlan.HeaderText = "ID Plan";
             colIdPlan.DataPropertyName = "IDPlan";
-            colIdPlan.DisplayIndex = 9;
+            colIdPlan.DisplayIndex = 11;
             this.dgvPersonas.Columns.Add(colIdPlan);
         }
 

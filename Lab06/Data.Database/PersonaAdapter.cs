@@ -39,6 +39,9 @@ namespace Data.Database
                     per.Legajo = (int)drPersonas["legajo"];
                     per.Telefono = (string)drPersonas["telefono"];
                     per.TipoPersona = (Persona.TipoPersonas)drPersonas["tipo_persona"];
+                    per.NombreUsuario = (string)drPersonas["nombre_usuario"];
+                    per.Clave = (string)drPersonas["clave"];
+                    per.Habilitado = (bool)drPersonas["habilitado"];
                     //agregamos el objeto con datos a la lista que devolveremos
                     personas.Add(per);
                 }
@@ -78,7 +81,9 @@ namespace Data.Database
                     per.Legajo = (int)drPersonas["legajo"];
                     per.Telefono = (string)drPersonas["telefono"];
                     per.TipoPersona = (Persona.TipoPersonas)drPersonas["tipo_persona"];
-
+                    per.NombreUsuario = (string)drPersonas["nombre_usuario"];
+                    per.Clave = (string)drPersonas["clave"];
+                    per.Habilitado = (bool)drPersonas["habilitado"];
                 }
                 drPersonas.Close();
             }
@@ -99,8 +104,8 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand("UPDATE personas SET  nombre = @nombre, apellido = @apellido, " +
-                "direccion = @direccion, email = @email, fecha_nac = @fecha_nac, id_plan = @id_plan, legajo = @legajo, telefono = @telefono, tipo_persona = @tipo_persona "
-                + "WHERE id_persona = @id", SqlConn);
+                "direccion = @direccion, email = @email, fecha_nac = @fecha_nac, id_plan = @id_plan, legajo = @legajo, telefono = @telefono, tipo_persona = @tipo_persona, "
+                + "nombre_usuario = @nombre_usuario, clave = @clave, habilitado = @habilitado WHERE id_persona = @id", SqlConn);
 
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = persona.ID;
                 cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = persona.Nombre;
@@ -112,6 +117,9 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@legajo", SqlDbType.Int).Value = persona.Legajo;
                 cmdSave.Parameters.Add("@telefono", SqlDbType.VarChar, 50).Value = persona.Telefono;
                 cmdSave.Parameters.Add("@tipo_persona", SqlDbType.Int).Value = Convert.ToInt32(persona.TipoPersona);
+                cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = persona.NombreUsuario;
+                cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = persona.Clave;
+                cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = persona.Habilitado;
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -130,8 +138,8 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
-                    "insert into personas (nombre, apellido, direccion, email, fecha_nac, id_plan, legajo, telefono, tipo_persona) " +
-                    "values (@nombre, @apellido, @direccion, @email, @fecha_nac, @id_plan, @legajo, @telefono, @tipo_persona) " +
+                    "insert into personas (nombre, apellido, direccion, email, fecha_nac, id_plan, legajo, telefono, tipo_persona, nombre_usuario, clave, habilitado) " +
+                    "values (@nombre, @apellido, @direccion, @email, @fecha_nac, @id_plan, @legajo, @telefono, @tipo_persona, @nombre_usuario, @clave, @habilitado) " +
                     "select @@identity", //esta línea es para recuperar el ID que asignó el sql automáticamente
                     SqlConn);
                 cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = persona.Nombre;
@@ -143,6 +151,10 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@legajo", SqlDbType.Int).Value = persona.Legajo;
                 cmdSave.Parameters.Add("@telefono", SqlDbType.VarChar, 50).Value = persona.Telefono;
                 cmdSave.Parameters.Add("@tipo_persona", SqlDbType.Int).Value = Convert.ToInt32(persona.TipoPersona);
+                cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = persona.NombreUsuario;
+                cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = persona.Clave;
+                cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = persona.Habilitado;
+
                 persona.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
                 //Así se obtiene el ID que asignó al BD automáticamente
             }
