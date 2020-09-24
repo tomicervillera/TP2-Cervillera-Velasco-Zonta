@@ -72,6 +72,7 @@
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
     <Content Include="Planes.aspx" />
+    <Content Include="Personas.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
     <Content Include="Usuarios.aspx" />
@@ -123,6 +124,13 @@
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
+    <Compile Include="Personas.aspx.cs">
+      <DependentUpon>Personas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Personas.aspx.designer.cs">
+      <DependentUpon>Personas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Usuarios.aspx.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -140,6 +148,8 @@
     <Content Include="App_Themes\Default\Menu.skin" />
     <Content Include="App_Themes\Default\RequiredFieldValidator.skin" />
     <Content Include="App_Themes\Default\RegularExpressionValidator.skin" />
+    <Content Include="App_Themes\Default\RangeValidator.skin" />
+    <Content Include="App_Themes\Default\CustomValidator.skin" />
     <None Include="packages.config" />
     <Content Include="Site.Master" />
     <Content Include="Site1.Master" />

@@ -19,11 +19,11 @@ namespace UI.Web
 
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
-            UsuarioLogic ul = new UsuarioLogic();
-            List<Business.Entities.Usuario> usuarios = ul.GetAll();
-            Business.Entities.Usuario currentUser = null;
+            PersonaLogic pl = new PersonaLogic();
+            List<Business.Entities.Persona> usuarios = pl.GetAll();
+            Business.Entities.Persona currentUser = null;
 
-            foreach (Business.Entities.Usuario usu in usuarios)
+            foreach (Business.Entities.Persona usu in usuarios)
             {
                 if (usu.NombreUsuario == txtUsuario.Text)
                 {

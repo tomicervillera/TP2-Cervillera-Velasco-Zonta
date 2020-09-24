@@ -1,0 +1,1 @@
+﻿<asp:CustomValidator runat="server" Text="*" ForeColor="Red" Font-Names="Calibri" Display="Dynamic"></asp:CustomValidator>

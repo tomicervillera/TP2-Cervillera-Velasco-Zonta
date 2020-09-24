@@ -1,1 +1,1 @@
-﻿<asp:RequiredFieldValidator runat="server" Text="*" ForeColor="Red" Font-Names="Calibri"></asp:RequiredFieldValidator >
+﻿<asp:RequiredFieldValidator runat="server" Text="*" ForeColor="Red" Font-Names="Calibri" Display="Dynamic"></asp:RequiredFieldValidator >
