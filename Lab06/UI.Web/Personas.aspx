@@ -14,6 +14,7 @@
                 <asp:BoundField HeaderText="Legajo" DataField="Legajo"/>
                 <asp:BoundField HeaderText="ID Plan" DataField="IDplan"/>
                 <asp:BoundField HeaderText="Usuario" DataField="NombreUsuario"/>
+                <asp:BoundField HeaderText="Tipo de Persona" DataField="TipoPersona"/>
                 <asp:CheckBoxField DataField="Habilitado" HeaderText="Habilitado" ItemStyle-HorizontalAlign="Center"/>
                 <asp:CommandField SelectText="Seleccionar" ShowSelectButton="true" ControlStyle-Font-Bold="true" ControlStyle-Font-Italic="true" ControlStyle-Font-Names="Calibri" ControlStyle-Font-Underline="True">
                 <ControlStyle Font-Bold="True" Font-Italic="True" Font-Names="Calibri" Font-Underline="True" />
@@ -117,6 +118,10 @@
         <asp:Label ID="nombreUsuarioLabel" runat="server" Text="Usuario:"></asp:Label>
         <asp:TextBox ID="nombreUsuarioTextBox" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="nombreUsuarioRequiredFieldValidator" runat="server" ControlToValidate="nombreUsuarioTextBox" ErrorMessage="El nombre de usuario no puede estar vacío."></asp:RequiredFieldValidator>
+        <br />
+        <asp:Label ID="tipoPersonaLabel" runat="server" Text="Tipo de persona:"></asp:Label>
+        <asp:DropDownList ID="ddlTipoPersona" runat="server">
+        </asp:DropDownList>
         <br />
         <asp:Label ID="claveLabel" runat="server" Text="Clave:"></asp:Label>
         <asp:TextBox ID="claveTextBox" TextMode="Password" runat="server"></asp:TextBox>

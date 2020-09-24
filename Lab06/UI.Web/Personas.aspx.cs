@@ -92,6 +92,10 @@ namespace UI.Web
             this.habilitadoCheckBox.Checked = this.Entity.Habilitado;
             this.nombreUsuarioTextBox.Text = this.Entity.NombreUsuario;
 
+            ddlTipoPersona.DataSource = Enum.GetNames(typeof(Persona.TipoPersonas));
+            ddlTipoPersona.DataBind();
+            ddlTipoPersona.SelectedIndex = (int)Entity.TipoPersona;
+
             PlanLogic pl = new PlanLogic();
             ddlPlan.DataSource = pl.GetAll();
             ddlPlan.DataTextField = "Descripcion";
@@ -111,6 +115,8 @@ namespace UI.Web
             persona.NombreUsuario = this.nombreUsuarioTextBox.Text;
             persona.Clave= this.claveTextBox.Text;
             persona.Habilitado = this.habilitadoCheckBox.Checked;
+
+            persona.TipoPersona = (Persona.TipoPersonas)ddlTipoPersona.SelectedIndex;
 
             persona.IDPlan= Convert.ToInt32(this.ddlPlan.SelectedValue);
         }
@@ -142,6 +148,9 @@ namespace UI.Web
             
             this.repetirClaveTextBox.Enabled = enable;
             this.repetirClaveRequiredFieldValidator.Enabled = enable;
+
+            ddlTipoPersona.DataSource = Enum.GetNames(typeof(Persona.TipoPersonas));
+            ddlTipoPersona.DataBind();
 
             PlanLogic pl = new PlanLogic();
             ddlPlan.DataSource = pl.GetAll();
