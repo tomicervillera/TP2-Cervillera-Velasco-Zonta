@@ -1,1 +1,2 @@
 ﻿<asp:Label Font-Names="Calibri" Font-Bold="true" runat="server"></asp:Label>
+<asp:Label SkinID="lblError" Font-Names="Calibri" Font-Bold="true" ForeColor="Red" runat="server"></asp:Label>

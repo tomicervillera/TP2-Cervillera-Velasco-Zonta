@@ -11,12 +11,11 @@ namespace UI.Web
 {
     public partial class Login : System.Web.UI.Page
     {
+        #region Eventos
         protected void Page_Load(object sender, EventArgs e)
         {
             ((Site1)this.Master).HeaderText = "Login";
-            ((Site1)this.Master).TreeNav.Visible = false;
         }
-
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
             PersonaLogic pl = new PersonaLogic();
@@ -45,6 +44,8 @@ namespace UI.Web
             }
             else
             {
+                Session["tipoPersona"] = currentUser.TipoPersona;
+                Session["idPersona"] = currentUser.ID;
                 Response.Redirect("/Default.aspx");
             }
         }
@@ -54,5 +55,6 @@ namespace UI.Web
             Response.Write("<script>alert('Es Ud. un usuario muy descuidado, haga memoria. ');</script>");
             //Response.Redirect("/Login.aspx?msj=Es Ud. un usuario muy descuidado, haga memoria. ");
         }
+        #endregion
     }
 }

@@ -102,15 +102,39 @@ namespace UI.Web
         {
             this.descripcionTextBox.Text = string.Empty;
         }
+        private void ValidateUser()
+        {
+            if (Session["tipoPersona"] != null)
+            {
+                if (Session["tipoPersona"].ToString() != Persona.TipoPersonas.Admin.ToString())
+                {
+                    this.gridPanel.Visible = false;
+                    this.gridActionsPanel.Visible = false;
+                    this.lblError.Visible = true;
+                    this.lblError.Text = "Usted no tiene el permiso necesario para acceder aquí.";
+                }
+                else
+                {
+                    LoadGrid();
+                }
+            }
+            else
+            {
+                this.gridActionsPanel.Visible = false;
+                this.errorPanel.Visible = true;
+                this.lblError.Visible = true;
+                this.lblError.Text = "Usted no está logueado en el sistema. Por favor, inicie sesión <a href=/Login.aspx>aquí</a> .";
+            }
+        }
         #endregion
 
         #region Eventos
         protected void Page_Load(object sender, EventArgs e)
         {
-            ((Site1)this.Master).HeaderText = "Especialidades";
             if (Page.IsPostBack == false)
             {
-                LoadGrid();
+                ((Site1)this.Master).HeaderText = "Especialidades";
+                ValidateUser();
             }
         }
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
