@@ -175,6 +175,7 @@
             this.Name = "Comisiones";
             this.Text = "Comisiones";
             this.Load += new System.EventHandler(this.Comisiones_Load);
+            this.Shown += new System.EventHandler(this.Comisiones_Shown);
             this.tscComisiones.ContentPanel.ResumeLayout(false);
             this.tscComisiones.TopToolStripPanel.ResumeLayout(false);
             this.tscComisiones.TopToolStripPanel.PerformLayout();

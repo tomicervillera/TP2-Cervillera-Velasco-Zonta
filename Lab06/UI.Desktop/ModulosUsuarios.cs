@@ -90,7 +90,10 @@ namespace UI.Desktop
                 this.Close();
             }
         }
-
+        private void ValidateUser()
+        {
+            //Espacio para futura implementación
+        }
         //Eventos
         private void ModulosUsuarios_Load(object sender, EventArgs e)
         {
@@ -128,5 +131,9 @@ namespace UI.Desktop
             }
         }
 
+        private void ModulosUsuarios_Shown(object sender, EventArgs e)
+        {
+            ValidateUser();
+        }
     }
 }

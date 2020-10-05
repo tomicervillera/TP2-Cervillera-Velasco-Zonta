@@ -176,6 +176,7 @@
             this.Name = "Materias";
             this.Text = "Materias";
             this.Load += new System.EventHandler(this.Materias_Load);
+            this.Shown += new System.EventHandler(this.Materias_Shown);
             this.tscMaterias.ContentPanel.ResumeLayout(false);
             this.tscMaterias.TopToolStripPanel.ResumeLayout(false);
             this.tscMaterias.TopToolStripPanel.PerformLayout();

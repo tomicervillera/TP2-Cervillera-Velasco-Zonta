@@ -14,13 +14,13 @@ namespace UI.Desktop
 {
     public partial class Planes : Form
     {
+        #region Métodos
         //Constructor
         public Planes()
         {
             InitializeComponent();
             GenerarColumnas();
         }
-
         //Métodos
         private void GenerarColumnas()
         {
@@ -62,8 +62,12 @@ namespace UI.Desktop
                 this.Close();
             }
         }
-
-        //Eventos
+        private void ValidateUser()
+        {
+            //Espacio para futura implementación
+        }
+        #endregion
+        #region Eventos
         private void Planes_Load(object sender, EventArgs e)
         {
             Listar();
@@ -99,7 +103,10 @@ namespace UI.Desktop
                 this.Listar();
             }
         }
-
-
+        private void Planes_Shown(object sender, EventArgs e)
+        {
+            ValidateUser();
+        }
+        #endregion
     }
 }

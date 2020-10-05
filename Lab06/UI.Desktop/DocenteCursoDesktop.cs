@@ -33,8 +33,16 @@ namespace UI.Desktop
             cboxCurso.ValueMember = "ID";
             cboxCurso.DisplayMember = "ID";
 
-            PersonaLogic dl = new PersonaLogic();
-            cboxDocente.DataSource = dl.GetAll();
+            PersonaLogic pl = new PersonaLogic();
+            List<Persona> docentes = new List<Persona>();
+            foreach (Persona per in pl.GetAll())
+            {
+                if (per.TipoPersona == Persona.TipoPersonas.Docente)
+                {
+                    docentes.Add(per);
+                }
+            }
+            cboxDocente.DataSource = docentes;
             cboxDocente.ValueMember = "ID";
             cboxDocente.DisplayMember = "Legajo";
         }

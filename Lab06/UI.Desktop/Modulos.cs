@@ -55,7 +55,10 @@ namespace UI.Desktop
                 this.Close();
             }
         }
-
+        private void ValidateUser()
+        {
+            //Espacio para futura implementación
+        }
         //Eventos
         private void Modulos_Load(object sender, EventArgs e)
         {
@@ -99,6 +102,11 @@ namespace UI.Desktop
                     MessageBox.Show(Ex.Message, "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void Modulos_Shown(object sender, EventArgs e)
+        {
+            ValidateUser();
         }
     }
 }

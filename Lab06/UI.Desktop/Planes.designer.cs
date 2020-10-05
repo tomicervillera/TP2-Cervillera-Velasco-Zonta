@@ -175,6 +175,7 @@
             this.Name = "Planes";
             this.Text = "Planes";
             this.Load += new System.EventHandler(this.Planes_Load);
+            this.Shown += new System.EventHandler(this.Planes_Shown);
             this.tscPlanes.ContentPanel.ResumeLayout(false);
             this.tscPlanes.TopToolStripPanel.ResumeLayout(false);
             this.tscPlanes.TopToolStripPanel.PerformLayout();

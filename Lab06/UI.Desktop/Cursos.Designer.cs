@@ -175,6 +175,7 @@
             this.Name = "Cursos";
             this.Text = "Cursos";
             this.Load += new System.EventHandler(this.Cursos_Load);
+            this.Shown += new System.EventHandler(this.Cursos_Shown);
             this.tscCursos.ContentPanel.ResumeLayout(false);
             this.tscCursos.TopToolStripPanel.ResumeLayout(false);
             this.tscCursos.TopToolStripPanel.PerformLayout();

@@ -14,13 +14,13 @@ namespace UI.Desktop
 {
     public partial class Especialidades : Form
     {
+        #region Métodos
         //Constructor
         public Especialidades()
         {
             InitializeComponent();
             GenerarColumnas();
         }
-
         //Métodos
         private void GenerarColumnas()
         {
@@ -55,8 +55,18 @@ namespace UI.Desktop
                 this.Close();
             }
         }
+        private void ValidateUser()
+        {
+            if (((formMain)this.Owner).PersonaActiva.TipoPersona != Persona.TipoPersonas.Admin)
+            {
+                tsbEliminar.Enabled = false;
+                tsbNuevo.Enabled = false;
+                tsbEditar.Enabled = false;
+            }
+        }
+        #endregion
 
-        //Eventos
+        #region Eventos
         private void Especialidades_Load(object sender, EventArgs e)
         {
             Listar();
@@ -100,5 +110,10 @@ namespace UI.Desktop
                 }
             }
         }
+        private void Especialidades_Shown(object sender, EventArgs e)
+        {
+            ValidateUser();
+        }
+        #endregion
     }
 }

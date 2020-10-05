@@ -14,13 +14,13 @@ namespace UI.Desktop
 {
     public partial class Cursos : Form
     {
+        #region Métodos
         //Constructor
         public Cursos()
         {
             InitializeComponent();
             GenerarColumnas();
         }
-
         //Métodos
         private void GenerarColumnas()
         {
@@ -76,8 +76,13 @@ namespace UI.Desktop
                 this.Close();
             }
         }
+        private void ValidateUser()
+        {
+            //Espacio para futura implementación
+        }
+        #endregion
 
-        //Eventos
+        #region Eventos
         private void Cursos_Load(object sender, EventArgs e)
         {
             Listar();
@@ -113,7 +118,11 @@ namespace UI.Desktop
                 this.Listar();
             }
         }
-
+        private void Cursos_Shown(object sender, EventArgs e)
+        {
+            ValidateUser();
+        }
+        #endregion
     }
 }
 

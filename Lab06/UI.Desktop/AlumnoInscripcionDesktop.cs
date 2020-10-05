@@ -14,10 +14,12 @@ namespace UI.Desktop
 {
     public partial class AlumnoInscripcionDesktop : ApplicationForm
     {
-        //Propiedades
+        #region Miembros
         private Business.Entities.AlumnoInscripcion _AlumnoInscripcionActual;
         public Business.Entities.AlumnoInscripcion AlumnoInscripcionActual { get => _AlumnoInscripcionActual; set => _AlumnoInscripcionActual = value; }
+        #endregion
 
+        #region Métodos
         //Constructores
         public AlumnoInscripcionDesktop()
         {
@@ -26,10 +28,19 @@ namespace UI.Desktop
         public AlumnoInscripcionDesktop(ModoForm modo) : this()
         {
             Modo = modo;
+            
             PersonaLogic pl = new PersonaLogic();
-            cboxAlumno.DataSource = pl.GetAll();
+            List<Persona> alumnos= new List<Persona>();
+            foreach (Persona per in pl.GetAll())
+            {
+                if (per.TipoPersona == Persona.TipoPersonas.Alumno)
+                {
+                    alumnos.Add(per);
+                }
+            }
+            cboxAlumno.DataSource = alumnos;
             cboxAlumno.ValueMember = "ID";
-            cboxAlumno.DisplayMember = "ID";
+            cboxAlumno.DisplayMember = "Legajo";
 
             CursoLogic cl = new CursoLogic();
             cboxCurso.DataSource = cl.GetAll();
@@ -43,7 +54,11 @@ namespace UI.Desktop
             MapearDeDatos();
         }
 
-        //Métodos
+        //Funciones
+        private void ValidateUser()
+        {
+
+        }
         public override void MapearDeDatos()
         {
             txtID.Text = this.AlumnoInscripcionActual.ID.ToString();
@@ -132,8 +147,9 @@ namespace UI.Desktop
             }
             return (true);
         }
+        #endregion
 
-        //Eventos
+        #region Eventos
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (Validar())
@@ -146,5 +162,6 @@ namespace UI.Desktop
         {
             Close();
         }
+        #endregion
     }
 }

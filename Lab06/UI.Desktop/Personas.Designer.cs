@@ -179,6 +179,7 @@
             this.Name = "Personas";
             this.Text = "Personas";
             this.Load += new System.EventHandler(this.Personas_Load);
+            this.Shown += new System.EventHandler(this.Personas_Shown);
             this.tscPersonas.ContentPanel.ResumeLayout(false);
             this.tscPersonas.TopToolStripPanel.ResumeLayout(false);
             this.tscPersonas.TopToolStripPanel.PerformLayout();

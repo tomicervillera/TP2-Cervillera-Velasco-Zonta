@@ -14,13 +14,13 @@ namespace UI.Desktop
 {
     public partial class Personas : Form
     {
+        #region Métodos
         //Constructor
         public Personas()
         {
             InitializeComponent();
             GenerarColumnas();
         }
-
         //Métodos
         private void GenerarColumnas()
         {
@@ -111,7 +111,6 @@ namespace UI.Desktop
             colIdPlan.DisplayIndex = 11;
             this.dgvPersonas.Columns.Add(colIdPlan);
         }
-
         public void Listar()
         {
             PersonaLogic per = new PersonaLogic();
@@ -126,30 +125,31 @@ namespace UI.Desktop
                 this.Close();
             }
         }
+        private void ValidateUser()
+        {
+            //Espacio para futura implementación
+        }
+        #endregion
 
-        //Eventos
+        #region Eventos
         private void Personas_Load(object sender, EventArgs e)
         {
             Listar();
         }
-
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             Listar();
         }
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
             PersonaDesktop formPersona = new PersonaDesktop(ApplicationForm.ModoForm.Alta);
             formPersona.ShowDialog();
             this.Listar();
         }
-
         private void tsbEditar_Click(object sender, EventArgs e)
         {
             int ID = ((Business.Entities.Persona)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;
@@ -157,7 +157,6 @@ namespace UI.Desktop
             formPersona.ShowDialog();
             this.Listar();
         }
-
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Está seguro de que desea eliminar esta persona? ", "Atención", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -167,5 +166,10 @@ namespace UI.Desktop
                 this.Listar();
             }
         }
+        private void Personas_Shown(object sender, EventArgs e)
+        {
+            ValidateUser();
+        }
+        #endregion
     }
 }

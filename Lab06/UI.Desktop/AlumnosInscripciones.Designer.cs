@@ -175,6 +175,7 @@
             this.Name = "AlumnosInscripciones";
             this.Text = "AlumnosInscripciones";
             this.Load += new System.EventHandler(this.AlumnosInscripciones_Load);
+            this.Shown += new System.EventHandler(this.AlumnosInscripciones_Shown);
             this.tscAlumnosInscripciones.ContentPanel.ResumeLayout(false);
             this.tscAlumnosInscripciones.TopToolStripPanel.ResumeLayout(false);
             this.tscAlumnosInscripciones.TopToolStripPanel.PerformLayout();

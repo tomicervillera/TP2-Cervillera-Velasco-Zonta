@@ -175,6 +175,7 @@
             this.Name = "Especialidades";
             this.Text = "Especialidades";
             this.Load += new System.EventHandler(this.Especialidades_Load);
+            this.Shown += new System.EventHandler(this.Especialidades_Shown);
             this.tscUsuarios.ContentPanel.ResumeLayout(false);
             this.tscUsuarios.TopToolStripPanel.ResumeLayout(false);
             this.tscUsuarios.TopToolStripPanel.PerformLayout();

@@ -175,6 +175,7 @@
             this.Name = "ModulosUsuarios";
             this.Text = "ModulosUsuarios";
             this.Load += new System.EventHandler(this.ModulosUsuarios_Load);
+            this.Shown += new System.EventHandler(this.ModulosUsuarios_Shown);
             this.tscModulosUsuarios.ContentPanel.ResumeLayout(false);
             this.tscModulosUsuarios.TopToolStripPanel.ResumeLayout(false);
             this.tscModulosUsuarios.TopToolStripPanel.PerformLayout();

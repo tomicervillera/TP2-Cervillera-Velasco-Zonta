@@ -82,6 +82,10 @@ namespace UI.Desktop
                 this.Close();
             }
         }
+        private void ValidateUser()
+        {
+            //Espacio para futura implementación
+        }
 
         //Eventos
         private void Usuarios_Load(object sender, EventArgs e)
@@ -118,6 +122,11 @@ namespace UI.Desktop
                 new UsuarioLogic().Delete(ID);
                 this.Listar();
             }
+        }
+
+        private void Usuarios_Shown(object sender, EventArgs e)
+        {
+            ValidateUser();
         }
     }
 }

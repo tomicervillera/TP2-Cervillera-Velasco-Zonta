@@ -22,6 +22,15 @@ namespace UI.Desktop
         }
 
         //Métodos
+        private void ValidateUser()
+        {
+            if (((formMain)this.Owner).PersonaActiva.TipoPersona == Persona.TipoPersonas.Docente)
+            {
+                tsbEliminar.Enabled = false;
+                tsbNuevo.Enabled = false;
+                tsbEditar.Enabled = false;
+            }
+        }
         private void GenerarColumnas()
         {
             this.dgvAlumnosInscripciones.AutoGenerateColumns = false;
@@ -82,6 +91,10 @@ namespace UI.Desktop
         {
             Listar();
         }
+        private void AlumnosInscripciones_Shown(object sender, EventArgs e)
+        {
+            ValidateUser();
+        }
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             Listar();
@@ -113,6 +126,5 @@ namespace UI.Desktop
                 this.Listar();
             }
         }
-
     }
 }

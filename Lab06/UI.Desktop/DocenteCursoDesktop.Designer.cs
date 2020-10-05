@@ -116,11 +116,11 @@
             // 
             this.lbDocente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbDocente.AutoSize = true;
-            this.lbDocente.Location = new System.Drawing.Point(46, 32);
+            this.lbDocente.Location = new System.Drawing.Point(29, 32);
             this.lbDocente.Name = "lbDocente";
-            this.lbDocente.Size = new System.Drawing.Size(48, 13);
+            this.lbDocente.Size = new System.Drawing.Size(83, 13);
             this.lbDocente.TabIndex = 18;
-            this.lbDocente.Text = "Docente";
+            this.lbDocente.Text = "Legajo Docente";
             // 
             // cboxDocente
             // 
@@ -144,7 +144,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(208, 29);
             this.tableLayoutPanel2.TabIndex = 17;
             // 

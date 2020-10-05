@@ -14,13 +14,13 @@ namespace UI.Desktop
 {
     public partial class DocentesCursos : Form
     {
+        #region Métodos
         //Constructor
         public DocentesCursos()
         {
             InitializeComponent();
             GenerarColumnas();
         }
-
         //Métodos
         private void GenerarColumnas()
         {
@@ -69,8 +69,18 @@ namespace UI.Desktop
                 this.Close();
             }
         }
+        private void ValidateUser()
+        {
+            if (((formMain)this.Owner).PersonaActiva.TipoPersona != Persona.TipoPersonas.Admin)
+            {
+                tsbEliminar.Enabled = false;
+                tsbNuevo.Enabled = false;
+                tsbEditar.Enabled = false;
+            }
+        }
+        #endregion
 
-        //Eventos
+        #region Eventos
         private void DocentesCursos_Load(object sender, EventArgs e)
         {
             Listar();
@@ -106,7 +116,11 @@ namespace UI.Desktop
                 this.Listar();
             }
         }
-
+        private void DocentesCursos_Shown(object sender, EventArgs e)
+        {
+            ValidateUser();
+        }
+        #endregion
     }
 }
 

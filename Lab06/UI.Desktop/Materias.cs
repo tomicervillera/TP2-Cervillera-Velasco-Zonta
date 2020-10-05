@@ -14,13 +14,13 @@ namespace UI.Desktop
 {
     public partial class Materias : Form
     {
+        #region Métodos
         //Constructor
         public Materias()
         {
             InitializeComponent();
             GenerarColumnas();
         }
-
         //Métodos
         private void GenerarColumnas()
         {
@@ -63,7 +63,6 @@ namespace UI.Desktop
 
 
         }
-
         public void Listar()
         {
             MateriaLogic mat = new MateriaLogic();
@@ -78,32 +77,36 @@ namespace UI.Desktop
                 this.Close();
             }
         }
+        private void ValidateUser()
+        {
+            if (((formMain)this.Owner).PersonaActiva.TipoPersona != Persona.TipoPersonas.Admin)
+            {
+                tsbEliminar.Enabled = false;
+                tsbNuevo.Enabled = false;
+                tsbEditar.Enabled = false;
+            }
+        }
+        #endregion
 
-
-        //eventos
-
+        #region Eventos
         private void Materias_Load(object sender, EventArgs e)
         {
             Listar();
         }
-
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             Listar();
         }
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
             MateriaDesktop formMateria = new MateriaDesktop(ApplicationForm.ModoForm.Alta);
             formMateria.ShowDialog();
             this.Listar();
         }
-
         private void tsbEditar_Click(object sender, EventArgs e)
         {
             int ID = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
@@ -111,7 +114,6 @@ namespace UI.Desktop
             formMateria.ShowDialog();
             this.Listar();
         }
-
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Está seguro de que desea eliminar esta materia? ", "Atención", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -121,7 +123,10 @@ namespace UI.Desktop
                 this.Listar();
             }
         }
-
-
+        private void Materias_Shown(object sender, EventArgs e)
+        {
+            ValidateUser();
+        }
+        #endregion
     }
 }
