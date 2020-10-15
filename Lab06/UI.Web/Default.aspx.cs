@@ -16,7 +16,7 @@ namespace UI.Web
         {
             if (Page.IsPostBack == false)
             {
-                ((Site1)this.Master).HeaderText = "Home";
+                ((Site)this.Master).HeaderText = "Home";
                 ValidateUser();
             }
             

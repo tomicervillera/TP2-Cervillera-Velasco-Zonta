@@ -66,12 +66,19 @@ namespace UI.Desktop
             cboxCurso.DisplayMember = "ID";
             cboxCurso.SelectedValue = cl.GetOne(DocenteCursoActual.IDCurso).ID;
 
-            PersonaLogic dl = new PersonaLogic();
-            cboxDocente.DataSource = dl.GetAll();
+            PersonaLogic pl = new PersonaLogic();
+            List<Persona> docentes = new List<Persona>();
+            foreach (Persona per in pl.GetAll())
+            {
+                if (per.TipoPersona == Persona.TipoPersonas.Docente)
+                {
+                    docentes.Add(per);
+                }
+            }
+            cboxDocente.DataSource = docentes;
             cboxDocente.ValueMember = "ID";
             cboxDocente.DisplayMember = "Legajo";
-            cboxDocente.SelectedValue = dl.GetOne(DocenteCursoActual.IDDocente).ID;
-            
+
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
                 this.btnAceptar.Text = "Guardar";

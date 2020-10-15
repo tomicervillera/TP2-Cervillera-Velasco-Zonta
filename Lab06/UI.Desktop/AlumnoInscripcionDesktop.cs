@@ -64,17 +64,25 @@ namespace UI.Desktop
             txtID.Text = this.AlumnoInscripcionActual.ID.ToString();
             txtNota.Text = this.AlumnoInscripcionActual.Nota.ToString();
             txtCondicion.Text = this.AlumnoInscripcionActual.Condicion;
-            
+
             PersonaLogic pl = new PersonaLogic();
-            cboxAlumno.DataSource = pl.GetAll();
+            List<Persona> alumnos = new List<Persona>();
+            foreach (Persona per in pl.GetAll())
+            {
+                if (per.TipoPersona == Persona.TipoPersonas.Alumno)
+                {
+                    alumnos.Add(per);
+                }
+            }
+            cboxAlumno.DataSource = alumnos;
             cboxAlumno.ValueMember = "ID";
-            cboxAlumno.DisplayMember = "ID";
+            cboxAlumno.DisplayMember = "Legajo";
             cboxAlumno.SelectedValue = pl.GetOne(AlumnoInscripcionActual.IDAlumno).ID;
 
             CursoLogic cl = new CursoLogic();
             cboxCurso.DataSource = cl.GetAll();
             cboxCurso.ValueMember = "ID";
-            cboxCurso.DisplayMember = "Descripcion";
+            cboxCurso.DisplayMember = "ID";
             cboxCurso.SelectedValue = cl.GetOne(AlumnoInscripcionActual.IDCurso).ID;
 
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)

@@ -9,17 +9,17 @@ using Business.Logic;
 
 namespace UI.Web
 {
-    public partial class Planes : System.Web.UI.Page
+    public partial class Cursos : System.Web.UI.Page
     {
         #region Miembros
-        private PlanLogic _logic;
-        private PlanLogic Logic
+        private CursoLogic _logic;
+        private CursoLogic Logic
         {
             get
             {
                 if (_logic == null)
                 {
-                    _logic = new PlanLogic();
+                    _logic = new CursoLogic();
                 }
                 return _logic;
             }
@@ -39,7 +39,7 @@ namespace UI.Web
                 this.ViewState["FormMode"] = value;
             }
         }
-        private Plan Entity
+        private Curso Entity
         {
             get;
             set;
@@ -80,23 +80,35 @@ namespace UI.Web
         private void LoadForm(int id)
         {
             this.Entity = this.Logic.GetOne(id);
-            this.descripcionTextBox.Text = this.Entity.Descripcion;
 
-            EspecialidadLogic el = new EspecialidadLogic();
-            ddlEspecialidad.DataSource = el.GetAll();
-            ddlEspecialidad.DataTextField = "Descripcion";
-            ddlEspecialidad.DataValueField = "ID";
-            ddlEspecialidad.DataBind();
-            ddlEspecialidad.SelectedValue = el.GetOne(Entity.IdEspecialidad).ID.ToString();
+            this.añoCalendarioTextBox.Text = this.Entity.AnioCalendario.ToString();
+            this.cupoTextBox.Text = this.Entity.Cupo.ToString();
+
+            ComisionLogic cl = new ComisionLogic();
+            ddlComision.DataSource = cl.GetAll();
+            ddlComision.DataTextField = "Descripcion";
+            ddlComision.DataValueField = "ID";
+            ddlComision.DataBind();
+            ddlComision.SelectedValue = cl.GetOne(Entity.IDComision).ID.ToString();
+
+            MateriaLogic ml = new MateriaLogic();
+            ddlMateria.DataSource = ml.GetAll();
+            ddlMateria.DataTextField = "Descripcion";
+            ddlMateria.DataValueField = "ID";
+            ddlMateria.DataBind();
+            ddlMateria.SelectedValue = ml.GetOne(Entity.IDMateria).ID.ToString();
         }
-        private void LoadEntity(Plan plan)
+        private void LoadEntity(Curso curso)
         {
-            plan.Descripcion = this.descripcionTextBox.Text;
-            plan.IdEspecialidad = Convert.ToInt32(this.ddlEspecialidad.SelectedValue);
+            curso.IDComision = Convert.ToInt32(this.ddlComision.SelectedValue);
+            curso.IDMateria = Convert.ToInt32(this.ddlMateria.SelectedValue);
+
+            curso.Cupo = Convert.ToInt32(this.cupoTextBox.Text);
+            curso.AnioCalendario = Convert.ToInt32(this.añoCalendarioTextBox.Text);
         }
-        private void SaveEntity(Plan plan)
+        private void SaveEntity(Curso curso)
         {
-            this.Logic.Save(plan);
+            this.Logic.Save(curso);
         }
         private void DeleteEntity(int id)
         {
@@ -104,20 +116,27 @@ namespace UI.Web
         }
         private void EnableForm(bool enable)
         {
-            this.descripcionTextBox.Enabled = enable;
+            this.añoCalendarioTextBox.Enabled = enable;
+            this.cupoTextBox.Enabled = enable;
 
-            this.ddlEspecialidad.Enabled = enable;
+            ComisionLogic cl = new ComisionLogic();            
+            ddlComision.DataSource = cl.GetAll();
+            ddlComision.DataTextField = "Descripcion";
+            ddlComision.DataValueField = "ID";
+            ddlComision.DataBind();
+            ddlComision.Enabled = enable;
 
-            EspecialidadLogic el = new EspecialidadLogic();
-            ddlEspecialidad.DataSource = el.GetAll();
-            ddlEspecialidad.DataTextField = "Descripcion";
-            ddlEspecialidad.DataValueField = "ID";
-            ddlEspecialidad.DataBind();
+            MateriaLogic ml = new MateriaLogic();
+            ddlMateria.DataSource = ml.GetAll();
+            ddlMateria.DataTextField = "Descripcion";
+            ddlMateria.DataValueField = "ID";
+            ddlMateria.DataBind();
+            ddlMateria.Enabled = enable;
         }
         private void ClearForm()
         {
-            this.descripcionTextBox.Text = string.Empty;
-            this.ddlEspecialidad.Items.Clear();
+            this.añoCalendarioTextBox.Text = string.Empty;
+            this.cupoTextBox.Text = string.Empty;
         }
         private void ValidateUser()
         {
@@ -150,7 +169,7 @@ namespace UI.Web
         {
             if (Page.IsPostBack == false)
             {
-                ((Site)this.Master).HeaderText = "Planes";
+                ((Site)this.Master).HeaderText = "Cursos";
                 ValidateUser();
             }
         }
@@ -178,6 +197,7 @@ namespace UI.Web
                 this.formPanel.Visible = true;
                 this.formActionsPanel.Visible = true;
                 this.FormMode = FormModes.Baja;
+
                 this.EnableForm(false);
                 this.LoadForm(this.SelectedID);
             }
@@ -203,7 +223,7 @@ namespace UI.Web
                         this.LoadGrid();
                         break;
                     case FormModes.Modificacion:
-                        this.Entity = new Plan();
+                        this.Entity = new Curso();
                         this.Entity.ID = this.SelectedID;
                         this.Entity.State = BusinessEntity.States.Modified;
 
@@ -213,7 +233,7 @@ namespace UI.Web
 
                         break;
                     case FormModes.Alta:
-                        this.Entity = new Plan();
+                        this.Entity = new Curso();
                         this.LoadEntity(this.Entity);
                         this.SaveEntity(this.Entity);
                         this.LoadGrid();

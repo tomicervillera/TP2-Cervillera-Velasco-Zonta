@@ -9,17 +9,17 @@ using Business.Logic;
 
 namespace UI.Web
 {
-    public partial class Planes : System.Web.UI.Page
+    public partial class Materias : System.Web.UI.Page
     {
         #region Miembros
-        private PlanLogic _logic;
-        private PlanLogic Logic
+        private MateriaLogic _logic;
+        private MateriaLogic Logic
         {
             get
             {
                 if (_logic == null)
                 {
-                    _logic = new PlanLogic();
+                    _logic = new MateriaLogic();
                 }
                 return _logic;
             }
@@ -39,7 +39,7 @@ namespace UI.Web
                 this.ViewState["FormMode"] = value;
             }
         }
-        private Plan Entity
+        private Materia Entity
         {
             get;
             set;
@@ -81,22 +81,26 @@ namespace UI.Web
         {
             this.Entity = this.Logic.GetOne(id);
             this.descripcionTextBox.Text = this.Entity.Descripcion;
+            this.horasSemanalesTextBox.Text = this.Entity.HSSemanales.ToString();
+            this.horasTotalesTextBox.Text = this.Entity.HSTotales.ToString();
 
-            EspecialidadLogic el = new EspecialidadLogic();
-            ddlEspecialidad.DataSource = el.GetAll();
-            ddlEspecialidad.DataTextField = "Descripcion";
-            ddlEspecialidad.DataValueField = "ID";
-            ddlEspecialidad.DataBind();
-            ddlEspecialidad.SelectedValue = el.GetOne(Entity.IdEspecialidad).ID.ToString();
+            PlanLogic pl = new PlanLogic();
+            ddlPlan.DataSource = pl.GetAll();
+            ddlPlan.DataTextField = "Descripcion";
+            ddlPlan.DataValueField = "ID";
+            ddlPlan.DataBind();
+            ddlPlan.SelectedValue = pl.GetOne(Entity.IDPlan).ID.ToString();
         }
-        private void LoadEntity(Plan plan)
+        private void LoadEntity(Materia materia)
         {
-            plan.Descripcion = this.descripcionTextBox.Text;
-            plan.IdEspecialidad = Convert.ToInt32(this.ddlEspecialidad.SelectedValue);
+            materia.Descripcion = this.descripcionTextBox.Text;
+            materia.HSSemanales = Convert.ToInt32(this.horasSemanalesTextBox.Text);
+            materia.HSTotales= Convert.ToInt32(this.horasTotalesTextBox.Text);
+            materia.IDPlan = Convert.ToInt32(this.ddlPlan.SelectedValue);
         }
-        private void SaveEntity(Plan plan)
+        private void SaveEntity(Materia materia)
         {
-            this.Logic.Save(plan);
+            this.Logic.Save(materia);
         }
         private void DeleteEntity(int id)
         {
@@ -105,19 +109,21 @@ namespace UI.Web
         private void EnableForm(bool enable)
         {
             this.descripcionTextBox.Enabled = enable;
+            this.horasSemanalesTextBox.Enabled = enable;
+            this.horasTotalesTextBox.Enabled = enable;
 
-            this.ddlEspecialidad.Enabled = enable;
-
-            EspecialidadLogic el = new EspecialidadLogic();
-            ddlEspecialidad.DataSource = el.GetAll();
-            ddlEspecialidad.DataTextField = "Descripcion";
-            ddlEspecialidad.DataValueField = "ID";
-            ddlEspecialidad.DataBind();
+            PlanLogic pl = new PlanLogic();
+            ddlPlan.DataSource = pl.GetAll();
+            ddlPlan.DataTextField = "Descripcion";
+            ddlPlan.DataValueField = "ID";
+            ddlPlan.DataBind();
+            this.ddlPlan.Enabled = enable;
         }
         private void ClearForm()
         {
             this.descripcionTextBox.Text = string.Empty;
-            this.ddlEspecialidad.Items.Clear();
+            this.horasSemanalesTextBox.Text = string.Empty;
+            this.horasTotalesTextBox.Text = string.Empty;
         }
         private void ValidateUser()
         {
@@ -125,10 +131,8 @@ namespace UI.Web
             {
                 if (Session["tipoPersona"].ToString() != Persona.TipoPersonas.Admin.ToString())
                 {
-                    this.gridPanel.Visible = false;
+                    LoadGrid();
                     this.gridActionsPanel.Visible = false;
-                    this.lblError.Visible = true;
-                    this.lblError.Text = "Usted no tiene el permiso necesario para acceder aquí.";
                 }
                 else
                 {
@@ -150,7 +154,7 @@ namespace UI.Web
         {
             if (Page.IsPostBack == false)
             {
-                ((Site)this.Master).HeaderText = "Planes";
+                ((Site)this.Master).HeaderText = "Materias";
                 ValidateUser();
             }
         }
@@ -203,7 +207,7 @@ namespace UI.Web
                         this.LoadGrid();
                         break;
                     case FormModes.Modificacion:
-                        this.Entity = new Plan();
+                        this.Entity = new Materia();
                         this.Entity.ID = this.SelectedID;
                         this.Entity.State = BusinessEntity.States.Modified;
 
@@ -213,7 +217,7 @@ namespace UI.Web
 
                         break;
                     case FormModes.Alta:
-                        this.Entity = new Plan();
+                        this.Entity = new Materia();
                         this.LoadEntity(this.Entity);
                         this.SaveEntity(this.Entity);
                         this.LoadGrid();

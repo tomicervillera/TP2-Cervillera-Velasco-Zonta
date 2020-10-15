@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="/Site1.master" CodeBehind="Personas.aspx.cs" Inherits="UI.Web.Personas" Title="Personas - Sistema Académico" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="/Site.master" CodeBehind="Personas.aspx.cs" Inherits="UI.Web.Personas" Title="Personas - Sistema Académico" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder1" Runat="Server">
     <asp:Panel ID="errorPanel" runat="server">

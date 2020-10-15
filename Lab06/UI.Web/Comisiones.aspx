@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="/Site.master" CodeBehind="Especialidades.aspx.cs" Inherits="UI.Web.Especialidades" Title="Especialidades - Sistema Académico" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="/Site.master" CodeBehind="Comisiones.aspx.cs" Inherits="UI.Web.Comisiones" Title="Comisiones - Sistema Académico"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContentPlaceHolder1" Runat="Server">
     <asp:Panel ID="errorPanel" runat="server">
         <asp:Label ID="lblError" runat="server" SkinID="lblError" Visible="false" Text="Label"></asp:Label>
@@ -8,7 +7,9 @@
         <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="false" DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField HeaderText="ID" DataField="ID"/>
-                <asp:BoundField HeaderText="Descripción" DataField="Descripcion"/>
+                <asp:BoundField HeaderText="Descripcion" DataField="Descripcion"/>
+                <asp:BoundField HeaderText="Año Especialidad" DataField="AnioEspecialidad"/>
+                <asp:BoundField HeaderText="ID Plan" DataField="IDPlan"/>
                 <asp:CommandField SelectText="Seleccionar" ShowSelectButton="true" ControlStyle-Font-Bold="true" ControlStyle-Font-Italic="true" ControlStyle-Font-Names="Calibri" ControlStyle-Font-Underline="True"/>
             </Columns>
         </asp:GridView>
@@ -23,6 +24,17 @@
         <asp:Label ID="descripcionLabel" runat="server" Text="Descripción:"></asp:Label>
         <asp:TextBox ID="descripcionTextBox"  runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="descripcionRequiredFieldValidator" runat="server" ControlToValidate="descripcionTextBox" ErrorMessage="La descripción no puede estar vacía."></asp:RequiredFieldValidator>
+        <br />
+        <asp:Label ID="añoEspecialidadLabel" runat="server" Text="Año Especialidad:"></asp:Label>
+        <asp:TextBox ID="añoEspecialidadTextBox"  runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="añoEspecialidadRequiredFieldValidator" runat="server" ControlToValidate="añoEspecialidadTextBox" ErrorMessage="El año de especialidad no puede estar vacío."></asp:RequiredFieldValidator>
+        <br />
+        <asp:Label ID="planLabel" runat="server" Text="Plan:"></asp:Label>
+        <asp:DropDownList ID="ddlPlan" runat="server">
+        </asp:DropDownList>
+        <asp:RequiredFieldValidator ID="planRequiredFieldValidator" runat="server" ControlToValidate="ddlPlan" ErrorMessage="El plan no puede estar vacío."></asp:RequiredFieldValidator>
+        <br />
+        <asp:ValidationSummary ID="erroresValidationSummary" runat="server"/>
     </asp:Panel>
     <asp:Panel ID="formActionsPanel" Visible="false" runat="server" Style="margin-top: 5px">
         <asp:LinkButton ID="aceptarLinkButton" runat="server" Text="Aceptar" OnClick="aceptarLinkButton_Click"></asp:LinkButton>

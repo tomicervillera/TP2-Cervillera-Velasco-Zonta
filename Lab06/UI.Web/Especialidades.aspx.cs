@@ -108,10 +108,8 @@ namespace UI.Web
             {
                 if (Session["tipoPersona"].ToString() != Persona.TipoPersonas.Admin.ToString())
                 {
-                    this.gridPanel.Visible = false;
                     this.gridActionsPanel.Visible = false;
-                    this.lblError.Visible = true;
-                    this.lblError.Text = "Usted no tiene el permiso necesario para acceder aquí.";
+                    LoadGrid();
                 }
                 else
                 {
@@ -133,7 +131,7 @@ namespace UI.Web
         {
             if (Page.IsPostBack == false)
             {
-                ((Site1)this.Master).HeaderText = "Especialidades";
+                ((Site)this.Master).HeaderText = "Especialidades";
                 ValidateUser();
             }
         }

@@ -9,17 +9,17 @@ using Business.Logic;
 
 namespace UI.Web
 {
-    public partial class Planes : System.Web.UI.Page
+    public partial class DocentesCursos : System.Web.UI.Page
     {
         #region Miembros
-        private PlanLogic _logic;
-        private PlanLogic Logic
+        private DocenteCursoLogic _logic;
+        private DocenteCursoLogic Logic
         {
             get
             {
                 if (_logic == null)
                 {
-                    _logic = new PlanLogic();
+                    _logic = new DocenteCursoLogic();
                 }
                 return _logic;
             }
@@ -39,7 +39,7 @@ namespace UI.Web
                 this.ViewState["FormMode"] = value;
             }
         }
-        private Plan Entity
+        private DocenteCurso Entity
         {
             get;
             set;
@@ -80,23 +80,42 @@ namespace UI.Web
         private void LoadForm(int id)
         {
             this.Entity = this.Logic.GetOne(id);
-            this.descripcionTextBox.Text = this.Entity.Descripcion;
 
-            EspecialidadLogic el = new EspecialidadLogic();
-            ddlEspecialidad.DataSource = el.GetAll();
-            ddlEspecialidad.DataTextField = "Descripcion";
-            ddlEspecialidad.DataValueField = "ID";
-            ddlEspecialidad.DataBind();
-            ddlEspecialidad.SelectedValue = el.GetOne(Entity.IdEspecialidad).ID.ToString();
+            ddlCargo.DataSource = Enum.GetNames(typeof(DocenteCurso.TiposCargos));
+            ddlCargo.DataBind();
+            ddlCargo.SelectedIndex = (int)Entity.Cargo;
+
+            CursoLogic cl = new CursoLogic();
+            ddlCurso.DataSource = cl.GetAll();
+            ddlCurso.DataTextField = "ID";
+            ddlCurso.DataValueField = "ID";
+            ddlCurso.DataBind();
+            ddlCurso.SelectedValue = cl.GetOne(Entity.IDCurso).ID.ToString();
+
+            PersonaLogic pl = new PersonaLogic();
+            List<Persona> docentes = new List<Persona>();
+            foreach (Persona per in pl.GetAll())
+            {
+                if (per.TipoPersona == Persona.TipoPersonas.Docente)
+                {
+                    docentes.Add(per);
+                }
+            }
+            ddlDocente.DataSource = docentes;
+            ddlDocente.DataTextField = "Legajo";
+            ddlDocente.DataValueField = "ID";
+            ddlDocente.DataBind();
+            ddlDocente.SelectedValue = pl.GetOne(Entity.IDDocente).ID.ToString();
         }
-        private void LoadEntity(Plan plan)
+        private void LoadEntity(DocenteCurso docenteCurso)
         {
-            plan.Descripcion = this.descripcionTextBox.Text;
-            plan.IdEspecialidad = Convert.ToInt32(this.ddlEspecialidad.SelectedValue);
+            docenteCurso.IDCurso = Convert.ToInt32(this.ddlCurso.SelectedValue);
+            docenteCurso.IDDocente= Convert.ToInt32(this.ddlDocente.SelectedValue);
+            docenteCurso.Cargo = (DocenteCurso.TiposCargos)ddlCargo.SelectedIndex;
         }
-        private void SaveEntity(Plan plan)
+        private void SaveEntity(DocenteCurso docenteCurso)
         {
-            this.Logic.Save(plan);
+            this.Logic.Save(docenteCurso);
         }
         private void DeleteEntity(int id)
         {
@@ -104,35 +123,54 @@ namespace UI.Web
         }
         private void EnableForm(bool enable)
         {
-            this.descripcionTextBox.Enabled = enable;
+            ddlCargo.DataSource = Enum.GetNames(typeof(DocenteCurso.TiposCargos));
+            ddlCargo.DataBind();
+            ddlCargo.Enabled = enable;
+            
+            CursoLogic cl = new CursoLogic();
+            ddlCurso.DataSource = cl.GetAll();
+            ddlCurso.DataTextField = "ID";
+            ddlCurso.DataValueField = "ID";
+            ddlCurso.DataBind();
+            ddlCurso.Enabled = enable;
 
-            this.ddlEspecialidad.Enabled = enable;
-
-            EspecialidadLogic el = new EspecialidadLogic();
-            ddlEspecialidad.DataSource = el.GetAll();
-            ddlEspecialidad.DataTextField = "Descripcion";
-            ddlEspecialidad.DataValueField = "ID";
-            ddlEspecialidad.DataBind();
+            PersonaLogic pl = new PersonaLogic();
+            List<Persona> docentes = new List<Persona>();
+            foreach (Persona per in pl.GetAll())
+            {
+                if (per.TipoPersona == Persona.TipoPersonas.Docente)
+                {
+                    docentes.Add(per);
+                }
+            }
+            ddlDocente.DataSource = docentes;
+            ddlDocente.DataTextField = "Legajo";
+            ddlDocente.DataValueField = "ID";
+            ddlDocente.DataBind();
+            ddlDocente.Enabled = enable;
         }
         private void ClearForm()
         {
-            this.descripcionTextBox.Text = string.Empty;
-            this.ddlEspecialidad.Items.Clear();
         }
         private void ValidateUser()
         {
             if (Session["tipoPersona"] != null)
             {
-                if (Session["tipoPersona"].ToString() != Persona.TipoPersonas.Admin.ToString())
+                if (Session["tipoPersona"].ToString() == Persona.TipoPersonas.Admin.ToString())
+                {
+                    LoadGrid();
+                }
+                else if (Session["tipoPersona"].ToString() == Persona.TipoPersonas.Docente.ToString())
+                {
+                    this.gridActionsPanel.Visible = false;
+                    LoadGrid();
+                }
+                else if (Session["tipoPersona"].ToString() == Persona.TipoPersonas.Alumno.ToString())
                 {
                     this.gridPanel.Visible = false;
                     this.gridActionsPanel.Visible = false;
                     this.lblError.Visible = true;
                     this.lblError.Text = "Usted no tiene el permiso necesario para acceder aquí.";
-                }
-                else
-                {
-                    LoadGrid();
                 }
             }
             else
@@ -150,7 +188,7 @@ namespace UI.Web
         {
             if (Page.IsPostBack == false)
             {
-                ((Site)this.Master).HeaderText = "Planes";
+                ((Site)this.Master).HeaderText = "Docentes-Cursos";
                 ValidateUser();
             }
         }
@@ -178,6 +216,7 @@ namespace UI.Web
                 this.formPanel.Visible = true;
                 this.formActionsPanel.Visible = true;
                 this.FormMode = FormModes.Baja;
+
                 this.EnableForm(false);
                 this.LoadForm(this.SelectedID);
             }
@@ -203,7 +242,7 @@ namespace UI.Web
                         this.LoadGrid();
                         break;
                     case FormModes.Modificacion:
-                        this.Entity = new Plan();
+                        this.Entity = new DocenteCurso();
                         this.Entity.ID = this.SelectedID;
                         this.Entity.State = BusinessEntity.States.Modified;
 
@@ -213,7 +252,7 @@ namespace UI.Web
 
                         break;
                     case FormModes.Alta:
-                        this.Entity = new Plan();
+                        this.Entity = new DocenteCurso();
                         this.LoadEntity(this.Entity);
                         this.SaveEntity(this.Entity);
                         this.LoadGrid();

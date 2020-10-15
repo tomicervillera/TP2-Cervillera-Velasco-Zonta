@@ -14,7 +14,15 @@ namespace UI.Web
         #region Eventos
         protected void Page_Load(object sender, EventArgs e)
         {
-            ((Site1)this.Master).HeaderText = "Login";
+            if (Session["tipoPersona"] != null)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
+            else
+            {
+                ((Site)this.Master).HeaderText = "Login";
+            }
+            
         }
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
@@ -51,9 +59,7 @@ namespace UI.Web
         }
         protected void lnkRecordarClave_Click(object sender, EventArgs e)
         {
-            //Redirecciono a otra página que debería existir y para mostrar el mensaje tener dicho elemento.
-            Response.Write("<script>alert('Es Ud. un usuario muy descuidado, haga memoria. ');</script>");
-            //Response.Redirect("/Login.aspx?msj=Es Ud. un usuario muy descuidado, haga memoria. ");
+            Response.Write("<script>alert('Usted es un usuario muy descuidado, haga memoria.');</script>");
         }
         #endregion
     }

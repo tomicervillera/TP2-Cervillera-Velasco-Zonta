@@ -151,12 +151,14 @@ namespace UI.Web
 
             ddlTipoPersona.DataSource = Enum.GetNames(typeof(Persona.TipoPersonas));
             ddlTipoPersona.DataBind();
+            ddlTipoPersona.Enabled = enable;
 
             PlanLogic pl = new PlanLogic();
             ddlPlan.DataSource = pl.GetAll();
             ddlPlan.DataTextField = "Descripcion";
             ddlPlan.DataValueField = "ID";
             ddlPlan.DataBind();
+            ddlPlan.Enabled = enable;
         }
         private void ClearForm()
         {
@@ -210,7 +212,7 @@ namespace UI.Web
         {  
             if (Page.IsPostBack == false)
             {
-                ((Site1)this.Master).HeaderText = "Personas";
+                ((Site)this.Master).HeaderText = "Personas";
                 ValidateUser();
             }
         }

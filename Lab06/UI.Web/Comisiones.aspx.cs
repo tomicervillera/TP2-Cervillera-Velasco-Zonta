@@ -9,17 +9,17 @@ using Business.Logic;
 
 namespace UI.Web
 {
-    public partial class Planes : System.Web.UI.Page
+    public partial class Comisiones : System.Web.UI.Page
     {
         #region Miembros
-        private PlanLogic _logic;
-        private PlanLogic Logic
+        private ComisionLogic _logic;
+        private ComisionLogic Logic
         {
             get
             {
                 if (_logic == null)
                 {
-                    _logic = new PlanLogic();
+                    _logic = new ComisionLogic();
                 }
                 return _logic;
             }
@@ -39,7 +39,7 @@ namespace UI.Web
                 this.ViewState["FormMode"] = value;
             }
         }
-        private Plan Entity
+        private Comision Entity
         {
             get;
             set;
@@ -81,22 +81,24 @@ namespace UI.Web
         {
             this.Entity = this.Logic.GetOne(id);
             this.descripcionTextBox.Text = this.Entity.Descripcion;
+            this.añoEspecialidadTextBox.Text = this.Entity.AnioEspecialidad.ToString();
 
-            EspecialidadLogic el = new EspecialidadLogic();
-            ddlEspecialidad.DataSource = el.GetAll();
-            ddlEspecialidad.DataTextField = "Descripcion";
-            ddlEspecialidad.DataValueField = "ID";
-            ddlEspecialidad.DataBind();
-            ddlEspecialidad.SelectedValue = el.GetOne(Entity.IdEspecialidad).ID.ToString();
+            PlanLogic pl = new PlanLogic();
+            ddlPlan.DataSource = pl.GetAll();
+            ddlPlan.DataTextField = "Descripcion";
+            ddlPlan.DataValueField = "ID";
+            ddlPlan.DataBind();
+            ddlPlan.SelectedValue = pl.GetOne(Entity.IDPlan).ID.ToString();
         }
-        private void LoadEntity(Plan plan)
+        private void LoadEntity(Comision comision)
         {
-            plan.Descripcion = this.descripcionTextBox.Text;
-            plan.IdEspecialidad = Convert.ToInt32(this.ddlEspecialidad.SelectedValue);
+            comision.Descripcion = this.descripcionTextBox.Text;
+            comision.AnioEspecialidad = Convert.ToInt32(this.añoEspecialidadTextBox.Text);
+            comision.IDPlan = Convert.ToInt32(this.ddlPlan.SelectedValue);
         }
-        private void SaveEntity(Plan plan)
+        private void SaveEntity(Comision comision)
         {
-            this.Logic.Save(plan);
+            this.Logic.Save(comision);
         }
         private void DeleteEntity(int id)
         {
@@ -105,19 +107,19 @@ namespace UI.Web
         private void EnableForm(bool enable)
         {
             this.descripcionTextBox.Enabled = enable;
+            this.añoEspecialidadTextBox.Enabled = enable;
 
-            this.ddlEspecialidad.Enabled = enable;
-
-            EspecialidadLogic el = new EspecialidadLogic();
-            ddlEspecialidad.DataSource = el.GetAll();
-            ddlEspecialidad.DataTextField = "Descripcion";
-            ddlEspecialidad.DataValueField = "ID";
-            ddlEspecialidad.DataBind();
+            PlanLogic pl = new PlanLogic();
+            ddlPlan.DataSource = pl.GetAll();
+            ddlPlan.DataTextField = "Descripcion";
+            ddlPlan.DataValueField = "ID";
+            ddlPlan.DataBind();
+            this.ddlPlan.Enabled = enable;
         }
         private void ClearForm()
         {
             this.descripcionTextBox.Text = string.Empty;
-            this.ddlEspecialidad.Items.Clear();
+            this.añoEspecialidadTextBox.Text = string.Empty;
         }
         private void ValidateUser()
         {
@@ -125,10 +127,8 @@ namespace UI.Web
             {
                 if (Session["tipoPersona"].ToString() != Persona.TipoPersonas.Admin.ToString())
                 {
-                    this.gridPanel.Visible = false;
+                    LoadGrid();
                     this.gridActionsPanel.Visible = false;
-                    this.lblError.Visible = true;
-                    this.lblError.Text = "Usted no tiene el permiso necesario para acceder aquí.";
                 }
                 else
                 {
@@ -150,7 +150,7 @@ namespace UI.Web
         {
             if (Page.IsPostBack == false)
             {
-                ((Site)this.Master).HeaderText = "Planes";
+                ((Site)this.Master).HeaderText = "Comisiones";
                 ValidateUser();
             }
         }
@@ -203,7 +203,7 @@ namespace UI.Web
                         this.LoadGrid();
                         break;
                     case FormModes.Modificacion:
-                        this.Entity = new Plan();
+                        this.Entity = new Comision();
                         this.Entity.ID = this.SelectedID;
                         this.Entity.State = BusinessEntity.States.Modified;
 
@@ -213,7 +213,7 @@ namespace UI.Web
 
                         break;
                     case FormModes.Alta:
-                        this.Entity = new Plan();
+                        this.Entity = new Comision();
                         this.LoadEntity(this.Entity);
                         this.SaveEntity(this.Entity);
                         this.LoadGrid();
