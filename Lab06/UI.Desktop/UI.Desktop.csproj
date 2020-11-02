@@ -36,6 +36,24 @@
     <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,6 +67,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AcademiaDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AcademiaDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="AlumnoInscripcionDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +83,12 @@
     </Compile>
     <Compile Include="AlumnosInscripciones.Designer.cs">
       <DependentUpon>AlumnosInscripciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AlumnosInscripcionesReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlumnosInscripcionesReporte.Designer.cs">
+      <DependentUpon>AlumnosInscripcionesReporte.cs</DependentUpon>
     </Compile>
     <Compile Include="ApplicationForm.cs">
       <SubType>Form</SubType>
@@ -79,6 +108,12 @@
     <Compile Include="Comisiones.Designer.cs">
       <DependentUpon>Comisiones.cs</DependentUpon>
     </Compile>
+    <Compile Include="ComisionesReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComisionesReporte.Designer.cs">
+      <DependentUpon>ComisionesReporte.cs</DependentUpon>
+    </Compile>
     <Compile Include="CursoDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +125,12 @@
     </Compile>
     <Compile Include="Cursos.Designer.cs">
       <DependentUpon>Cursos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CursosReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CursosReporte.Designer.cs">
+      <DependentUpon>CursosReporte.cs</DependentUpon>
     </Compile>
     <Compile Include="DocenteCursoDesktop.cs">
       <SubType>Form</SubType>
@@ -103,6 +144,12 @@
     <Compile Include="DocentesCursos.Designer.cs">
       <DependentUpon>DocentesCursos.cs</DependentUpon>
     </Compile>
+    <Compile Include="DocentesCursosReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocentesCursosReporte.Designer.cs">
+      <DependentUpon>DocentesCursosReporte.cs</DependentUpon>
+    </Compile>
     <Compile Include="EspecialidadDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +162,12 @@
     <Compile Include="Especialidades.Designer.cs">
       <DependentUpon>Especialidades.cs</DependentUpon>
     </Compile>
+    <Compile Include="EspecialidadesReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EspecialidadesReporte.Designer.cs">
+      <DependentUpon>EspecialidadesReporte.cs</DependentUpon>
+    </Compile>
     <Compile Include="Materias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +179,12 @@
     </Compile>
     <Compile Include="MateriaDesktop.Designer.cs">
       <DependentUpon>MateriaDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MateriasReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MateriasReporte.Designer.cs">
+      <DependentUpon>MateriasReporte.cs</DependentUpon>
     </Compile>
     <Compile Include="ModulosUsuarios.cs">
       <SubType>Form</SubType>
@@ -175,6 +234,12 @@
     <Compile Include="Modulos.Designer.cs">
       <DependentUpon>Modulos.cs</DependentUpon>
     </Compile>
+    <Compile Include="PersonasReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonasReporte.Designer.cs">
+      <DependentUpon>PersonasReporte.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +252,13 @@
     <Compile Include="Planes.designer.cs">
       <DependentUpon>Planes.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanesReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanesReporte.Designer.cs">
+      <DependentUpon>PlanesReporte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UsuarioDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +279,10 @@
     <EmbeddedResource Include="AlumnosInscripciones.resx">
       <DependentUpon>AlumnosInscripciones.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AlumnosInscripcionesReporte.rdlc" />
+    <EmbeddedResource Include="AlumnosInscripcionesReporte.resx">
+      <DependentUpon>AlumnosInscripcionesReporte.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ApplicationForm.resx">
       <DependentUpon>ApplicationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -216,11 +292,18 @@
     <EmbeddedResource Include="Comisiones.resx">
       <DependentUpon>Comisiones.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ComisionesReporte.rdlc" />
+    <EmbeddedResource Include="ComisionesReporte.resx">
+      <DependentUpon>ComisionesReporte.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CursoDesktop.resx">
       <DependentUpon>CursoDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cursos.resx">
       <DependentUpon>Cursos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CursosReporte.resx">
+      <DependentUpon>CursosReporte.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DocenteCursoDesktop.resx">
       <DependentUpon>DocenteCursoDesktop.cs</DependentUpon>
@@ -228,11 +311,18 @@
     <EmbeddedResource Include="DocentesCursos.resx">
       <DependentUpon>DocentesCursos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DocentesCursosReporte.resx">
+      <DependentUpon>DocentesCursosReporte.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EspecialidadDesktop.resx">
       <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Especialidades.resx">
       <DependentUpon>Especialidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EspecialidadesReporte.rdlc" />
+    <EmbeddedResource Include="EspecialidadesReporte.resx">
+      <DependentUpon>EspecialidadesReporte.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formLogin.resx">
       <DependentUpon>formLogin.cs</DependentUpon>
@@ -245,6 +335,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Materias.resx">
       <DependentUpon>Materias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MateriasReporte.rdlc" />
+    <EmbeddedResource Include="MateriasReporte.resx">
+      <DependentUpon>MateriasReporte.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos.resx">
       <DependentUpon>Modulos.cs</DependentUpon>
@@ -261,11 +355,21 @@
     <EmbeddedResource Include="Personas.resx">
       <DependentUpon>Personas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PersonasReporte.rdlc" />
+    <EmbeddedResource Include="PersonasReporte.resx">
+      <DependentUpon>PersonasReporte.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlanDesktop.resx">
       <DependentUpon>PlanDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Planes.resx">
       <DependentUpon>Planes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CursosReporte.rdlc" />
+    <EmbeddedResource Include="DocentesCursosReporte.rdlc" />
+    <EmbeddedResource Include="PlanesReporte.rdlc" />
+    <EmbeddedResource Include="PlanesReporte.resx">
+      <DependentUpon>PlanesReporte.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioDesktop.resx">
       <DependentUpon>UsuarioDesktop.cs</DependentUpon>
@@ -283,7 +387,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="AcademiaDataSet.xsc">
+      <DependentUpon>AcademiaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AcademiaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AcademiaDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AcademiaDataSet.xss">
+      <DependentUpon>AcademiaDataSet.xsd</DependentUpon>
+    </None>
     <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -318,6 +434,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

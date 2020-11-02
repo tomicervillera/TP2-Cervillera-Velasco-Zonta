@@ -42,12 +42,16 @@ namespace UI.Desktop
                 mnuArchivo.DropDownItems.RemoveByKey("docentesCursosToolStripMenuItem");
                 mnuArchivo.DropDownItems.RemoveByKey("personasToolStripMenuItem");
                 mnuArchivo.DropDownItems.RemoveByKey("planesToolStripMenuItem");
+
+                mnuReportes.Visible = false;
             }
             else if (PersonaActiva.TipoPersona == Persona.TipoPersonas.Docente)
             {
                 mnuArchivo.DropDownItems.RemoveByKey("cursosToolStripMenuItem");
                 mnuArchivo.DropDownItems.RemoveByKey("personasToolStripMenuItem");
                 mnuArchivo.DropDownItems.RemoveByKey("planesToolStripMenuItem");
+
+                mnuReportes.Visible = false;
             }
         }
         #endregion
@@ -106,8 +110,46 @@ namespace UI.Desktop
         {
             Dispose();
         }
+        private void inscripcionesDeAlumnosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AlumnosInscripcionesReporte formInscripcionesReporte = new AlumnosInscripcionesReporte();
+            formInscripcionesReporte.ShowDialog();
+        }
+        private void comisionesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ComisionesReporte formComisionesReporte = new ComisionesReporte();
+            formComisionesReporte.ShowDialog();
+        }
+        private void cursosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CursosReporte formCursosReporte = new CursosReporte();
+            formCursosReporte.ShowDialog();
+        }
+        private void docentesCursosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            DocentesCursosReporte formDocentesCursosReporte = new DocentesCursosReporte();
+            formDocentesCursosReporte.ShowDialog();
+        }
+        private void especialidadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EspecialidadesReporte formEspecialidadesReporte = new EspecialidadesReporte();
+            formEspecialidadesReporte.ShowDialog();
+        }
+        private void materiasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MateriasReporte formMateriasReporte = new MateriasReporte();
+            formMateriasReporte.ShowDialog();
+        }
+        private void personasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            PersonasReporte formPersonasReporte = new PersonasReporte();
+            formPersonasReporte.ShowDialog();
+        }
+        private void planesToolStripMenuItem1_Click_1(object sender, EventArgs e)
+        {
+            PlanesReporte formPlanesReporte = new PlanesReporte();
+            formPlanesReporte.ShowDialog();
+        }
         #endregion
-
-
     }
 }
