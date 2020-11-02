@@ -44,6 +44,27 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.WebDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -68,27 +89,60 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AlumnosInscripciones.aspx" />
+    <Content Include="AlumnosInscripcionesReporte.aspx" />
     <Content Include="Comisiones.aspx" />
+    <Content Include="ComisionesReporte.aspx" />
     <Content Include="Cursos.aspx" />
+    <Content Include="CursosReporte.aspx" />
     <Content Include="DocentesCursos.aspx" />
+    <Content Include="DocentesCursosReporte.aspx" />
     <Content Include="Especialidades.aspx" />
+    <Content Include="EspecialidadesReporte.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
     <Content Include="Materias.aspx" />
+    <Content Include="MateriasReporte.aspx" />
+    <Content Include="PersonasReporte.aspx" />
     <Content Include="Planes.aspx" />
     <Content Include="Personas.aspx" />
+    <Content Include="PlanesReporte.aspx" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
     <Content Include="Usuarios.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AcademiaDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AcademiaDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="AlumnosInscripciones.aspx.cs">
       <DependentUpon>AlumnosInscripciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AlumnosInscripciones.aspx.designer.cs">
       <DependentUpon>AlumnosInscripciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AlumnosInscripcionesReporte.aspx.cs">
+      <DependentUpon>AlumnosInscripcionesReporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AlumnosInscripcionesReporte.aspx.designer.cs">
+      <DependentUpon>AlumnosInscripcionesReporte.aspx</DependentUpon>
     </Compile>
     <Compile Include="Comisiones.aspx.cs">
       <DependentUpon>Comisiones.aspx</DependentUpon>
@@ -97,12 +151,26 @@
     <Compile Include="Comisiones.aspx.designer.cs">
       <DependentUpon>Comisiones.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ComisionesReporte.aspx.cs">
+      <DependentUpon>ComisionesReporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ComisionesReporte.aspx.designer.cs">
+      <DependentUpon>ComisionesReporte.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Cursos.aspx.cs">
       <DependentUpon>Cursos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Cursos.aspx.designer.cs">
       <DependentUpon>Cursos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CursosReporte.aspx.cs">
+      <DependentUpon>CursosReporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CursosReporte.aspx.designer.cs">
+      <DependentUpon>CursosReporte.aspx</DependentUpon>
     </Compile>
     <Compile Include="DocentesCursos.aspx.cs">
       <DependentUpon>DocentesCursos.aspx</DependentUpon>
@@ -111,12 +179,26 @@
     <Compile Include="DocentesCursos.aspx.designer.cs">
       <DependentUpon>DocentesCursos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DocentesCursosReporte.aspx.cs">
+      <DependentUpon>DocentesCursosReporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DocentesCursosReporte.aspx.designer.cs">
+      <DependentUpon>DocentesCursosReporte.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Especialidades.aspx.cs">
       <DependentUpon>Especialidades.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Especialidades.aspx.designer.cs">
       <DependentUpon>Especialidades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EspecialidadesReporte.aspx.cs">
+      <DependentUpon>EspecialidadesReporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EspecialidadesReporte.aspx.designer.cs">
+      <DependentUpon>EspecialidadesReporte.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -135,12 +217,33 @@
     <Compile Include="Materias.aspx.designer.cs">
       <DependentUpon>Materias.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MateriasReporte.aspx.cs">
+      <DependentUpon>MateriasReporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MateriasReporte.aspx.designer.cs">
+      <DependentUpon>MateriasReporte.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PersonasReporte.aspx.cs">
+      <DependentUpon>PersonasReporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PersonasReporte.aspx.designer.cs">
+      <DependentUpon>PersonasReporte.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Planes.aspx.cs">
       <DependentUpon>Planes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Planes.aspx.designer.cs">
       <DependentUpon>Planes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PlanesReporte.aspx.cs">
+      <DependentUpon>PlanesReporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlanesReporte.aspx.designer.cs">
+      <DependentUpon>PlanesReporte.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Default.aspx.cs">
@@ -164,6 +267,7 @@
     <Compile Include="Personas.aspx.designer.cs">
       <DependentUpon>Personas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Usuarios.aspx.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -183,6 +287,17 @@
     <Content Include="App_Themes\Default\RegularExpressionValidator.skin" />
     <Content Include="App_Themes\Default\RangeValidator.skin" />
     <Content Include="App_Themes\Default\CustomValidator.skin" />
+    <Content Include="AcademiaDataSet.xsc">
+      <DependentUpon>AcademiaDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="AcademiaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AcademiaDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="AcademiaDataSet.xss">
+      <DependentUpon>AcademiaDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Site.Master" />
     <None Include="Web.Debug.config">
@@ -206,6 +321,16 @@
       <Project>{2ae1e2aa-37b3-44c7-ae64-c79353dbfb9e}</Project>
       <Name>Business.Logic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AlumnosInscripcionesReporte.rdlc" />
+    <EmbeddedResource Include="ComisionesReporte.rdlc" />
+    <EmbeddedResource Include="CursosReporte.rdlc" />
+    <EmbeddedResource Include="DocentesCursosReporte.rdlc" />
+    <EmbeddedResource Include="EspecialidadesReporte.rdlc" />
+    <EmbeddedResource Include="MateriasReporte.rdlc" />
+    <EmbeddedResource Include="PersonasReporte.rdlc" />
+    <EmbeddedResource Include="PlanesReporte.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

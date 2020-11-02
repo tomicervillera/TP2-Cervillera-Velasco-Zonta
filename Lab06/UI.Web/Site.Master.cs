@@ -48,9 +48,6 @@ namespace UI.Web
                     node = new TreeNode("Cursos", "Cursos", null, "~/Cursos.aspx", null);
                     TreeNav.Nodes[0].ChildNodes.Add(node);
 
-                    node = new TreeNode("Comisiones", "Comisiones", null, "~/Comisiones.aspx", null);
-                    TreeNav.Nodes[0].ChildNodes.Add(node);
-
                     node = new TreeNode("Docentes-Cursos", "Docentes-Cursos", null, "~/DocentesCursos.aspx", null);
                     TreeNav.Nodes[0].ChildNodes.Add(node);
 
@@ -68,6 +65,36 @@ namespace UI.Web
 
                     node = new TreeNode("Planes", "Planes", null, "~/Planes.aspx", null);
                     TreeNav.Nodes[0].ChildNodes.Add(node);
+
+                    //Nodos de Reporte
+                    node = new TreeNode("Reportes", "Planes", null, null, null);
+                    node.SelectAction = TreeNodeSelectAction.None;
+                    TreeNav.Nodes.Add(node);
+
+                    node = new TreeNode("Comisiones", "Comisiones", null, "~/ComisionesReporte.aspx", null);
+                    TreeNav.Nodes[1].ChildNodes.Add(node);
+
+                    node = new TreeNode("Cursos", "Cursos", null, "~/CursosReporte.aspx", null);
+                    TreeNav.Nodes[1].ChildNodes.Add(node);
+
+                    node = new TreeNode("Docentes-Cursos", "Docentes-Cursos", null, "~/DocentesCursosReporte.aspx", null);
+                    TreeNav.Nodes[1].ChildNodes.Add(node);
+
+                    node = new TreeNode("Especialidades", "Especialidades", null, "~/EspecialidadesReporte.aspx", null);
+                    TreeNav.Nodes[1].ChildNodes.Add(node);
+
+                    node = new TreeNode("Inscripciones de Alumnos", "AlumnosInscripciones", null, "~/AlumnosInscripcionesReporte.aspx", null);
+                    TreeNav.Nodes[1].ChildNodes.Add(node);
+
+                    node = new TreeNode("Materias", "Materias", null, "~/MateriasReporte.aspx", null);
+                    TreeNav.Nodes[1].ChildNodes.Add(node);
+
+                    node = new TreeNode("Personas", "Personas", null, "~/PersonasReporte.aspx", null);
+                    TreeNav.Nodes[1].ChildNodes.Add(node);
+
+                    node = new TreeNode("Planes", "Planes", null, "~/PlanesReporte.aspx", null);
+                    TreeNav.Nodes[1].ChildNodes.Add(node);
+
                 }
                 else if (Session["tipoPersona"].ToString() == Persona.TipoPersonas.Alumno.ToString())
                 {
