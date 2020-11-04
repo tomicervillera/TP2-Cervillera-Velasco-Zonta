@@ -85,9 +85,9 @@ namespace UI.Web
             this.emailTextBox.Text = this.Entity.Email;
             this.direccionTextBox.Text = this.Entity.Direccion;
             this.telefonoTextBox.Text = this.Entity.Telefono;
-            this.ddlDiaFechaNac.SelectedIndex = this.Entity.FechaNacimiento.Day - 1;
-            this.ddlMesFechaNac.SelectedIndex = this.Entity.FechaNacimiento.Month - 1;
-            this.añoNacimientoTextBox.Text = this.Entity.FechaNacimiento.Year.ToString();
+            this.fechaNacimientoUserControl.ddlDiaFechaNac.SelectedIndex = this.Entity.FechaNacimiento.Day - 1;
+            this.fechaNacimientoUserControl.ddlMesFechaNac.SelectedIndex = this.Entity.FechaNacimiento.Month - 1;
+            this.fechaNacimientoUserControl.añoNacimientoTextBox.Text = this.Entity.FechaNacimiento.Year.ToString();
             this.legajoTextBox.Text = this.Entity.Legajo.ToString();
             this.habilitadoCheckBox.Checked = this.Entity.Habilitado;
             this.nombreUsuarioTextBox.Text = this.Entity.NombreUsuario;
@@ -110,7 +110,7 @@ namespace UI.Web
             persona.Email = this.emailTextBox.Text;
             persona.Direccion = this.direccionTextBox.Text;
             persona.Telefono = this.telefonoTextBox.Text;
-            persona.FechaNacimiento = new DateTime(Convert.ToInt32(this.añoNacimientoTextBox.Text), Convert.ToInt32(this.ddlMesFechaNac.SelectedValue), Convert.ToInt32(this.ddlDiaFechaNac.SelectedValue));
+            persona.FechaNacimiento = new DateTime(Convert.ToInt32(this.fechaNacimientoUserControl.añoNacimientoTextBox.Text), Convert.ToInt32(this.fechaNacimientoUserControl.ddlMesFechaNac.SelectedValue), Convert.ToInt32(this.fechaNacimientoUserControl.ddlDiaFechaNac.SelectedValue));
             persona.Legajo = Convert.ToInt32(this.legajoTextBox.Text);
             persona.NombreUsuario = this.nombreUsuarioTextBox.Text;
             persona.Clave= this.claveTextBox.Text;
@@ -136,9 +136,9 @@ namespace UI.Web
             this.emailTextBox.Enabled = enable;
             this.direccionTextBox.Enabled = enable;
             this.legajoTextBox.Enabled = enable;
-            this.ddlDiaFechaNac.Enabled = enable;
-            this.ddlMesFechaNac.Enabled = enable;
-            this.añoNacimientoTextBox.Enabled = enable;
+            this.fechaNacimientoUserControl.ddlDiaFechaNac.Enabled = enable;
+            this.fechaNacimientoUserControl.ddlMesFechaNac.Enabled = enable;
+            this.fechaNacimientoUserControl.añoNacimientoTextBox.Enabled = enable;
             this.nombreUsuarioTextBox.Enabled = enable;
             this.habilitadoCheckBox.Enabled = enable;
 
@@ -168,9 +168,9 @@ namespace UI.Web
             this.emailTextBox.Text = string.Empty;
             this.direccionTextBox.Text = string.Empty;
             this.legajoTextBox.Text = string.Empty;
-            this.ddlDiaFechaNac.SelectedIndex = 0;
-            this.ddlMesFechaNac.SelectedIndex = 0;
-            this.añoNacimientoTextBox.Text = string.Empty;
+            this.fechaNacimientoUserControl.ddlDiaFechaNac.SelectedIndex = 0;
+            this.fechaNacimientoUserControl.ddlMesFechaNac.SelectedIndex = 0;
+            this.fechaNacimientoUserControl.añoNacimientoTextBox.Text = string.Empty;
             this.habilitadoCheckBox.Checked = false;
             this.nombreUsuarioTextBox.Text = string.Empty;
             this.claveTextBox.Text = string.Empty;
@@ -220,17 +220,7 @@ namespace UI.Web
         {
             this.SelectedID = (int)this.gridView.SelectedValue;
         }
-        protected void fechaNacimientoCustomValidator_ServerValidate(object source, ServerValidateEventArgs args)
-        {
-            if (Convert.ToInt32(args.Value) >= 29 && ddlMesFechaNac.SelectedValue == "02")
-            {
-                args.IsValid = false;
-            }
-            else
-            {
-                args.IsValid = true;
-            }
-        }
+        
 
         //GridActionsPanel
         protected void editarLinkButton_Click(object sender, EventArgs e)
