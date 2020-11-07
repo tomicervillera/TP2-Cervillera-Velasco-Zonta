@@ -60,7 +60,7 @@
             this.repViewerCursos.Location = new System.Drawing.Point(12, 12);
             this.repViewerCursos.Name = "repViewerCursos";
             this.repViewerCursos.ServerReport.BearerToken = null;
-            this.repViewerCursos.Size = new System.Drawing.Size(642, 493);
+            this.repViewerCursos.Size = new System.Drawing.Size(642, 530);
             this.repViewerCursos.TabIndex = 0;
             // 
             // cursosTableAdapter
@@ -71,7 +71,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(666, 517);
+            this.ClientSize = new System.Drawing.Size(666, 554);
             this.Controls.Add(this.repViewerCursos);
             this.Name = "CursosReporte";
             this.Text = "Reporte de Cursos";

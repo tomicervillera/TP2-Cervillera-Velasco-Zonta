@@ -30,13 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.repViewerPlanes = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.AcademiaDataSet = new UI.Desktop.AcademiaDataSet();
             this.planesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.AcademiaDataSet = new UI.Desktop.AcademiaDataSet();
+            this.repViewerPlanes = new Microsoft.Reporting.WinForms.ReportViewer();
             this.planesTableAdapter = new UI.Desktop.AcademiaDataSetTableAdapters.planesTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.AcademiaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.planesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AcademiaDataSet)).BeginInit();
             this.SuspendLayout();
+            // 
+            // planesBindingSource
+            // 
+            this.planesBindingSource.DataMember = "planes";
+            this.planesBindingSource.DataSource = this.AcademiaDataSet;
+            // 
+            // AcademiaDataSet
+            // 
+            this.AcademiaDataSet.DataSetName = "AcademiaDataSet";
+            this.AcademiaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // repViewerPlanes
             // 
@@ -50,18 +60,8 @@
             this.repViewerPlanes.Location = new System.Drawing.Point(12, 12);
             this.repViewerPlanes.Name = "repViewerPlanes";
             this.repViewerPlanes.ServerReport.BearerToken = null;
-            this.repViewerPlanes.Size = new System.Drawing.Size(638, 464);
+            this.repViewerPlanes.Size = new System.Drawing.Size(638, 535);
             this.repViewerPlanes.TabIndex = 0;
-            // 
-            // AcademiaDataSet
-            // 
-            this.AcademiaDataSet.DataSetName = "AcademiaDataSet";
-            this.AcademiaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // planesBindingSource
-            // 
-            this.planesBindingSource.DataMember = "planes";
-            this.planesBindingSource.DataSource = this.AcademiaDataSet;
             // 
             // planesTableAdapter
             // 
@@ -71,13 +71,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 488);
+            this.ClientSize = new System.Drawing.Size(662, 559);
             this.Controls.Add(this.repViewerPlanes);
             this.Name = "PlanesReporte";
             this.Text = "Reporte de Planes";
             this.Load += new System.EventHandler(this.PlanesReporte_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.AcademiaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.planesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AcademiaDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

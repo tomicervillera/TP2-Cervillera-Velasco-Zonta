@@ -9,7 +9,7 @@
     <asp:Panel ID="reportePanel" runat="server">
         <asp:ScriptManager ID="scriptManagerInscripciones" runat="server">
         </asp:ScriptManager>
-        <rsweb:ReportViewer ID="repViewerInscripciones" runat="server" BackColor="" ClientIDMode="AutoID" Height="500px" Width="100%" InternalBorderColor="204, 204, 204" InternalBorderStyle="Solid" InternalBorderWidth="1px" ToolBarItemBorderStyle="Solid" ToolBarItemBorderWidth="1px" ToolBarItemPressedBorderColor="51, 102, 153" ToolBarItemPressedBorderStyle="Solid" ToolBarItemPressedBorderWidth="1px" ToolBarItemPressedHoverBackColor="153, 187, 226">
+        <rsweb:ReportViewer ID="repViewerInscripciones" runat="server" BackColor="" ClientIDMode="AutoID" Height="550px" Width="100%" InternalBorderColor="204, 204, 204" InternalBorderStyle="Solid" InternalBorderWidth="1px" ToolBarItemBorderStyle="Solid" ToolBarItemBorderWidth="1px" ToolBarItemPressedBorderColor="51, 102, 153" ToolBarItemPressedBorderStyle="Solid" ToolBarItemPressedBorderWidth="1px" ToolBarItemPressedHoverBackColor="153, 187, 226">
             <LocalReport ReportPath="AlumnosInscripcionesReporte.rdlc">
                 <DataSources>
                     <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="DataSetInscripciones" />

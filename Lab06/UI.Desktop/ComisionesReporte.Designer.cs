@@ -60,7 +60,7 @@
             this.repViewerComisiones.Location = new System.Drawing.Point(12, 12);
             this.repViewerComisiones.Name = "repViewerComisiones";
             this.repViewerComisiones.ServerReport.BearerToken = null;
-            this.repViewerComisiones.Size = new System.Drawing.Size(638, 496);
+            this.repViewerComisiones.Size = new System.Drawing.Size(638, 531);
             this.repViewerComisiones.TabIndex = 0;
             // 
             // comisionesTableAdapter
@@ -71,7 +71,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 520);
+            this.ClientSize = new System.Drawing.Size(662, 555);
             this.Controls.Add(this.repViewerComisiones);
             this.Name = "ComisionesReporte";
             this.Text = "Reporte de Comisiones";
