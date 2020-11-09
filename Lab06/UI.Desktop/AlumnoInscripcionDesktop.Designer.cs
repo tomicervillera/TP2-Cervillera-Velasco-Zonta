@@ -235,6 +235,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "AlumnoInscripcionDesktop";
             this.Text = "Inscripción de Alumno";
+            this.Load += new System.EventHandler(this.AlumnoInscripcionDesktop_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);

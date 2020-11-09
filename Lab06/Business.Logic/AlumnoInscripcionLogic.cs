@@ -9,17 +9,19 @@ namespace Business.Logic
 {
     public class AlumnoInscripcionLogic : BusinessLogic
     {
-        //Miembros
+        #region Miembros
         private Data.Database.AlumnoInscripcionAdapter _AlumnoInscripcionData;
         public Data.Database.AlumnoInscripcionAdapter AlumnoInscripcionData { get => _AlumnoInscripcionData; set => _AlumnoInscripcionData = value; }
+        #endregion
 
+        #region Métodos
         //Constructor
         public AlumnoInscripcionLogic()
         {
             AlumnoInscripcionData = new Data.Database.AlumnoInscripcionAdapter();
         }
 
-        //Métodos
+        //Funciones
         public Business.Entities.AlumnoInscripcion GetOne(int ID)
         {
             return (AlumnoInscripcionData.GetOne(ID));
@@ -35,7 +37,30 @@ namespace Business.Logic
                 Exception ExcepcionManejada = new Exception("Error al recuperar lista de inscripciones de alumnos. ", Ex);
                 throw ExcepcionManejada;
             }
-
+        }
+        public List<AlumnoInscripcion> GetFromAlumno(int ID)
+        {
+            try
+            {
+                return (AlumnoInscripcionData.GetFromAlumno(ID));
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar inscripciones de alumno. ", Ex);
+                throw ExcepcionManejada;
+            }
+        }
+        public List<AlumnoInscripcion> GetFromDocente(int ID)
+        {
+            try
+            {
+                return (AlumnoInscripcionData.GetFromDocente(ID));
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar inscripciones de alumnos del docente. ", Ex);
+                throw ExcepcionManejada;
+            }
         }
         public void Save(Business.Entities.AlumnoInscripcion alIns)
         {
@@ -45,5 +70,6 @@ namespace Business.Logic
         {
             AlumnoInscripcionData.Delete(ID);
         }
+        #endregion
     }
 }

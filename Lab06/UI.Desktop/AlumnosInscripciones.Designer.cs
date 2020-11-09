@@ -173,7 +173,7 @@
             this.Controls.Add(this.tscAlumnosInscripciones);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AlumnosInscripciones";
-            this.Text = "AlumnosInscripciones";
+            this.Text = "Inscripciones de Alumno";
             this.Load += new System.EventHandler(this.AlumnosInscripciones_Load);
             this.Shown += new System.EventHandler(this.AlumnosInscripciones_Shown);
             this.tscAlumnosInscripciones.ContentPanel.ResumeLayout(false);

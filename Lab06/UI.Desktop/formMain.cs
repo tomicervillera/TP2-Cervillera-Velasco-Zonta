@@ -37,7 +37,6 @@ namespace UI.Desktop
         {
             if (PersonaActiva.TipoPersona == Persona.TipoPersonas.Alumno)
             {
-                mnuArchivo.DropDownItems.RemoveByKey("alumnosInscripcionesToolStripMenuItem");
                 mnuArchivo.DropDownItems.RemoveByKey("cursosToolStripMenuItem");
                 mnuArchivo.DropDownItems.RemoveByKey("docentesCursosToolStripMenuItem");
                 mnuArchivo.DropDownItems.RemoveByKey("personasToolStripMenuItem");

@@ -39,13 +39,9 @@ namespace UI.Desktop
                     break;
                 }
             }
-            if (personaActiva == null)
+            if (personaActiva == null || personaActiva.Clave != txtPass.Text)
             {
-                MessageBox.Show("Usuario incorrecto.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (personaActiva.Clave != txtPass.Text)
-            {
-                MessageBox.Show("Contraseña incorrecta.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Usuario y/o contraseña incorrectos.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (personaActiva.Habilitado == false)
             {

@@ -14,7 +14,7 @@ namespace Data.Database
             List<AlumnoInscripcion> AlumnosInscripciones = new List<AlumnoInscripcion>();
             try
             {
-                this.OpenConnection();
+                OpenConnection();
                 SqlCommand cmdAlumnosInscripciones = new SqlCommand("SELECT * from alumnos_inscripciones", SqlConn);
 
                 SqlDataReader drAlumnosInscripciones = cmdAlumnosInscripciones.ExecuteReader();
@@ -39,7 +39,7 @@ namespace Data.Database
             }
             finally
             {
-                this.CloseConnection();
+                CloseConnection();
             }
             return AlumnosInscripciones;
         }
@@ -48,7 +48,7 @@ namespace Data.Database
             AlumnoInscripcion alIns = new AlumnoInscripcion();
             try
             {
-                this.OpenConnection();
+                OpenConnection();
                 SqlCommand cmdAlumnosInscripciones = new SqlCommand("SELECT * from alumnos_inscripciones WHERE id_inscripcion = @id", SqlConn);
                 cmdAlumnosInscripciones.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 
@@ -71,15 +71,85 @@ namespace Data.Database
             }
             finally
             {
-                this.CloseConnection();
+                CloseConnection();
             }
             return alIns;
+        }
+        public List<AlumnoInscripcion> GetFromAlumno(int ID)
+        {
+            List<AlumnoInscripcion> AlumnosInscripciones = new List<AlumnoInscripcion>();
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdAlumnosInscripciones = new SqlCommand("SELECT * FROM alumnos_inscripciones WHERE id_alumno = @id", SqlConn);
+                cmdAlumnosInscripciones.Parameters.Add("@id", SqlDbType.Int).Value = ID;
+
+                SqlDataReader drAlumnosInscripciones = cmdAlumnosInscripciones.ExecuteReader();
+                while (drAlumnosInscripciones.Read())
+                {
+                    AlumnoInscripcion alIns = new AlumnoInscripcion();
+
+                    alIns.ID = (int)drAlumnosInscripciones["id_inscripcion"];
+                    alIns.IDAlumno = (int)drAlumnosInscripciones["id_alumno"];
+                    alIns.IDCurso = (int)drAlumnosInscripciones["id_curso"];
+                    alIns.Condicion = (string)drAlumnosInscripciones["condicion"];
+                    alIns.Nota = (int)drAlumnosInscripciones["nota"];
+
+                    AlumnosInscripciones.Add(alIns);
+                }
+                drAlumnosInscripciones.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar inscripciones del alumno.", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return AlumnosInscripciones;
+        }
+        public List<AlumnoInscripcion> GetFromDocente(int ID)
+        {
+            List<AlumnoInscripcion> AlumnosInscripciones = new List<AlumnoInscripcion>();
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdAlumnosInscripciones = new SqlCommand("SELECT ai.* FROM docentes_cursos dc JOIN cursos c ON dc.id_curso = c.id_curso JOIN alumnos_inscripciones ai ON c.id_curso = ai.id_curso WHERE dc.id_docente = @id", SqlConn);
+                cmdAlumnosInscripciones.Parameters.Add("@id", SqlDbType.Int).Value = ID;
+
+                SqlDataReader drAlumnosInscripciones = cmdAlumnosInscripciones.ExecuteReader();
+                while (drAlumnosInscripciones.Read())
+                {
+                    AlumnoInscripcion alIns = new AlumnoInscripcion();
+
+                    alIns.ID = (int)drAlumnosInscripciones["id_inscripcion"];
+                    alIns.IDAlumno = (int)drAlumnosInscripciones["id_alumno"];
+                    alIns.IDCurso = (int)drAlumnosInscripciones["id_curso"];
+                    alIns.Condicion = (string)drAlumnosInscripciones["condicion"];
+                    alIns.Nota = (int)drAlumnosInscripciones["nota"];
+
+                    AlumnosInscripciones.Add(alIns);
+                }
+                drAlumnosInscripciones.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar inscripciones de alumnos del docente.", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return AlumnosInscripciones;
         }
         protected void Update(AlumnoInscripcion AlumnoInscripcion)
         {
             try
             {
-                this.OpenConnection();
+                OpenConnection();
                 SqlCommand cmdSave = new SqlCommand("UPDATE alumnos_inscripciones SET id_alumno = @id_alumno, id_curso = @id_curso, condicion = @condicion, nota = @nota " +
                 "WHERE id_inscripcion = @id", SqlConn);
 
@@ -97,14 +167,14 @@ namespace Data.Database
             }
             finally
             {
-                this.CloseConnection();
+                CloseConnection();
             }
         }
         protected void Insert(AlumnoInscripcion AlumnoInscripcion)
         {
             try
             {
-                this.OpenConnection();
+                OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
                     "INSERT INTO alumnos_inscripciones (id_alumno, id_curso, condicion, nota) " +
                     "VALUES (@id_alumno, @id_curso, @condicion, @nota) " +
@@ -124,14 +194,14 @@ namespace Data.Database
             }
             finally
             {
-                this.CloseConnection();
+                CloseConnection();
             }
         }
         public void Delete(int ID)
         {
             try
             {
-                this.OpenConnection();
+                OpenConnection();
 
                 SqlCommand cmdDelete = new SqlCommand("DELETE alumnos_inscripciones WHERE id_inscripcion = @id", SqlConn);
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
@@ -144,7 +214,7 @@ namespace Data.Database
             }
             finally
             {
-                this.CloseConnection();
+                CloseConnection();
             }
 
         }
@@ -152,15 +222,15 @@ namespace Data.Database
         {
             if (AlumnoInscripcion.State == BusinessEntity.States.New)
             {
-                this.Insert(AlumnoInscripcion);
+                Insert(AlumnoInscripcion);
             }
             else if (AlumnoInscripcion.State == BusinessEntity.States.Modified)
             {
-                this.Update(AlumnoInscripcion);
+                Update(AlumnoInscripcion);
             }
             else if (AlumnoInscripcion.State == BusinessEntity.States.Deleted)
             {
-                this.Delete(AlumnoInscripcion.ID);
+                Delete(AlumnoInscripcion.ID);
             }
             AlumnoInscripcion.State = BusinessEntity.States.Unmodified;
         }

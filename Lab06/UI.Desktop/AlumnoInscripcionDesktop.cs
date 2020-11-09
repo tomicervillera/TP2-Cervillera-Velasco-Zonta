@@ -172,17 +172,17 @@ namespace UI.Desktop
                 errorProviderAlumnoInscripcion.SetError(txtNota, "Los alumnos libres no deben llevar nota.");
                 e.Cancel = true;
             }
-            else if (string.IsNullOrEmpty(txtNota.Text) == true)
+            else if (cboxCondicion.SelectedIndex != 0 && string.IsNullOrEmpty(txtNota.Text) == true)
             {
                 errorProviderAlumnoInscripcion.SetError(txtNota, "Los alumnos regulares o aprobados deben llevar nota.");
                 e.Cancel = true;
             }
-            else if (int.TryParse(txtNota.Text, out int result) == false)
+            else if (cboxCondicion.SelectedIndex != 0 && int.TryParse(txtNota.Text, out int result) == false)
             {
                 errorProviderAlumnoInscripcion.SetError(txtNota, "Sólo se permiten notas numéricas.");
                 e.Cancel = true;
             }
-            else if (!(Convert.ToInt32(txtNota.Text) > 0 && Convert.ToInt32(txtNota.Text) <= 10))
+            else if (cboxCondicion.SelectedIndex != 0 && !(Convert.ToInt32(txtNota.Text) > 0 && Convert.ToInt32(txtNota.Text) <= 10))
             {
                 errorProviderAlumnoInscripcion.SetError(txtNota, "Sólo se permiten notas entre 1 y 10.");
                 e.Cancel = true;
@@ -192,6 +192,26 @@ namespace UI.Desktop
                 errorProviderAlumnoInscripcion.SetError(txtNota, null);
             }
 
+        }
+        private void AlumnoInscripcionDesktop_Load(object sender, EventArgs e)
+        {
+            AlumnosInscripciones formAlIn = ((AlumnosInscripciones)Owner);
+            if (((formMain)((AlumnosInscripciones)Owner).Owner).PersonaActiva.TipoPersona == Persona.TipoPersonas.Alumno)
+            {
+                lblCondicion.Visible = false;
+                cboxCondicion.Visible = false;
+
+                lblNota.Visible = false;
+                txtNota.Visible = false;
+
+                cboxAlumno.SelectedValue = ((formMain)((AlumnosInscripciones)Owner).Owner).PersonaActiva.ID;
+                cboxAlumno.Enabled = false;
+            }
+            else if (((formMain)((AlumnosInscripciones)Owner).Owner).PersonaActiva.TipoPersona == Persona.TipoPersonas.Docente)
+            {
+                cboxAlumno.Enabled = false;
+                cboxCurso.Enabled = false;
+            }
         }
         #endregion
     }

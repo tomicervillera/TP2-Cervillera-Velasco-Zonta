@@ -221,7 +221,7 @@ namespace UI.Desktop
             if (String.IsNullOrEmpty(txtEmail.Text) == true)
             {
                 e.Cancel = true;
-                errorProviderPersona.SetError(txtEmail, "El legajo no debe estar vacío.");
+                errorProviderPersona.SetError(txtEmail, "El email no debe estar vacío.");
             }
             else
             {
