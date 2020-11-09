@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtNota = new System.Windows.Forms.TextBox();
-            this.lblNota = new System.Windows.Forms.Label();
+            this.cboxCondicion = new System.Windows.Forms.ComboBox();
             this.cboxAlumno = new System.Windows.Forms.ComboBox();
             this.lbNombre = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
@@ -41,9 +41,12 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.lblCondicion = new System.Windows.Forms.Label();
-            this.txtCondicion = new System.Windows.Forms.TextBox();
+            this.txtNota = new System.Windows.Forms.TextBox();
+            this.lblNota = new System.Windows.Forms.Label();
+            this.errorProviderAlumnoInscripcion = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAlumnoInscripcion)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -57,8 +60,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.Controls.Add(this.txtNota, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.lblNota, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.cboxCondicion, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.cboxAlumno, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.lbNombre, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtID, 1, 0);
@@ -67,7 +69,8 @@
             this.tableLayoutPanel1.Controls.Add(this.cboxCurso, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.lblCondicion, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.txtCondicion, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtNota, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblNota, 0, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
@@ -78,23 +81,19 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(669, 120);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // txtNota
+            // cboxCondicion
             // 
-            this.txtNota.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtNota.Location = new System.Drawing.Point(139, 60);
-            this.txtNota.Name = "txtNota";
-            this.txtNota.Size = new System.Drawing.Size(188, 20);
-            this.txtNota.TabIndex = 33;
-            // 
-            // lblNota
-            // 
-            this.lblNota.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblNota.AutoSize = true;
-            this.lblNota.Location = new System.Drawing.Point(51, 63);
-            this.lblNota.Name = "lblNota";
-            this.lblNota.Size = new System.Drawing.Size(30, 13);
-            this.lblNota.TabIndex = 32;
-            this.lblNota.Text = "Nota";
+            this.cboxCondicion.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cboxCondicion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboxCondicion.FormattingEnabled = true;
+            this.cboxCondicion.Items.AddRange(new object[] {
+            "Libre",
+            "Regular",
+            "Aprobado"});
+            this.cboxCondicion.Location = new System.Drawing.Point(473, 31);
+            this.cboxCondicion.Name = "cboxCondicion";
+            this.cboxCondicion.Size = new System.Drawing.Size(188, 21);
+            this.cboxCondicion.TabIndex = 34;
             // 
             // cboxAlumno
             // 
@@ -203,26 +202,43 @@
             this.lblCondicion.TabIndex = 30;
             this.lblCondicion.Text = "Condicion";
             // 
-            // txtCondicion
+            // txtNota
             // 
-            this.txtCondicion.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtCondicion.Location = new System.Drawing.Point(473, 32);
-            this.txtCondicion.Name = "txtCondicion";
-            this.txtCondicion.Size = new System.Drawing.Size(188, 20);
-            this.txtCondicion.TabIndex = 31;
+            this.txtNota.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtNota.Location = new System.Drawing.Point(139, 60);
+            this.txtNota.Name = "txtNota";
+            this.txtNota.Size = new System.Drawing.Size(188, 20);
+            this.txtNota.TabIndex = 33;
+            this.txtNota.Validating += new System.ComponentModel.CancelEventHandler(this.txtNota_Validating);
+            // 
+            // lblNota
+            // 
+            this.lblNota.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblNota.AutoSize = true;
+            this.lblNota.Location = new System.Drawing.Point(51, 63);
+            this.lblNota.Name = "lblNota";
+            this.lblNota.Size = new System.Drawing.Size(30, 13);
+            this.lblNota.TabIndex = 32;
+            this.lblNota.Text = "Nota";
+            // 
+            // errorProviderAlumnoInscripcion
+            // 
+            this.errorProviderAlumnoInscripcion.ContainerControl = this;
             // 
             // AlumnoInscripcionDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(693, 144);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "AlumnoInscripcionDesktop";
-            this.Text = "AlumnoInscripcion";
+            this.Text = "Inscripción de Alumno";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAlumnoInscripcion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,6 +259,7 @@
         private System.Windows.Forms.TextBox txtNota;
         private System.Windows.Forms.Label lblNota;
         private System.Windows.Forms.Label lblCondicion;
-        private System.Windows.Forms.TextBox txtCondicion;
+        private System.Windows.Forms.ErrorProvider errorProviderAlumnoInscripcion;
+        private System.Windows.Forms.ComboBox cboxCondicion;
     }
 }

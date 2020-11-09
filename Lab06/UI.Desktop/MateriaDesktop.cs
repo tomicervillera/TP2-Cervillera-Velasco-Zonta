@@ -14,10 +14,12 @@ namespace UI.Desktop
 {
     public partial class MateriaDesktop : ApplicationForm
     {
-        //Propiedades
+        #region Miembros
         private Business.Entities.Materia _MateriaActual;
         public Business.Entities.Materia MateriaActual { get => _MateriaActual; set => _MateriaActual = value; }
+        #endregion
 
+        #region Metodos
         //Constructores
         public MateriaDesktop()
         {
@@ -30,65 +32,54 @@ namespace UI.Desktop
             cboxIDPlan.DataSource = pl.GetAll();
             cboxIDPlan.ValueMember = "ID";
             cboxIDPlan.DisplayMember = "Descripcion";
-
-
         }
         public MateriaDesktop(int ID, ModoForm modo) : this()
         {
             Modo = modo;
             MateriaActual = new MateriaLogic().GetOne(ID);
-            // MessageBox.Show(PersonaActual.TipoPersona.ToString());
             MapearDeDatos();
         }
 
-
-        //METODOS
+        //Funciones
         public override void MapearDeDatos()
         {
-            this.txtID.Text = this.MateriaActual.ID.ToString();
-            this.txtDescripcion.Text = this.MateriaActual.Descripcion;
+            txtID.Text = MateriaActual.ID.ToString();
+            txtDescripcion.Text = MateriaActual.Descripcion;
+            txtHSSemanales.Text = MateriaActual.HSSemanales.ToString();
+            txtHSTotales.Text = MateriaActual.HSTotales.ToString();
+            
             PlanLogic pl = new PlanLogic();
-            /*  cboxPlan.DataSource = pl.GetAll();
-              cboxPlan.ValueMember = "ID";
-              cboxPlan.DisplayMember = "Descripcion";
-              cboxPlan.SelectedValue = pl.GetOne(PersonaActual.IDPlan).ID;*/
-            this.txtHSSemanales.Text = this.MateriaActual.HSSemanales.ToString();
-            this.txtHSTotales.Text = this.MateriaActual.HSTotales.ToString();
             cboxIDPlan.DataSource = pl.GetAll();
             cboxIDPlan.ValueMember = "ID";
             cboxIDPlan.DisplayMember = "Descripcion";
-            cboxIDPlan.SelectedValue = this.MateriaActual.IDPlan;
+            cboxIDPlan.SelectedValue = MateriaActual.IDPlan;
 
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
-                this.btAceptar.Text = "Guardar";
+                btAceptar.Text = "Guardar";
             }
             else if (Modo == ModoForm.Baja)
             {
-                this.btAceptar.Text = "Eliminar";
+                btAceptar.Text = "Eliminar";
             }
             else if (Modo == ModoForm.Consulta)
             {
-                this.btAceptar.Text = "Aceptar";
+                btAceptar.Text = "Aceptar";
             }
 
         }
         public override void MapearADatos()
         {
-
             if (Modo == ModoForm.Alta)
             {
                 MateriaActual = new Business.Entities.Materia();
             }
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
-                // this.PersonaActual.ID = Convert.ToInt32( this.txtID.Text);
-                this.MateriaActual.Descripcion = this.txtDescripcion.Text;
+                MateriaActual.Descripcion = txtDescripcion.Text;
                 MateriaActual.IDPlan = Convert.ToInt32(((Plan)cboxIDPlan.SelectedItem).ID);
-                this.MateriaActual.HSSemanales = Convert.ToInt32( this. txtHSSemanales.Text);
-                this.MateriaActual.HSTotales = Convert.ToInt32(this.txtHSTotales.Text);
-
-
+                MateriaActual.HSSemanales = Convert.ToInt32(txtHSSemanales.Text);
+                MateriaActual.HSTotales = Convert.ToInt32(txtHSTotales.Text);
 
                 switch (Modo)
                 {
@@ -120,34 +111,77 @@ namespace UI.Desktop
             MapearADatos();
             new MateriaLogic().Save(MateriaActual);
         }
-        public override bool Validar()
-        {
-            foreach (Control oControls in this.tableLayoutPanel1.Controls) // Buscamos en cada TextBox de nuestro Formulario.
-            {
-                if (oControls is TextBox & oControls.Text == String.Empty & oControls.Name != "txtID") // Verificamos que no este vacio exceptuando al txtID porque se asigna automáticamente.
-                {
-                    Notificar("Hay al menos un campo vacío. Por favor, completelo/s. ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return (false);
-                }
-            }
-            return (true);
-        }
-        
-        //EVENTOS
+        #endregion
+
+        #region Eventos
         private void btAceptar_Click(object sender, EventArgs e)
         {
-            if (Validar())
+            if (ValidateChildren() == true)
             {
                 GuardarCambios();
                 Close();
             }
-
         }
-
         private void btCancelar_Click(object sender, EventArgs e)
         {
             Close();
         }
-
+        private void txtHSTotales_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtHSTotales.Text) == true)
+            {
+                e.Cancel = true;
+                errorProviderMateria.SetError(txtHSTotales, "Las horas totales no deben estar vacías.");
+            }
+            else if (int.TryParse(txtHSTotales.Text, out int result) == false)
+            {
+                errorProviderMateria.SetError(txtHSTotales, "Sólo se permite un valor numérico.");
+                e.Cancel = true;
+            }
+            else if (!(Convert.ToInt32(txtHSTotales.Text) > 0 && Convert.ToInt32(txtHSTotales.Text) <= 100))
+            {
+                errorProviderMateria.SetError(txtHSTotales, "Inserte un valor de horas válido.");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProviderMateria.SetError(txtHSTotales, null);
+            }
+        }
+        private void txtDescripcion_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtDescripcion.Text) == true)
+            {
+                e.Cancel = true;
+                errorProviderMateria.SetError(txtDescripcion, "La descripción no debe estar vacía.");
+            }
+            else
+            {
+                errorProviderMateria.SetError(txtDescripcion, null);
+            }
+        }
+        private void txtHSSemanales_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtHSSemanales.Text) == true)
+            {
+                e.Cancel = true;
+                errorProviderMateria.SetError(txtHSSemanales, "Las horas semanales no deben estar vacías.");
+            }
+            else if (int.TryParse(txtHSSemanales.Text, out int result) == false)
+            {
+                errorProviderMateria.SetError(txtHSSemanales, "Sólo se permite un valor numérico.");
+                e.Cancel = true;
+            }
+            else if (!(Convert.ToInt32(txtHSSemanales.Text) > 0 && Convert.ToInt32(txtHSSemanales.Text) <= 100))
+            {
+                errorProviderMateria.SetError(txtHSSemanales, "Inserte un valor de horas válido.");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProviderMateria.SetError(txtHSSemanales, null);
+            }
+        }
+        #endregion
     }
 }

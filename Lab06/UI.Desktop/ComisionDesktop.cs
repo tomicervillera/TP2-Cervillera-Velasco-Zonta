@@ -14,10 +14,12 @@ namespace UI.Desktop
 {
     public partial class ComisionDesktop : ApplicationForm
     {
-        //Propiedades
+        #region Miembros
         private Business.Entities.Comision _ComisionActual;
         public Business.Entities.Comision ComisionActual { get => _ComisionActual; set => _ComisionActual = value; }
+        #endregion
 
+        #region Métodos
         //Constructores
         public ComisionDesktop()
         {
@@ -30,9 +32,6 @@ namespace UI.Desktop
             cmbIDPlan.DataSource = cl.GetAll();
             cmbIDPlan.ValueMember = "ID";
             cmbIDPlan.DisplayMember = "Descripcion";
-            
-
-
         }
         public ComisionDesktop(int ID, ModoForm modo) : this()
         {
@@ -41,44 +40,40 @@ namespace UI.Desktop
             MapearDeDatos();
         }
 
-        //Métodos
+        //Funciones
         public override void MapearDeDatos()
         {
-            //this.txtID.Text = this.ComisionActual.ID.ToString();
-            this.txtDescripcion.Text = this.ComisionActual.Descripcion;
-            this.txtAñoEspecialidad.Text = this.ComisionActual.AnioEspecialidad.ToString();
+            txtID.Text = ComisionActual.ID.ToString();
+            txtDescripcion.Text = ComisionActual.Descripcion;
+            txtAñoEspecialidad.Text = ComisionActual.AnioEspecialidad.ToString();
            
             PlanLogic el = new PlanLogic();
             cmbIDPlan.DataSource = el.GetAll();
             cmbIDPlan.ValueMember = "ID";
             cmbIDPlan.DisplayMember = "Descripcion";
-            cmbIDPlan.SelectedValue = this.ComisionActual.IDPlan;
-             
+            cmbIDPlan.SelectedValue = ComisionActual.IDPlan;
 
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
-                this.btnAceptar.Text = "Guardar";
+                btnAceptar.Text = "Guardar";
             }
             else if (Modo == ModoForm.Baja)
             {
-                this.btnAceptar.Text = "Eliminar";
+                btnAceptar.Text = "Eliminar";
             }
             else if (Modo == ModoForm.Consulta)
             {
-                this.btnAceptar.Text = "Aceptar";
+                btnAceptar.Text = "Aceptar";
             }
-
         }
         public override void MapearADatos()
         {
-
             if (Modo == ModoForm.Alta)
             {
                 ComisionActual = new Business.Entities.Comision();
             }
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
-                
                 ComisionActual.AnioEspecialidad = Convert.ToInt32(txtAñoEspecialidad.Text);
                 ComisionActual.Descripcion = txtDescripcion.Text;
                 ComisionActual.IDPlan = Convert.ToInt32(((Business.Entities.Plan)cmbIDPlan.SelectedItem).ID);
@@ -113,23 +108,12 @@ namespace UI.Desktop
             MapearADatos();
             new ComisionLogic().Save(ComisionActual);
         }
-        public override bool Validar()
-        {
-            foreach (Control oControls in this.tableLayoutPanel1.Controls) // Buscamos en cada TextBox de nuestro Formulario.
-            {
-                if (oControls is TextBox & oControls.Text == String.Empty & oControls.Name != "txtID") // Verificamos que no este vacio exceptuando al txtID porque se asigna automáticamente.
-                {
-                    Notificar("Hay al menos un campo vacío. Por favor, completelo/s. ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return (false);
-                }
-            }
-            return (true);
-        }
+        #endregion
 
-        //Eventos
+        #region Eventos
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (Validar())
+            if (ValidateChildren() == true)
             {
                 GuardarCambios();
                 Close();
@@ -139,24 +123,40 @@ namespace UI.Desktop
         {
             Close();
         }
-
-        private void cmbIDEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
+        private void txtAñoEspecialidad_Validating(object sender, CancelEventArgs e)
         {
-
-        }
-
-        private void btnAceptar_Click_1(object sender, EventArgs e)
-        {
-            if (Validar())
+            if (String.IsNullOrEmpty(txtAñoEspecialidad.Text) == true)
             {
-                GuardarCambios();
-                Close();
+                e.Cancel = true;
+                errorProviderComision.SetError(txtAñoEspecialidad, "El año de especialidad no debe estar vacío.");
+            }
+            else if (int.TryParse(txtAñoEspecialidad.Text, out int result) == false)
+            {
+                errorProviderComision.SetError(txtAñoEspecialidad, "Sólo se permiten años numéricos.");
+                e.Cancel = true;
+            }
+            else if (!(Convert.ToInt32(txtAñoEspecialidad.Text) >= 1000 && Convert.ToInt32(txtAñoEspecialidad.Text) <= 9999 ))
+            {
+                errorProviderComision.SetError(txtAñoEspecialidad, "Inserte un año de 4 dígitos válido.");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProviderComision.SetError(txtAñoEspecialidad, null);
             }
         }
-
-        private void btnCancelar_Click_1(object sender, EventArgs e)
+        private void txtDescripcion_Validating(object sender, CancelEventArgs e)
         {
-            Close();
+            if (String.IsNullOrEmpty(txtDescripcion.Text) == true)
+            {
+                e.Cancel = true;
+                errorProviderComision.SetError(txtDescripcion, "La descripción no debe estar vacía.");
+            }
+            else
+            {
+                errorProviderComision.SetError(txtDescripcion, null);
+            }
         }
+        #endregion
     }
 }

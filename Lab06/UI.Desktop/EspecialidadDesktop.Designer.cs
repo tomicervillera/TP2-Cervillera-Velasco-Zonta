@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.lbNombre = new System.Windows.Forms.Label();
@@ -36,8 +37,10 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.errorProviderEspecialidad = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEspecialidad)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -60,23 +63,25 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(671, 85);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(671, 66);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // txtDescripcion
             // 
             this.txtDescripcion.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtDescripcion.Location = new System.Drawing.Point(474, 12);
+            this.txtDescripcion.Location = new System.Drawing.Point(484, 5);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(191, 20);
+            this.txtDescripcion.Size = new System.Drawing.Size(172, 20);
             this.txtDescripcion.TabIndex = 12;
+            this.txtDescripcion.Validating += new System.ComponentModel.CancelEventHandler(this.txtDescripcion_Validating);
             // 
             // lbNombre
             // 
             this.lbNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbNombre.AutoSize = true;
-            this.lbNombre.Location = new System.Drawing.Point(58, 16);
+            this.lbNombre.Location = new System.Drawing.Point(58, 9);
             this.lbNombre.Name = "lbNombre";
             this.lbNombre.Size = new System.Drawing.Size(18, 13);
             this.lbNombre.TabIndex = 0;
@@ -85,17 +90,18 @@
             // txtID
             // 
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtID.Location = new System.Drawing.Point(140, 12);
+            this.txtID.Location = new System.Drawing.Point(149, 5);
+            this.txtID.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
-            this.txtID.Size = new System.Drawing.Size(188, 20);
+            this.txtID.Size = new System.Drawing.Size(171, 20);
             this.txtID.TabIndex = 5;
             // 
             // lbDescripcion
             // 
             this.lbDescripcion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbDescripcion.AutoSize = true;
-            this.lbDescripcion.Location = new System.Drawing.Point(370, 16);
+            this.lbDescripcion.Location = new System.Drawing.Point(370, 9);
             this.lbDescripcion.Name = "lbDescripcion";
             this.lbDescripcion.Size = new System.Drawing.Size(63, 13);
             this.lbDescripcion.TabIndex = 8;
@@ -108,7 +114,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.btnAceptar, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnCancelar, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(472, 48);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(472, 34);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -138,11 +144,16 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // errorProviderEspecialidad
+            // 
+            this.errorProviderEspecialidad.ContainerControl = this;
+            // 
             // EspecialidadDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 109);
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.ClientSize = new System.Drawing.Size(695, 90);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "EspecialidadDesktop";
@@ -150,6 +161,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEspecialidad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,5 +177,6 @@
         private System.Windows.Forms.Label lbNombre;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label lbDescripcion;
+        private System.Windows.Forms.ErrorProvider errorProviderEspecialidad;
     }
 }

@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CursosReporte));
             this.cursosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AcademiaDataSet = new UI.Desktop.AcademiaDataSet();
             this.repViewerCursos = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -73,6 +74,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(666, 554);
             this.Controls.Add(this.repViewerCursos);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CursosReporte";
             this.Text = "Reporte de Cursos";
             this.Load += new System.EventHandler(this.CursosReporte_Load);

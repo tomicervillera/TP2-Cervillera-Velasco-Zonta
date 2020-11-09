@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lbID = new System.Windows.Forms.Label();
             this.lbHSSemanales = new System.Windows.Forms.Label();
@@ -42,8 +43,10 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btAceptar = new System.Windows.Forms.Button();
             this.btCancelar = new System.Windows.Forms.Button();
+            this.errorProviderMateria = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMateria)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -101,7 +104,7 @@
             // 
             this.lbHSTotales.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbHSTotales.AutoSize = true;
-            this.lbHSTotales.Location = new System.Drawing.Point(24, 43);
+            this.lbHSTotales.Location = new System.Drawing.Point(24, 44);
             this.lbHSTotales.Name = "lbHSTotales";
             this.lbHSTotales.Size = new System.Drawing.Size(68, 13);
             this.lbHSTotales.TabIndex = 2;
@@ -111,7 +114,7 @@
             // 
             this.lbDescripcion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbDescripcion.AutoSize = true;
-            this.lbDescripcion.Location = new System.Drawing.Point(380, 43);
+            this.lbDescripcion.Location = new System.Drawing.Point(380, 44);
             this.lbDescripcion.Name = "lbDescripcion";
             this.lbDescripcion.Size = new System.Drawing.Size(63, 13);
             this.lbDescripcion.TabIndex = 3;
@@ -121,33 +124,38 @@
             // 
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtID.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtID.Location = new System.Drawing.Point(126, 6);
+            this.txtID.Location = new System.Drawing.Point(131, 7);
+            this.txtID.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
-            this.txtID.Size = new System.Drawing.Size(225, 20);
+            this.txtID.Size = new System.Drawing.Size(215, 20);
             this.txtID.TabIndex = 4;
             // 
             // txtHSSemanales
             // 
             this.txtHSSemanales.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtHSSemanales.Location = new System.Drawing.Point(474, 6);
+            this.txtHSSemanales.Location = new System.Drawing.Point(478, 7);
+            this.txtHSSemanales.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.txtHSSemanales.Name = "txtHSSemanales";
-            this.txtHSSemanales.Size = new System.Drawing.Size(225, 20);
+            this.txtHSSemanales.Size = new System.Drawing.Size(217, 20);
             this.txtHSSemanales.TabIndex = 5;
+            this.txtHSSemanales.Validating += new System.ComponentModel.CancelEventHandler(this.txtHSSemanales_Validating);
             // 
             // txtHSTotales
             // 
             this.txtHSTotales.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtHSTotales.Location = new System.Drawing.Point(126, 39);
+            this.txtHSTotales.Location = new System.Drawing.Point(131, 41);
+            this.txtHSTotales.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.txtHSTotales.Name = "txtHSTotales";
-            this.txtHSTotales.Size = new System.Drawing.Size(225, 20);
+            this.txtHSTotales.Size = new System.Drawing.Size(215, 20);
             this.txtHSTotales.TabIndex = 6;
+            this.txtHSTotales.Validating += new System.ComponentModel.CancelEventHandler(this.txtHSTotales_Validating);
             // 
             // lbIDPlan
             // 
             this.lbIDPlan.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbIDPlan.AutoSize = true;
-            this.lbIDPlan.Location = new System.Drawing.Point(44, 76);
+            this.lbIDPlan.Location = new System.Drawing.Point(44, 78);
             this.lbIDPlan.Name = "lbIDPlan";
             this.lbIDPlan.Size = new System.Drawing.Size(28, 13);
             this.lbIDPlan.TabIndex = 9;
@@ -156,19 +164,22 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtDescripcion.Location = new System.Drawing.Point(474, 39);
+            this.txtDescripcion.Location = new System.Drawing.Point(478, 41);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(225, 20);
+            this.txtDescripcion.Size = new System.Drawing.Size(217, 20);
             this.txtDescripcion.TabIndex = 10;
+            this.txtDescripcion.Validating += new System.ComponentModel.CancelEventHandler(this.txtDescripcion_Validating);
             // 
             // cboxIDPlan
             // 
             this.cboxIDPlan.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cboxIDPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxIDPlan.FormattingEnabled = true;
-            this.cboxIDPlan.Location = new System.Drawing.Point(126, 72);
+            this.cboxIDPlan.Location = new System.Drawing.Point(131, 74);
+            this.cboxIDPlan.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.cboxIDPlan.Name = "cboxIDPlan";
-            this.cboxIDPlan.Size = new System.Drawing.Size(225, 21);
+            this.cboxIDPlan.Size = new System.Drawing.Size(215, 21);
             this.cboxIDPlan.TabIndex = 7;
             // 
             // tableLayoutPanel2
@@ -179,17 +190,17 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.btAceptar, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btCancelar, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(504, 102);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(504, 105);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(164, 32);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(164, 29);
             this.tableLayoutPanel2.TabIndex = 8;
             // 
             // btAceptar
             // 
             this.btAceptar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btAceptar.Location = new System.Drawing.Point(3, 4);
+            this.btAceptar.Location = new System.Drawing.Point(3, 3);
             this.btAceptar.Name = "btAceptar";
             this.btAceptar.Size = new System.Drawing.Size(75, 23);
             this.btAceptar.TabIndex = 0;
@@ -200,7 +211,7 @@
             // btCancelar
             // 
             this.btCancelar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btCancelar.Location = new System.Drawing.Point(85, 4);
+            this.btCancelar.Location = new System.Drawing.Point(85, 3);
             this.btCancelar.Name = "btCancelar";
             this.btCancelar.Size = new System.Drawing.Size(75, 23);
             this.btCancelar.TabIndex = 1;
@@ -208,10 +219,15 @@
             this.btCancelar.UseVisualStyleBackColor = true;
             this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
             // 
+            // errorProviderMateria
+            // 
+            this.errorProviderMateria.ContainerControl = this;
+            // 
             // MateriaDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(734, 161);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "MateriaDesktop";
@@ -219,6 +235,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMateria)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -239,5 +256,6 @@
         private System.Windows.Forms.Label lbIDPlan;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TextBox txtHSSemanales;
+        private System.Windows.Forms.ErrorProvider errorProviderMateria;
     }
 }

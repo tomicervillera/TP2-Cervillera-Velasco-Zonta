@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lbID = new System.Windows.Forms.Label();
             this.lbNombre = new System.Windows.Forms.Label();
@@ -59,8 +60,10 @@
             this.lbConfirmarClave = new System.Windows.Forms.Label();
             this.txtConfirmarClave = new System.Windows.Forms.TextBox();
             this.chkHabilitado = new System.Windows.Forms.CheckBox();
+            this.errorProviderPersona = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPersona)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -218,76 +221,82 @@
             // txtID
             // 
             this.txtID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtID.Location = new System.Drawing.Point(145, 4);
-            this.txtID.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.txtID.Location = new System.Drawing.Point(150, 4);
+            this.txtID.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
-            this.txtID.Size = new System.Drawing.Size(341, 20);
+            this.txtID.Size = new System.Drawing.Size(331, 20);
             this.txtID.TabIndex = 10;
             // 
             // txtNombre
             // 
             this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNombre.Location = new System.Drawing.Point(641, 4);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.txtNombre.Location = new System.Drawing.Point(646, 4);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(343, 20);
+            this.txtNombre.Size = new System.Drawing.Size(333, 20);
             this.txtNombre.TabIndex = 11;
+            this.txtNombre.Validating += new System.ComponentModel.CancelEventHandler(this.txtNombre_Validating);
             // 
             // txtApellido
             // 
             this.txtApellido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtApellido.Location = new System.Drawing.Point(145, 32);
-            this.txtApellido.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.txtApellido.Location = new System.Drawing.Point(150, 32);
+            this.txtApellido.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(341, 20);
+            this.txtApellido.Size = new System.Drawing.Size(331, 20);
             this.txtApellido.TabIndex = 12;
+            this.txtApellido.Validating += new System.ComponentModel.CancelEventHandler(this.txtApellido_Validating);
             // 
             // txtDireccion
             // 
             this.txtDireccion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDireccion.Location = new System.Drawing.Point(641, 32);
-            this.txtDireccion.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.txtDireccion.Location = new System.Drawing.Point(646, 32);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(343, 20);
+            this.txtDireccion.Size = new System.Drawing.Size(333, 20);
             this.txtDireccion.TabIndex = 13;
+            this.txtDireccion.Validating += new System.ComponentModel.CancelEventHandler(this.txtDireccion_Validating);
             // 
             // txtEmail
             // 
             this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEmail.Location = new System.Drawing.Point(145, 60);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.txtEmail.Location = new System.Drawing.Point(150, 60);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(341, 20);
+            this.txtEmail.Size = new System.Drawing.Size(331, 20);
             this.txtEmail.TabIndex = 14;
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
             // txtLegajo
             // 
             this.txtLegajo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLegajo.Location = new System.Drawing.Point(641, 88);
-            this.txtLegajo.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.txtLegajo.Location = new System.Drawing.Point(646, 88);
+            this.txtLegajo.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.txtLegajo.Name = "txtLegajo";
-            this.txtLegajo.Size = new System.Drawing.Size(343, 20);
+            this.txtLegajo.Size = new System.Drawing.Size(333, 20);
             this.txtLegajo.TabIndex = 15;
+            this.txtLegajo.Validating += new System.ComponentModel.CancelEventHandler(this.txtLegajo_Validating);
             // 
             // txtTelefono
             // 
             this.txtTelefono.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTelefono.Location = new System.Drawing.Point(145, 116);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.txtTelefono.Location = new System.Drawing.Point(150, 116);
+            this.txtTelefono.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(341, 20);
+            this.txtTelefono.Size = new System.Drawing.Size(331, 20);
             this.txtTelefono.TabIndex = 16;
+            this.txtTelefono.Validating += new System.ComponentModel.CancelEventHandler(this.txtTelefono_Validating);
             // 
             // cboxPlan
             // 
             this.cboxPlan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cboxPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxPlan.FormattingEnabled = true;
-            this.cboxPlan.Location = new System.Drawing.Point(145, 87);
-            this.cboxPlan.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.cboxPlan.Location = new System.Drawing.Point(150, 87);
+            this.cboxPlan.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.cboxPlan.Name = "cboxPlan";
-            this.cboxPlan.Size = new System.Drawing.Size(341, 21);
+            this.cboxPlan.Size = new System.Drawing.Size(331, 21);
             this.cboxPlan.TabIndex = 19;
             // 
             // cbTipoPersona
@@ -295,10 +304,10 @@
             this.cbTipoPersona.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cbTipoPersona.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipoPersona.FormattingEnabled = true;
-            this.cbTipoPersona.Location = new System.Drawing.Point(641, 115);
-            this.cbTipoPersona.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.cbTipoPersona.Location = new System.Drawing.Point(646, 115);
+            this.cbTipoPersona.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.cbTipoPersona.Name = "cbTipoPersona";
-            this.cbTipoPersona.Size = new System.Drawing.Size(343, 21);
+            this.cbTipoPersona.Size = new System.Drawing.Size(333, 21);
             this.cbTipoPersona.TabIndex = 20;
             // 
             // tableLayoutPanel2
@@ -343,11 +352,11 @@
             this.dtFechaNacimiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dtFechaNacimiento.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFechaNacimiento.Location = new System.Drawing.Point(641, 60);
-            this.dtFechaNacimiento.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.dtFechaNacimiento.Location = new System.Drawing.Point(646, 60);
+            this.dtFechaNacimiento.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.dtFechaNacimiento.Name = "dtFechaNacimiento";
             this.dtFechaNacimiento.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtFechaNacimiento.Size = new System.Drawing.Size(343, 20);
+            this.dtFechaNacimiento.Size = new System.Drawing.Size(333, 20);
             this.dtFechaNacimiento.TabIndex = 17;
             // 
             // lbUsuario
@@ -363,11 +372,12 @@
             // txtUsuario
             // 
             this.txtUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtUsuario.Location = new System.Drawing.Point(145, 144);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.txtUsuario.Location = new System.Drawing.Point(150, 144);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(341, 20);
+            this.txtUsuario.Size = new System.Drawing.Size(331, 20);
             this.txtUsuario.TabIndex = 24;
+            this.txtUsuario.Validating += new System.ComponentModel.CancelEventHandler(this.txtUsuario_Validating);
             // 
             // lbClave
             // 
@@ -382,11 +392,12 @@
             // txtClave
             // 
             this.txtClave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtClave.Location = new System.Drawing.Point(641, 144);
-            this.txtClave.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.txtClave.Location = new System.Drawing.Point(646, 144);
+            this.txtClave.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(343, 20);
+            this.txtClave.Size = new System.Drawing.Size(333, 20);
             this.txtClave.TabIndex = 26;
+            this.txtClave.Validating += new System.ComponentModel.CancelEventHandler(this.txtClave_Validating);
             // 
             // lbConfirmarClave
             // 
@@ -401,10 +412,10 @@
             // txtConfirmarClave
             // 
             this.txtConfirmarClave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtConfirmarClave.Location = new System.Drawing.Point(145, 172);
-            this.txtConfirmarClave.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.txtConfirmarClave.Location = new System.Drawing.Point(150, 172);
+            this.txtConfirmarClave.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.txtConfirmarClave.Name = "txtConfirmarClave";
-            this.txtConfirmarClave.Size = new System.Drawing.Size(341, 20);
+            this.txtConfirmarClave.Size = new System.Drawing.Size(331, 20);
             this.txtConfirmarClave.TabIndex = 28;
             // 
             // chkHabilitado
@@ -420,10 +431,15 @@
             this.chkHabilitado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkHabilitado.UseVisualStyleBackColor = true;
             // 
+            // errorProviderPersona
+            // 
+            this.errorProviderPersona.ContainerControl = this;
+            // 
             // PersonaDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(994, 234);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "PersonaDesktop";
@@ -431,6 +447,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPersona)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -468,5 +485,6 @@
         private System.Windows.Forms.Label lbConfirmarClave;
         private System.Windows.Forms.TextBox txtConfirmarClave;
         private System.Windows.Forms.CheckBox chkHabilitado;
+        private System.Windows.Forms.ErrorProvider errorProviderPersona;
     }
 }

@@ -14,10 +14,12 @@ namespace UI.Desktop
 {
     public partial class ModuloDesktop : ApplicationForm
     {
-        //Propiedades
+        #region Miembros
         private Business.Entities.Modulo _ModuloActual;
         public Business.Entities.Modulo ModuloActual { get => _ModuloActual; set => _ModuloActual = value; }
-
+        #endregion
+        
+        #region Métodos
         //Constructores
         public ModuloDesktop()
         {
@@ -34,29 +36,27 @@ namespace UI.Desktop
             MapearDeDatos();
         }
 
-        //Métodos
+        //Funciones
         public override void MapearDeDatos()
         {
-            this.txtID.Text = this.ModuloActual.ID.ToString();
-            this.txtDescripcion.Text = this.ModuloActual.Descripcion;
+            txtID.Text = ModuloActual.ID.ToString();
+            txtDescripcion.Text = ModuloActual.Descripcion;
 
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
-                this.btnAceptar.Text = "Guardar";
+                btnAceptar.Text = "Guardar";
             }
             else if (Modo == ModoForm.Baja)
             {
-                this.btnAceptar.Text = "Eliminar";
+                btnAceptar.Text = "Eliminar";
             }
             else if (Modo == ModoForm.Consulta)
             {
-                this.btnAceptar.Text = "Aceptar";
+                btnAceptar.Text = "Aceptar";
             }
-
         }
         public override void MapearADatos()
         {
-
             if (Modo == ModoForm.Alta)
             {
                 ModuloActual = new Business.Entities.Modulo();
@@ -95,20 +95,9 @@ namespace UI.Desktop
             MapearADatos();
             new ModuloLogic().Save(ModuloActual);
         }
-        public override bool Validar()
-        {
-            foreach (Control oControls in this.tableLayoutPanel1.Controls) // Buscamos en cada TextBox de nuestro Formulario.
-            {
-                if (oControls is TextBox & oControls.Text == String.Empty & oControls.Name != "txtID") // Verificamos que no este vacio exceptuando al txtID porque se asigna automáticamente.
-                {
-                    Notificar("Hay al menos un campo vacío. Por favor, completelo/s. ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return (false);
-                }
-            }
-            return (true);
-        }
+        #endregion
 
-        //Eventos
+        #region Eventos
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (Validar())
@@ -121,9 +110,7 @@ namespace UI.Desktop
         {
             Close();
         }
-
-
-
+        #endregion
 
     }
 }

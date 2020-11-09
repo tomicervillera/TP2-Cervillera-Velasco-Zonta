@@ -46,6 +46,8 @@ namespace UI.Desktop
             cboxCurso.DataSource = cl.GetAll();
             cboxCurso.ValueMember = "ID";
             cboxCurso.DisplayMember = "ID";
+
+            cboxCondicion.SelectedIndex = 0;
         }
         public AlumnoInscripcionDesktop(int ID, ModoForm modo) : this()
         {
@@ -61,9 +63,9 @@ namespace UI.Desktop
         }
         public override void MapearDeDatos()
         {
-            txtID.Text = this.AlumnoInscripcionActual.ID.ToString();
-            txtNota.Text = this.AlumnoInscripcionActual.Nota.ToString();
-            txtCondicion.Text = this.AlumnoInscripcionActual.Condicion;
+            txtID.Text = AlumnoInscripcionActual.ID.ToString();
+            txtNota.Text = AlumnoInscripcionActual.Nota.ToString();
+            cboxCondicion.SelectedItem = AlumnoInscripcionActual.Condicion;
 
             PersonaLogic pl = new PersonaLogic();
             List<Persona> alumnos = new List<Persona>();
@@ -87,29 +89,34 @@ namespace UI.Desktop
 
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
-                this.btnAceptar.Text = "Guardar";
+                btnAceptar.Text = "Guardar";
             }
             else if (Modo == ModoForm.Baja)
             {
-                this.btnAceptar.Text = "Eliminar";
+                btnAceptar.Text = "Eliminar";
             }
             else if (Modo == ModoForm.Consulta)
             {
-                this.btnAceptar.Text = "Aceptar";
+                btnAceptar.Text = "Aceptar";
             }
-
         }
         public override void MapearADatos()
         {
-
             if (Modo == ModoForm.Alta)
             {
                 AlumnoInscripcionActual = new Business.Entities.AlumnoInscripcion();
             }
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
-                AlumnoInscripcionActual.Condicion = txtCondicion.Text;
-                AlumnoInscripcionActual.Nota = Convert.ToInt32(txtNota.Text);
+                AlumnoInscripcionActual.Condicion = (string)cboxCondicion.SelectedItem;
+                if (string.IsNullOrEmpty(txtNota.Text))
+                {
+                    AlumnoInscripcionActual.Nota = 0;
+                }
+                else
+                {
+                    AlumnoInscripcionActual.Nota = Convert.ToInt32(txtNota.Text);
+                }
                 AlumnoInscripcionActual.IDAlumno = Convert.ToInt32(((Persona)cboxAlumno.SelectedItem).ID);
                 AlumnoInscripcionActual.IDCurso = Convert.ToInt32(((Curso)cboxCurso.SelectedItem).ID);
 
@@ -143,24 +150,12 @@ namespace UI.Desktop
             MapearADatos();
             new AlumnoInscripcionLogic().Save(AlumnoInscripcionActual);
         }
-        public override bool Validar()
-        {
-            foreach (Control oControls in this.tableLayoutPanel1.Controls) // Buscamos en cada TextBox de nuestro Formulario.
-            {
-                if (oControls is TextBox & oControls.Text == String.Empty & oControls.Name != "txtID") // Verificamos que no este vacio exceptuando al txtID porque se asigna automáticamente.
-                {
-                    Notificar("Hay al menos un campo vacío. Por favor, completelo/s. ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return (false);
-                }
-            }
-            return (true);
-        }
         #endregion
 
         #region Eventos
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (Validar())
+            if (ValidateChildren() == true)
             {
                 GuardarCambios();
                 Close();
@@ -169,6 +164,34 @@ namespace UI.Desktop
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        private void txtNota_Validating(object sender, CancelEventArgs e)
+        {
+            if (cboxCondicion.SelectedIndex == 0 && string.IsNullOrEmpty(txtNota.Text) == false)
+            {
+                errorProviderAlumnoInscripcion.SetError(txtNota, "Los alumnos libres no deben llevar nota.");
+                e.Cancel = true;
+            }
+            else if (string.IsNullOrEmpty(txtNota.Text) == true)
+            {
+                errorProviderAlumnoInscripcion.SetError(txtNota, "Los alumnos regulares o aprobados deben llevar nota.");
+                e.Cancel = true;
+            }
+            else if (int.TryParse(txtNota.Text, out int result) == false)
+            {
+                errorProviderAlumnoInscripcion.SetError(txtNota, "Sólo se permiten notas numéricas.");
+                e.Cancel = true;
+            }
+            else if (!(Convert.ToInt32(txtNota.Text) > 0 && Convert.ToInt32(txtNota.Text) <= 10))
+            {
+                errorProviderAlumnoInscripcion.SetError(txtNota, "Sólo se permiten notas entre 1 y 10.");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProviderAlumnoInscripcion.SetError(txtNota, null);
+            }
+
         }
         #endregion
     }

@@ -30,13 +30,24 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.repViewerPersonas = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.AcademiaDataSet = new UI.Desktop.AcademiaDataSet();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PersonasReporte));
             this.personasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.AcademiaDataSet = new UI.Desktop.AcademiaDataSet();
+            this.repViewerPersonas = new Microsoft.Reporting.WinForms.ReportViewer();
             this.personasTableAdapter = new UI.Desktop.AcademiaDataSetTableAdapters.personasTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.AcademiaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AcademiaDataSet)).BeginInit();
             this.SuspendLayout();
+            // 
+            // personasBindingSource
+            // 
+            this.personasBindingSource.DataMember = "personas";
+            this.personasBindingSource.DataSource = this.AcademiaDataSet;
+            // 
+            // AcademiaDataSet
+            // 
+            this.AcademiaDataSet.DataSetName = "AcademiaDataSet";
+            this.AcademiaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // repViewerPersonas
             // 
@@ -53,16 +64,6 @@
             this.repViewerPersonas.Size = new System.Drawing.Size(1457, 546);
             this.repViewerPersonas.TabIndex = 0;
             // 
-            // AcademiaDataSet
-            // 
-            this.AcademiaDataSet.DataSetName = "AcademiaDataSet";
-            this.AcademiaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // personasBindingSource
-            // 
-            this.personasBindingSource.DataMember = "personas";
-            this.personasBindingSource.DataSource = this.AcademiaDataSet;
-            // 
             // personasTableAdapter
             // 
             this.personasTableAdapter.ClearBeforeFill = true;
@@ -73,11 +74,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1481, 570);
             this.Controls.Add(this.repViewerPersonas);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PersonasReporte";
             this.Text = "Reporte de Personas";
             this.Load += new System.EventHandler(this.PersonasReporte_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.AcademiaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.personasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AcademiaDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

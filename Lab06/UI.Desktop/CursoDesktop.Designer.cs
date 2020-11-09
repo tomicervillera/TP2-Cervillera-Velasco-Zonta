@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtCupo = new System.Windows.Forms.TextBox();
             this.lblCupo = new System.Windows.Forms.Label();
@@ -42,8 +43,10 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.lblAnioCalendario = new System.Windows.Forms.Label();
+            this.errorProviderCurso = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCurso)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -85,6 +88,7 @@
             this.txtCupo.Name = "txtCupo";
             this.txtCupo.Size = new System.Drawing.Size(188, 20);
             this.txtCupo.TabIndex = 33;
+            this.txtCupo.Validating += new System.ComponentModel.CancelEventHandler(this.txtCupo_Validating);
             // 
             // lblCupo
             // 
@@ -103,6 +107,7 @@
             this.txtAnioCalendario.Name = "txtAnioCalendario";
             this.txtAnioCalendario.Size = new System.Drawing.Size(188, 20);
             this.txtAnioCalendario.TabIndex = 31;
+            this.txtAnioCalendario.Validating += new System.ComponentModel.CancelEventHandler(this.txtAnioCalendario_Validating);
             // 
             // cboxComision
             // 
@@ -211,10 +216,15 @@
             this.lblAnioCalendario.TabIndex = 30;
             this.lblAnioCalendario.Text = "Año Calendario";
             // 
+            // errorProviderCurso
+            // 
+            this.errorProviderCurso.ContainerControl = this;
+            // 
             // CursoDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(732, 161);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -223,6 +233,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCurso)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,5 +255,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.ErrorProvider errorProviderCurso;
     }
 }

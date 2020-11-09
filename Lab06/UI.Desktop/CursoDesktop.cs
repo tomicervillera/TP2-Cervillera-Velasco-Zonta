@@ -14,10 +14,12 @@ namespace UI.Desktop
 {
     public partial class CursoDesktop : ApplicationForm
     {
-        //Propiedades
+        #region Miembros
         private Business.Entities.Curso _CursoActual;
         public Business.Entities.Curso CursoActual { get => _CursoActual; set => _CursoActual = value; }
+        #endregion
 
+        #region Métodos
         //Constructores
         public CursoDesktop()
         {
@@ -43,10 +45,10 @@ namespace UI.Desktop
             MapearDeDatos();
         }
 
-        //Métodos
+        //Funciones
         public override void MapearDeDatos()
         {
-            txtID.Text = this.CursoActual.ID.ToString();
+            txtID.Text = CursoActual.ID.ToString();
             txtAnioCalendario.Text = CursoActual.AnioCalendario.ToString();
             txtCupo.Text= CursoActual.Cupo.ToString();
 
@@ -64,21 +66,20 @@ namespace UI.Desktop
 
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
             {
-                this.btnAceptar.Text = "Guardar";
+                btnAceptar.Text = "Guardar";
             }
             else if (Modo == ModoForm.Baja)
             {
-                this.btnAceptar.Text = "Eliminar";
+                btnAceptar.Text = "Eliminar";
             }
             else if (Modo == ModoForm.Consulta)
             {
-                this.btnAceptar.Text = "Aceptar";
+                btnAceptar.Text = "Aceptar";
             }
 
         }
         public override void MapearADatos()
         {
-
             if (Modo == ModoForm.Alta)
             {
                 CursoActual = new Business.Entities.Curso();
@@ -90,7 +91,6 @@ namespace UI.Desktop
 
                 CursoActual.IDComision = Convert.ToInt32(((Comision)cboxComision.SelectedItem).ID);
                 CursoActual.IDMateria = Convert.ToInt32(((Materia)cboxMateria.SelectedItem).ID);
-
 
                 switch (Modo)
                 {
@@ -122,23 +122,12 @@ namespace UI.Desktop
             MapearADatos();
             new CursoLogic().Save(CursoActual);
         }
-        public override bool Validar()
-        {
-            foreach (Control oControls in this.tableLayoutPanel1.Controls) // Buscamos en cada TextBox de nuestro Formulario.
-            {
-                if (oControls is TextBox & oControls.Text == String.Empty & oControls.Name != "txtID") // Verificamos que no este vacio exceptuando al txtID porque se asigna automáticamente.
-                {
-                    Notificar("Hay al menos un campo vacío. Por favor, completelo/s. ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return (false);
-                }
-            }
-            return (true);
-        }
+        #endregion
 
-        //Eventos
+        #region Eventos
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (Validar())
+            if (ValidateChildren() == true)
             {
                 GuardarCambios();
                 Close();
@@ -148,5 +137,50 @@ namespace UI.Desktop
         {
             Close();
         }
+        private void txtCupo_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtCupo.Text) == true)
+            {
+                e.Cancel = true;
+                errorProviderCurso.SetError(txtCupo, "El cupo no debe estar vacío.");
+            }
+            else if (int.TryParse(txtCupo.Text, out int result) == false)
+            {
+                e.Cancel = true;
+                errorProviderCurso.SetError(txtCupo, "Sólo se permiten cupos numéricos.");
+            }
+            else if (!(Convert.ToInt32(txtCupo.Text) >= 0 && Convert.ToInt32(txtCupo.Text) <= 500))
+            {
+                e.Cancel = true;
+                errorProviderCurso.SetError(txtCupo, "Inserte un número de cupo válido.");
+            }
+            else
+            {
+                errorProviderCurso.SetError(txtCupo, null);
+            }
+        }
+        private void txtAnioCalendario_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtAnioCalendario.Text) == true)
+            {
+                e.Cancel = true;
+                errorProviderCurso.SetError(txtAnioCalendario, "El año calendario no debe estar vacío.");
+            }
+            else if (int.TryParse(txtAnioCalendario.Text, out int result) == false)
+            {
+                e.Cancel = true;
+                errorProviderCurso.SetError(txtAnioCalendario, "Sólo se permiten años numéricos.");
+            }
+            else if (!(Convert.ToInt32(txtAnioCalendario.Text) >= 1000 && Convert.ToInt32(txtAnioCalendario.Text) <= 9999))
+            {
+                e.Cancel = true;
+                errorProviderCurso.SetError(txtAnioCalendario, "Inserte un año de 4 dígitos válido.");
+            }
+            else
+            {
+                errorProviderCurso.SetError(txtAnioCalendario, null);
+            }
+        }
+        #endregion
     }
 }
