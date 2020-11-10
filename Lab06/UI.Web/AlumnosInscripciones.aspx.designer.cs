@@ -141,22 +141,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Label condicionLabel;
 
         /// <summary>
-        /// condicionTextBox control.
+        /// ddlCondicion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox condicionTextBox;
-
-        /// <summary>
-        /// condicionRequiredFieldValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator condicionRequiredFieldValidator;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCondicion;
 
         /// <summary>
         /// lblNota control.
@@ -177,22 +168,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.TextBox notaTextBox;
 
         /// <summary>
-        /// notaRequiredFieldValidator control.
+        /// notaCustomValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator notaRequiredFieldValidator;
-
-        /// <summary>
-        /// notaRangeValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator notaRangeValidator;
+        protected global::System.Web.UI.WebControls.CustomValidator notaCustomValidator;
 
         /// <summary>
         /// erroresValidationSummary control.

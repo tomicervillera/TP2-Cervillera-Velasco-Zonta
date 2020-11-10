@@ -38,13 +38,9 @@ namespace UI.Web
                     break;
                 }
             }
-            if (currentUser == null)
+            if (currentUser == null || currentUser.Clave != txtClave.Text)
             {
-                Response.Write("<script>alert('Usuario incorrecto.');</script>");
-            }
-            else if (currentUser.Clave != txtClave.Text)
-            {
-                Response.Write("<script>alert('Contraseña incorrecta.');</script>");
+                Response.Write("<script>alert('Usuario y/o contraseña incorrectos.');</script>");
             }
             else if (currentUser.Habilitado == false)
             {

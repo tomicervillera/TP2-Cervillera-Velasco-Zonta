@@ -34,13 +34,15 @@
         </asp:DropDownList>
         <br />
         <asp:Label ID="condicionLabel" runat="server" Text="Condición:"></asp:Label>
-        <asp:TextBox ID="condicionTextBox" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="condicionRequiredFieldValidator" runat="server" ControlToValidate="condicionTextBox" ErrorMessage="La condición no puede estar vacía."></asp:RequiredFieldValidator>
+        <asp:DropDownList ID="ddlCondicion" runat="server">
+            <asp:ListItem>Libre</asp:ListItem>
+            <asp:ListItem>Regular</asp:ListItem>
+            <asp:ListItem>Aprobado</asp:ListItem>
+        </asp:DropDownList>
         <br />
         <asp:Label ID="lblNota" runat="server" Text="Nota:"></asp:Label>
         <asp:TextBox ID="notaTextBox" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="notaRequiredFieldValidator" runat="server" ControlToValidate="notaTextBox" ErrorMessage="La nota no puede estar vacía."></asp:RequiredFieldValidator>
-        <asp:RangeValidator ID="notaRangeValidator" runat="server" ControlToValidate="notaTextBox" ErrorMessage="La nota debe ser un número válido." Type="Integer" MinimumValue="0" MaximumValue="10"></asp:RangeValidator>
+        <asp:CustomValidator ID="notaCustomValidator" runat="server" OnServerValidate="notaCustomValidator_ServerValidate" ControlToValidate="notaTextBox" ValidateEmptyText="True"></asp:CustomValidator>
         <asp:ValidationSummary ID="erroresValidationSummary" runat="server"/>
     </asp:Panel>
     <asp:Panel ID="formActionsPanel" Visible="false" runat="server" Style="margin-top: 5px">

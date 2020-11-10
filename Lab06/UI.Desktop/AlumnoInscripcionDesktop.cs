@@ -182,9 +182,9 @@ namespace UI.Desktop
                 errorProviderAlumnoInscripcion.SetError(txtNota, "Sólo se permiten notas numéricas.");
                 e.Cancel = true;
             }
-            else if (cboxCondicion.SelectedIndex != 0 && !(Convert.ToInt32(txtNota.Text) > 0 && Convert.ToInt32(txtNota.Text) <= 10))
+            else if (cboxCondicion.SelectedIndex != 0 && !(Convert.ToInt32(txtNota.Text) >= 5 && Convert.ToInt32(txtNota.Text) <= 10))
             {
-                errorProviderAlumnoInscripcion.SetError(txtNota, "Sólo se permiten notas entre 1 y 10.");
+                errorProviderAlumnoInscripcion.SetError(txtNota, "Los alumnos regulares/aprobados deben tener nota igual o superior a 5.");
                 e.Cancel = true;
             }
             else

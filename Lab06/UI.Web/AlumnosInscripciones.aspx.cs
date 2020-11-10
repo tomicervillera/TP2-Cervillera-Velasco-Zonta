@@ -32,11 +32,11 @@ namespace UI.Web
         {
             get
             {
-                return (FormModes)this.ViewState["FormMode"];
+                return (FormModes)ViewState["FormMode"];
             }
             set
             {
-                this.ViewState["FormMode"] = value;
+                ViewState["FormMode"] = value;
             }
         }
         private AlumnoInscripcion Entity
@@ -48,9 +48,9 @@ namespace UI.Web
         {
             get
             {
-                if (this.ViewState["SelectedID"] != null)
+                if (ViewState["SelectedID"] != null)
                 {
-                    return (int)this.ViewState["SelectedID"];
+                    return (int)ViewState["SelectedID"];
                 }
                 else
                 {
@@ -59,14 +59,14 @@ namespace UI.Web
             }
             set
             {
-                this.ViewState["SelectedID"] = value;
+                ViewState["SelectedID"] = value;
             }
         }
         private bool IsEntitySelected
         {
             get
             {
-                return (this.SelectedID != 0);
+                return (SelectedID != 0);
             }
         }
         #endregion
@@ -74,14 +74,28 @@ namespace UI.Web
         #region Metodos
         private void LoadGrid()
         {
-            gridView.DataSource = this.Logic.GetAll();
-            gridView.DataBind();
+            if (Session["tipoPersona"].ToString() == Persona.TipoPersonas.Admin.ToString())
+            {
+                gridView.DataSource = Logic.GetAll();
+                gridView.DataBind();
+            }
+            else if (Session["tipoPersona"].ToString() == Persona.TipoPersonas.Docente.ToString())
+            {
+                gridView.DataSource = Logic.GetFromDocente(Convert.ToInt32(Session["idPersona"]));
+                gridView.DataBind();
+            }
+            else if (Session["tipoPersona"].ToString() == Persona.TipoPersonas.Alumno.ToString())
+            {
+                gridView.DataSource = Logic.GetFromAlumno(Convert.ToInt32(Session["idPersona"]));
+                gridView.DataBind();
+            }
+            
         }
         private void LoadForm(int id)
         {
-            this.Entity = this.Logic.GetOne(id);
-            this.condicionTextBox.Text = this.Entity.Condicion;
-            this.notaTextBox.Text = this.Entity.Nota.ToString();
+            Entity = Logic.GetOne(id);
+            ddlCondicion.SelectedValue = Entity.Condicion;
+            notaTextBox.Text = Entity.Nota.ToString();
 
             PersonaLogic pl = new PersonaLogic();
             List<Persona> alumnos = new List<Persona>();
@@ -107,24 +121,33 @@ namespace UI.Web
         }
         private void LoadEntity(AlumnoInscripcion alumnoInscripcion)
         {
-            alumnoInscripcion.IDAlumno = Convert.ToInt32(this.ddlAlumno.SelectedValue);
-            alumnoInscripcion.IDCurso = Convert.ToInt32(this.ddlCurso.SelectedValue);
+            alumnoInscripcion.IDAlumno = Convert.ToInt32(ddlAlumno.SelectedValue);
+            alumnoInscripcion.IDCurso = Convert.ToInt32(ddlCurso.SelectedValue);
 
-            alumnoInscripcion.Condicion = this.condicionTextBox.Text;
-            alumnoInscripcion.Nota = Convert.ToInt32(this.notaTextBox.Text);
+            if (string.IsNullOrEmpty(notaTextBox.Text))
+            {
+                alumnoInscripcion.Nota = 0;
+            }
+            else
+            {
+                alumnoInscripcion.Nota = Convert.ToInt32(notaTextBox.Text);
+            }
+            
+            alumnoInscripcion.Condicion = ddlCondicion.SelectedValue;
         }
         private void SaveEntity(AlumnoInscripcion alumnoInscripcion)
         {
-            this.Logic.Save(alumnoInscripcion);
+            Logic.Save(alumnoInscripcion);
         }
         private void DeleteEntity(int id)
         {
-            this.Logic.Delete(id);
+            Logic.Delete(id);
         }
         private void EnableForm(bool enable)
         {
-            this.condicionTextBox.Enabled = enable;
-            this.notaTextBox.Enabled = enable;
+            ddlCondicion.Enabled = enable;
+            notaTextBox.Enabled = enable;
+            notaCustomValidator.Enabled = enable;
 
             PersonaLogic pl = new PersonaLogic();
             List<Persona> alumnos = new List<Persona>();
@@ -150,8 +173,8 @@ namespace UI.Web
         }
         private void ClearForm()
         {
-            this.condicionTextBox.Text = string.Empty;
-            this.notaTextBox.Text = string.Empty;
+            ddlCondicion.SelectedIndex = 0;
+            notaTextBox.Text = string.Empty;
         }
         private void ValidateUser()
         {
@@ -163,23 +186,22 @@ namespace UI.Web
                 }
                 else if (Session["tipoPersona"].ToString() == Persona.TipoPersonas.Docente.ToString())
                 {
-                    this.gridActionsPanel.Visible = false;
+                    nuevoLinkButton.Visible = false;
+                    eliminarLinkButton.Visible = false;
                     LoadGrid();
                 }
                 else if (Session["tipoPersona"].ToString() == Persona.TipoPersonas.Alumno.ToString())
                 {
-                    this.gridPanel.Visible = false;
-                    this.gridActionsPanel.Visible = false;
-                    this.lblError.Visible = true;
-                    this.lblError.Text = "Usted no tiene el permiso necesario para acceder aquí.";
+                    editarLinkButton.Visible = false;
+                    LoadGrid();
                 }
             }
             else
             {
-                this.gridActionsPanel.Visible = false;
-                this.errorPanel.Visible = true;
-                this.lblError.Visible = true;
-                this.lblError.Text = "Usted no está logueado en el sistema. Por favor, inicie sesión <a href=/Login.aspx>aquí</a> .";
+                gridActionsPanel.Visible = false;
+                errorPanel.Visible = true;
+                lblError.Visible = true;
+                lblError.Text = "Usted no está logueado en el sistema. Por favor, inicie sesión <a href=/Login.aspx>aquí</a> .";
             }
         }
         #endregion
@@ -189,46 +211,99 @@ namespace UI.Web
         {
             if (Page.IsPostBack == false)
             {
-                ((Site)this.Master).HeaderText = "Inscripciones de Alumnos";
+                ((Site)Master).HeaderText = "Inscripciones de Alumnos";
                 ValidateUser();
             }
         }
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.SelectedID = (int)this.gridView.SelectedValue;
+            SelectedID = (int)gridView.SelectedValue;
+        }
+        protected void notaCustomValidator_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            if (ddlCondicion.SelectedIndex == 0 && string.IsNullOrEmpty(notaTextBox.Text) == false)
+            {
+                notaCustomValidator.ErrorMessage = "Los alumnos libres no deben llevar nota.";
+                args.IsValid = false;
+            }
+            else if (ddlCondicion.SelectedIndex != 0 && string.IsNullOrEmpty(notaTextBox.Text) == true)
+            {
+                notaCustomValidator.ErrorMessage = "Los alumnos regulares o aprobados deben llevar nota.";
+                args.IsValid = false;
+            }
+            else if (ddlCondicion.SelectedIndex != 0 && int.TryParse(notaTextBox.Text, out int result) == false)
+            {
+                notaCustomValidator.ErrorMessage = "Sólo se permiten notas numéricas.";
+                args.IsValid = false;
+            }
+            else if (ddlCondicion.SelectedIndex != 0 && !(Convert.ToInt32(notaTextBox.Text) >= 5 && Convert.ToInt32(notaTextBox.Text) <= 10))
+            {
+                notaCustomValidator.ErrorMessage = "Los alumnos regulares/aprobados deben tener nota igual o superior a 5.";
+                args.IsValid = false;
+            }
+            else
+            {
+                args.IsValid = true;
+            }
         }
 
         //GridActionsPanel
         protected void editarLinkButton_Click(object sender, EventArgs e)
         {
-            if (this.IsEntitySelected)
+            if (IsEntitySelected)
             {
-                this.formActionsPanel.Visible = true;
-                this.formPanel.Visible = true;
-                this.FormMode = FormModes.Modificacion;
-                this.EnableForm(true);
-                this.LoadForm(this.SelectedID);
+                if (Session["tipoPersona"].ToString() == Persona.TipoPersonas.Admin.ToString())
+                {
+                    formActionsPanel.Visible = true;
+                    formPanel.Visible = true;
+                    FormMode = FormModes.Modificacion;
+                    EnableForm(true);
+                    LoadForm(SelectedID);
+                }
+                else if (Session["tipoPersona"].ToString() == Persona.TipoPersonas.Docente.ToString())
+                {
+                    formActionsPanel.Visible = true;
+                    formPanel.Visible = true;
+                    FormMode = FormModes.Modificacion;
+                    EnableForm(true);
+                    LoadForm(SelectedID);
+                    ddlAlumno.Enabled = false;
+                    ddlCurso.Enabled = false;
+                }
             }
         }
         protected void eliminarLinkButton_Click(object sender, EventArgs e)
         {
-            if (this.IsEntitySelected)
+            if (IsEntitySelected)
             {
-                this.formPanel.Visible = true;
-                this.formActionsPanel.Visible = true;
-                this.FormMode = FormModes.Baja;
+                formPanel.Visible = true;
+                formActionsPanel.Visible = true;
+                FormMode = FormModes.Baja;
 
-                this.EnableForm(false);
-                this.LoadForm(this.SelectedID);
+                EnableForm(false);
+                LoadForm(SelectedID);
             }
         }
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
-            this.formActionsPanel.Visible = true;
-            this.formPanel.Visible = true;
-            this.FormMode = FormModes.Alta;
-            this.ClearForm();
-            this.EnableForm(true);
+            if (Session["tipoPersona"].ToString() == Persona.TipoPersonas.Admin.ToString())
+            {
+                formActionsPanel.Visible = true;
+                formPanel.Visible = true;
+                FormMode = FormModes.Alta;
+                ClearForm();
+                EnableForm(true);
+            }
+            else if (Session["tipoPersona"].ToString() == Persona.TipoPersonas.Alumno.ToString())
+            {
+                formActionsPanel.Visible = true;
+                formPanel.Visible = true;
+                FormMode = FormModes.Alta;
+                ClearForm();
+                EnableForm(true);
+                notaTextBox.Enabled = false;
+                ddlCondicion.Enabled = false;
+            }
         }
 
         //FormActionsPanel
@@ -236,42 +311,43 @@ namespace UI.Web
         {
             if (Page.IsValid == true)
             {
-                switch (this.FormMode)
+                switch (FormMode)
                 {
                     case FormModes.Baja:
-                        this.DeleteEntity(this.SelectedID);
-                        this.LoadGrid();
+                        DeleteEntity(SelectedID);
+                        LoadGrid();
                         break;
                     case FormModes.Modificacion:
-                        this.Entity = new AlumnoInscripcion();
-                        this.Entity.ID = this.SelectedID;
-                        this.Entity.State = BusinessEntity.States.Modified;
+                        Entity = new AlumnoInscripcion();
+                        Entity.ID = SelectedID;
+                        Entity.State = BusinessEntity.States.Modified;
 
-                        this.LoadEntity(this.Entity);
-                        this.SaveEntity(this.Entity);
-                        this.LoadGrid();
+                        LoadEntity(Entity);
+                        SaveEntity(Entity);
+                        LoadGrid();
 
                         break;
                     case FormModes.Alta:
-                        this.Entity = new AlumnoInscripcion();
-                        this.LoadEntity(this.Entity);
-                        this.SaveEntity(this.Entity);
-                        this.LoadGrid();
+                        Entity = new AlumnoInscripcion();
+                        LoadEntity(Entity);
+                        SaveEntity(Entity);
+                        LoadGrid();
                         break;
                     default:
                         break;
                 }
-                this.formPanel.Visible = false;
-                this.formActionsPanel.Visible = false;
+                formPanel.Visible = false;
+                formActionsPanel.Visible = false;
             }
         }
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
-            this.ClearForm();
-            this.EnableForm(false);
-            this.formPanel.Visible = false;
-            this.formActionsPanel.Visible = false;
+            ClearForm();
+            EnableForm(false);
+            formPanel.Visible = false;
+            formActionsPanel.Visible = false;
         }
         #endregion
+
     }
 }

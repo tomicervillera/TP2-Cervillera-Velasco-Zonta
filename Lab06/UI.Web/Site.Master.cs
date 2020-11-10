@@ -104,6 +104,9 @@ namespace UI.Web
                     node = new TreeNode("Especialidades", "Especialidades", null, "~/Especialidades.aspx", null);
                     TreeNav.Nodes[0].ChildNodes.Add(node);
 
+                    node = new TreeNode("Inscripciones de Alumnos", "AlumnosInscripciones", null, "~/AlumnosInscripciones.aspx", null);
+                    TreeNav.Nodes[0].ChildNodes.Add(node);
+
                     node = new TreeNode("Materias", "Materias", null, "~/Materias.aspx", null);
                     TreeNav.Nodes[0].ChildNodes.Add(node);
                 }
