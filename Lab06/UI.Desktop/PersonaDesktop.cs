@@ -230,7 +230,7 @@ namespace UI.Desktop
                     var eMailValidator = new System.Net.Mail.MailAddress(txtEmail.Text);
                     errorProviderPersona.SetError(txtEmail, null);
                 }
-                catch (FormatException ex)
+                catch (FormatException)
                 {
                     e.Cancel = true;
                     errorProviderPersona.SetError(txtEmail, "El email no es válido.");

@@ -186,18 +186,6 @@
     <Compile Include="MateriasReporte.Designer.cs">
       <DependentUpon>MateriasReporte.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModulosUsuarios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModulosUsuarios.Designer.cs">
-      <DependentUpon>ModulosUsuarios.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModuloUsuarioDesktop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModuloUsuarioDesktop.Designer.cs">
-      <DependentUpon>ModuloUsuarioDesktop.cs</DependentUpon>
-    </Compile>
     <Compile Include="Personas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,18 +209,6 @@
     </Compile>
     <Compile Include="formMain.Designer.cs">
       <DependentUpon>formMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModuloDesktop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModuloDesktop.Designer.cs">
-      <DependentUpon>ModuloDesktop.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modulos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modulos.Designer.cs">
-      <DependentUpon>Modulos.cs</DependentUpon>
     </Compile>
     <Compile Include="PersonasReporte.cs">
       <SubType>Form</SubType>
@@ -259,18 +235,6 @@
       <DependentUpon>PlanesReporte.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="UsuarioDesktop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UsuarioDesktop.Designer.cs">
-      <DependentUpon>UsuarioDesktop.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Usuarios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Usuarios.Designer.cs">
-      <DependentUpon>Usuarios.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AlumnoInscripcionDesktop.resx">
@@ -340,18 +304,6 @@
     <EmbeddedResource Include="MateriasReporte.resx">
       <DependentUpon>MateriasReporte.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModuloDesktop.resx">
-      <DependentUpon>ModuloDesktop.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulos.resx">
-      <DependentUpon>Modulos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModulosUsuarios.resx">
-      <DependentUpon>ModulosUsuarios.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModuloUsuarioDesktop.resx">
-      <DependentUpon>ModuloUsuarioDesktop.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PersonaDesktop.resx">
       <DependentUpon>PersonaDesktop.cs</DependentUpon>
     </EmbeddedResource>
@@ -373,12 +325,6 @@
     <EmbeddedResource Include="PlanesReporte.rdlc" />
     <EmbeddedResource Include="PlanesReporte.resx">
       <DependentUpon>PlanesReporte.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsuarioDesktop.resx">
-      <DependentUpon>UsuarioDesktop.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Usuarios.resx">
-      <DependentUpon>Usuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

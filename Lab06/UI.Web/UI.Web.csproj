@@ -123,7 +123,6 @@
     <Content Include="UserControls\FechaNacimientoUserControl.ascx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
-    <Content Include="Usuarios.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AcademiaDataSet.Designer.cs">
@@ -275,13 +274,6 @@
     </Compile>
     <Compile Include="UserControls\FechaNacimientoUserControl.ascx.designer.cs">
       <DependentUpon>FechaNacimientoUserControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Usuarios.aspx.cs">
-      <DependentUpon>Usuarios.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Usuarios.aspx.designer.cs">
-      <DependentUpon>Usuarios.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
