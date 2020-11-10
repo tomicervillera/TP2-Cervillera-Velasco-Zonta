@@ -395,6 +395,7 @@
             this.txtClave.Location = new System.Drawing.Point(646, 144);
             this.txtClave.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.txtClave.Name = "txtClave";
+            this.txtClave.PasswordChar = '*';
             this.txtClave.Size = new System.Drawing.Size(333, 20);
             this.txtClave.TabIndex = 26;
             this.txtClave.Validating += new System.ComponentModel.CancelEventHandler(this.txtClave_Validating);
@@ -415,6 +416,7 @@
             this.txtConfirmarClave.Location = new System.Drawing.Point(150, 172);
             this.txtConfirmarClave.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.txtConfirmarClave.Name = "txtConfirmarClave";
+            this.txtConfirmarClave.PasswordChar = '*';
             this.txtConfirmarClave.Size = new System.Drawing.Size(331, 20);
             this.txtConfirmarClave.TabIndex = 28;
             // 
